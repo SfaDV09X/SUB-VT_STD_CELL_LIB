@@ -1,0 +1,2 @@
+open_pdks: 1.0.605 (commit f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7)
+magic: 8.3.674 (commit 17ac06a24a952380ade3a7d33cd2f0c3943dfc12)
