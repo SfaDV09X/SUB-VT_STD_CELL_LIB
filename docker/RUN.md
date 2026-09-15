@@ -6,7 +6,7 @@ Launcher repo: cloned separately
 
 Quick start guide:
 
-    Set DOCKER_TAG = 2026.08 as a persistent environment variable
+    Set DOCKER_TAG = 2026.07 as a persistent environment variable
     Open docker desktop
     Open command prompt and navigiate to cloned iic-osic-tools folder
     Run start_vnc.bat
