@@ -1,0 +1,30 @@
+* NGSPICE file created from inv1x1.ext - technology: sky130A
+
+.subckt inv1x1 A Y VDD GND
+X0 xn/D2.t1 A xn/S1.t1 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.1386 ps=1.17 w=0.84 l=0.15
+X1 xn/S1.t0 A xn/D0.t0 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.2604 ps=2.3 w=0.84 l=0.15
+X2 xn/S2.t0 A xn/D2.t0 GND sky130_fd_pr__nfet_01v8 ad=0.2604 pd=2.3 as=0.1386 ps=1.17 w=0.84 l=0.15
+X3 xp/S.t0 A xp/D.t0 VDD sky130_fd_pr__pfet_01v8 ad=0.1218 pd=1.42 as=0.1218 ps=1.42 w=0.42 l=0.15
+C0 A VDD 0.18178f
+C1 VDD Y 0.26763f
+C2 A Y 0.15049f
+R0 Y xn/S2.t0 23.5719
+R1 GND xn/D2.t0 23.5719
+R2 GND xn/D2.t1 23.5719
+R3 Y xn/S1.t1 23.5719
+R4 Y xn/S1.t0 23.5719
+R5 GND xn/D0.t0 23.5719
+R6 VDD xp/S.t0 68.0124
+R7 Y xp/D.t0 68.0124
+C3 Y GND 1.5339f
+C4 A GND 0.66392f
+C5 VDD GND 1.55651f
+C6 xp/D.t0 GND 0.00883f ; **FLOATING
+C7 xp/S.t0 GND 0.00883f ; **FLOATING
+C8 xn/D0.t0 GND 0.0163f ; **FLOATING
+C9 xn/S1.t1 GND 0.03173f ; **FLOATING
+C10 xn/S1.t0 GND 0.03173f ; **FLOATING
+C11 xn/D2.t0 GND 0.03173f ; **FLOATING
+C12 xn/D2.t1 GND 0.03173f ; **FLOATING
+C13 xn/S2.t0 GND 0.0163f ; **FLOATING
+.ends

@@ -1,0 +1,12 @@
+# cell	inputs	output	liberty_function
+inv1x1	A	Y	!A
+nand2x1	A,B	Y	!(A&B)
+nor2x1	A,B	Y	!(A|B)
+and2x1	A,B	Y	A&B
+or2x1	A,B	Y	A|B
+xor2x1	A,B	Y	(A&!B)|(!A&B)
+xnor2x1	A,B	Y	(A&B)|(!A&!B)
+aoi3x1	A,B,C	Y	!((A&B)|C)
+oai3x1	A,B,C	Y	!((A|B)&C)
+maoi4x1	A,B,C,D	Y	(A|B)&!(C&D)
+moai4x1	A,B,C,D	Y	(A&B)|(!C&!D)

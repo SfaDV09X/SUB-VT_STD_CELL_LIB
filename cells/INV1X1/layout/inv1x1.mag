@@ -1,0 +1,126 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1791639075
+<< checkpaint >>
+rect -1139 1585 1599 1984
+rect -1203 -1213 1663 1585
+<< nwell >>
+rect -46 374 506 882
+<< psubdiff >>
+rect 36 17 424 29
+rect 36 -17 60 17
+rect 400 -17 424 17
+rect 36 -29 424 -17
+<< nsubdiff >>
+rect 36 833 424 845
+rect 36 799 60 833
+rect 400 799 424 833
+rect 36 787 424 799
+<< psubdiffcont >>
+rect 60 -17 400 17
+<< nsubdiffcont >>
+rect 60 799 400 833
+<< poly >>
+rect 215 384 245 590
+rect 197 368 263 384
+rect 197 334 213 368
+rect 247 334 263 368
+rect 197 318 263 334
+rect 119 288 341 318
+<< polycont >>
+rect 213 334 247 368
+<< locali >>
+rect 42 833 418 849
+rect 42 799 60 833
+rect 400 799 418 833
+rect 42 783 418 799
+rect 197 368 263 370
+rect 197 334 213 368
+rect 247 334 263 368
+rect 197 332 263 334
+rect 42 17 418 33
+rect 42 -17 60 17
+rect 400 -17 418 17
+rect 42 -33 418 -17
+<< viali >>
+rect 60 799 400 833
+rect 213 334 247 368
+rect 60 -17 400 17
+<< metal1 >>
+rect 0 833 460 864
+rect 0 799 60 833
+rect 400 799 460 833
+rect 0 768 460 799
+rect 148 640 220 652
+rect 257 650 291 768
+rect 148 588 158 640
+rect 210 588 220 640
+rect 148 576 220 588
+rect 144 506 412 518
+rect 144 454 156 506
+rect 208 454 348 506
+rect 400 454 412 506
+rect 144 442 412 454
+rect 200 368 260 384
+rect 200 334 213 368
+rect 247 334 260 368
+rect 200 320 260 334
+rect 144 266 220 278
+rect 144 214 156 266
+rect 208 214 220 266
+rect 144 202 220 214
+rect 336 266 412 278
+rect 336 214 348 266
+rect 400 214 412 266
+rect 336 202 412 214
+rect 63 48 109 120
+rect 255 48 301 120
+rect 0 17 460 48
+rect 0 -17 60 17
+rect 400 -17 460 17
+rect 0 -48 460 -17
+<< via1 >>
+rect 158 588 210 640
+rect 156 454 208 506
+rect 348 454 400 506
+rect 156 214 208 266
+rect 348 214 400 266
+<< metal2 >>
+rect 144 640 222 652
+rect 144 588 158 640
+rect 210 588 222 640
+rect 144 506 222 588
+rect 144 454 156 506
+rect 208 454 222 506
+rect 144 266 222 454
+rect 144 214 156 266
+rect 208 214 222 266
+rect 144 202 222 214
+rect 336 506 412 518
+rect 336 454 348 506
+rect 400 454 412 506
+rect 336 266 412 454
+rect 336 214 348 266
+rect 400 214 412 266
+rect 336 202 412 214
+use sky130_fd_pr__nfet_01v8_RPKUUV  xn
+timestamp 1791639075
+transform 1 0 230 0 1 186
+box -173 -139 173 139
+use sky130_fd_pr__pfet_01v8_YNU6YZ  xp
+timestamp 1791639075
+transform 1 0 230 0 1 620
+box -109 -104 109 104
+<< labels >>
+rlabel metal1 200 320 260 384 0 A
+port 1 nsew
+rlabel metal1 240 460 320 500 0 Y
+port 2 nsew
+rlabel metal1 10 780 70 852 0 VDD
+port 3 nsew
+rlabel metal1 10 -36 70 36 0 GND
+port 4 nsew
+<< properties >>
+string FIXED_BBOX 0 0 460 816
+<< end >>

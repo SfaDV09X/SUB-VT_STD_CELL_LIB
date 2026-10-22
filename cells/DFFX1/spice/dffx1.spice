@@ -1,0 +1,22 @@
+** sch_path: /foss/designs/dffx1.sch
+.subckt dffx1 VDD GND CLK D Q QB
+*.PININFO VDD:B GND:B CLK:I D:I Q:O QB:O
+XM1 D CLK net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM2 D CLKB net1 GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM3 CLKB CLK VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM4 CLKB CLK GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM14 Q CLKB net4 GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM13 Q CLK net4 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM7 net3 net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM8 net3 net1 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM17 net2 net3 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM6 net2 net3 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM9 QB net4 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM10 QB net4 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM11 Q QB VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM12 Q QB GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM5 net2 CLK net4 GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM18 net2 CLKB net4 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM15 net2 CLKB net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM16 net2 CLK net1 GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+.ends

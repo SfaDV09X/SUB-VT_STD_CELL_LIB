@@ -1,0 +1,10 @@
+** sch_path: /foss/designs/or2x1.sch
+.subckt or2x1 A B VDD GND Y
+*.PININFO A:I B:I VDD:B GND:B Y:O
+XM1 net1 A GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM3 net2 A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1
+XM5 Y net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM4 net1 B net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1
+XM2 net1 B GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM6 Y net1 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+.ends
