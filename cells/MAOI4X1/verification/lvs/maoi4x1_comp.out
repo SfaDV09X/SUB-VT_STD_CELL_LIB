@@ -1,0 +1,62 @@
+
+Circuit 1 cell sky130_fd_pr__nfet_01v8 and Circuit 2 cell sky130_fd_pr__nfet_01v8 are black boxes.
+Warning: Equate pins:  cell sky130_fd_pr__nfet_01v8 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell sky130_fd_pr__nfet_01v8 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: sky130_fd_pr__nfet_01v8         |Circuit 2: sky130_fd_pr__nfet_01v8         
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes sky130_fd_pr__nfet_01v8 and sky130_fd_pr__nfet_01v8 are equivalent.
+
+Circuit 1 cell sky130_fd_pr__pfet_01v8 and Circuit 2 cell sky130_fd_pr__pfet_01v8 are black boxes.
+Warning: Equate pins:  cell sky130_fd_pr__pfet_01v8 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell sky130_fd_pr__pfet_01v8 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: sky130_fd_pr__pfet_01v8         |Circuit 2: sky130_fd_pr__pfet_01v8         
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes sky130_fd_pr__pfet_01v8 and sky130_fd_pr__pfet_01v8 are equivalent.
+Flattening unmatched subcell sky130_fd_pr__nfet_01v8_6WXBLA in circuit maoi4x1 (0)(4 instances)
+Flattening unmatched subcell sky130_fd_pr__pfet_01v8_W5J8BK in circuit maoi4x1 (0)(4 instances)
+Flattening unmatched subcell sky130_fd_pr__pfet_01v8_YNU6YZ in circuit maoi4x1 (0)(2 instances)
+Flattening unmatched subcell sky130_fd_pr__nfet_01v8_RPKUUV in circuit maoi4x1 (0)(2 instances)
+
+Class maoi4x1 (0):  Merged 24 parallel devices.
+Subcircuit summary:
+Circuit 1: maoi4x1                         |Circuit 2: maoi4x1                         
+-------------------------------------------|-------------------------------------------
+sky130_fd_pr__nfet_01v8 (30->6)            |sky130_fd_pr__nfet_01v8 (6)                
+sky130_fd_pr__pfet_01v8 (6)                |sky130_fd_pr__pfet_01v8 (6)                
+Number of devices: 12                      |Number of devices: 12                      
+Number of nets: 12                         |Number of nets: 12                         
+---------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: maoi4x1                         |Circuit 2: maoi4x1                         
+-------------------------------------------|-------------------------------------------
+Y                                          |Y                                          
+GND                                        |GND                                        
+VDD                                        |VDD                                        
+D                                          |D                                          
+C                                          |C                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes maoi4x1 and maoi4x1 are equivalent.
+
+Final result: Circuits match uniquely.
+.

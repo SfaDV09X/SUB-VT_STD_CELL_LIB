@@ -1,0 +1,188 @@
+* NGSPICE file created from xnor2x1.ext - technology: sky130A
+
+.subckt xnor2x1 A B Y VDD GND
+X0 xn1/S3.t0 xpib/D xn1/D2.t1 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.1386 ps=1.17 w=0.84 l=0.15
+X1 xn1/a_255_n84.t0 xpib/D xn1/S5.t0 GND sky130_fd_pr__nfet_01v8 ad=0.2604 pd=2.3 as=0.1386 ps=1.17 w=0.84 l=0.15
+X2 xn1/S5.t1 xpib/D xn1/D4.t1 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.1386 ps=1.17 w=0.84 l=0.15
+X3 xn1/S1.t0 xpib/D xn1/D0.t0 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.2604 ps=2.3 w=0.84 l=0.15
+X4 xn1/D2.t0 xpib/D xn1/S1.t1 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.1386 ps=1.17 w=0.84 l=0.15
+X5 xn1/D4.t0 xpib/D xn1/S3.t1 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.1386 ps=1.17 w=0.84 l=0.15
+X6 xn2/S3.t0 A xn2/D2.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X7 xn2/a_255_n84.t0 A xn2/S5.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X8 xn2/S5.t1 A xn2/D4.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X9 xn2/S1.t0 A xn2/D0.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X10 xn2/D2.t0 A xn2/S1.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X11 xn2/D4.t0 A xn2/S3.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X12 xn3/S3.t0 xpia/D xn3/D2.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X13 xn3/a_255_n84.t0 xpia/D xn3/S5.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X14 xn3/S5.t1 xpia/D xn3/D4.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X15 xn3/S1.t0 xpia/D xn3/D0.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X16 xn3/D2.t0 xpia/D xn3/S1.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X17 xn3/D4.t0 xpia/D xn3/S3.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X18 xn4/S3.t0 B xn4/D2.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X19 xn4/a_255_n84.t0 B xn4/S5.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X20 xn4/S5.t1 B xn4/D4.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X21 xn4/S1.t0 B xn4/D0.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X22 xn4/D2.t0 B xn4/S1.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X23 xn4/D4.t0 B xn4/S3.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X24 xp5/S.t0 A xp5/D.t0 VDD sky130_fd_pr__pfet_01v8 ad=0.2436 pd=2.26 as=0.2436 ps=2.26 w=0.84 l=0.15
+X25 xp6/S.t0 B xp6/D.t0 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X26 xp7/S.t0 xpib/D xp7/D.t0 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X27 xp8/S.t0 xpia/D xp8/D.t0 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X28 xpia/S.t0 A xpia/D.t0 VDD sky130_fd_pr__pfet_01v8 ad=0.1218 pd=1.42 as=0.1218 ps=1.42 w=0.42 l=0.15
+X29 xpib/S.t0 B xpib/D.t0 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.42 l=0.15
+X30 xnia/D2.t0 A xnia/S1.t0 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.1386 ps=1.17 w=0.84 l=0.15
+X31 xnia/S1.t1 A xnia/D0.t0 GND sky130_fd_pr__nfet_01v8 ad=0.1386 pd=1.17 as=0.2604 ps=2.3 w=0.84 l=0.15
+X32 xnia/S2.t0 A xnia/D2.t1 GND sky130_fd_pr__nfet_01v8 ad=0.2604 pd=2.3 as=0.1386 ps=1.17 w=0.84 l=0.15
+X33 xnib/D2.t0 B xnib/S1.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X34 xnib/S1.t1 B xnib/D0.t0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+X35 xnib/S2.t0 B xnib/D2.t1 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=0.84 l=0.15
+C0 A xpia/D 0.27101f
+C1 xpia/D B 0.01904f
+C2 A xpib/D 0.03256f
+C3 B xpib/D 0.28519f
+C4 A VDD 0.62865f
+C5 xp8/S Y 0.97314f
+C6 VDD B 0.58699f
+C7 xpia/D xp8/S 0.2251f
+C8 xp8/S xpib/D 1.22587f
+C9 A B 0
+C10 xp8/S VDD 1.23011f
+C11 xpia/D Y 0.22304f
+C12 A xp8/S 0.05911f
+C13 xpib/D Y 0.23067f
+C14 xp8/S B 0.02371f
+C15 VDD Y 1.12992f
+C16 xpia/D xpib/D 0.0172f
+C17 xpia/D VDD 0.62822f
+C18 A Y 0.30804f
+C19 VDD xpib/D 0.65771f
+C20 B Y 0.34124f
+R0 GND xn1/S5.t0 23.5719
+R1 GND xn1/S5.t1 23.5719
+R2 GND xn1/S3.t1 23.5719
+R3 GND xn1/S3.t0 23.5719
+R4 GND xn1/S1.t1 23.5719
+R5 GND xn1/S1.t0 23.5719
+R6 Y xn2/S5.t0 23.5719
+R7 Y xn2/S5.t1 23.5719
+R8 Y xn2/S3.t1 23.5719
+R9 Y xn2/S3.t0 23.5719
+R10 Y xn2/S1.t1 23.5719
+R11 Y xn2/S1.t0 23.5719
+R12 GND xn3/S5.t0 23.5719
+R13 GND xn3/S5.t1 23.5719
+R14 GND xn3/S3.t1 23.5719
+R15 GND xn3/S3.t0 23.5719
+R16 GND xn3/S1.t1 23.5719
+R17 GND xn3/S1.t0 23.5719
+R18 Y xn4/S5.t0 23.5719
+R19 Y xn4/S5.t1 23.5719
+R20 Y xn4/S3.t1 23.5719
+R21 Y xn4/S3.t0 23.5719
+R22 Y xn4/S1.t1 23.5719
+R23 Y xn4/S1.t0 23.5719
+R24 VDD xp5/S.t0 34.0065
+R25 xp8/S xp5/D.t0 34.0065
+R26 Y xp6/S.t0 34.0065
+R27 xp8/S xp6/D.t0 34.0065
+R28 xp8/S xp7/S.t0 34.0065
+R29 VDD xp7/D.t0 34.0065
+R30 xp8/S xp8/S.t0 34.0065
+R31 Y xp8/D.t0 34.0065
+R32 VDD xpia/S.t0 68.0124
+R33 xpia/D xpia/D.t0 68.0124
+R34 VDD xpib/S.t0 68.0124
+R35 xpib/D xpib/D.t0 68.0124
+R36 xpia/D xnia/S2.t0 23.5719
+R37 GND xnia/D2.t1 23.5719
+R38 GND xnia/D2.t0 23.5719
+R39 xpia/D xnia/S1.t0 23.5719
+R40 xpia/D xnia/S1.t1 23.5719
+R41 GND xnia/D0.t0 23.5719
+R42 xpib/D xnib/S2.t0 23.5719
+R43 GND xnib/D2.t1 23.5719
+R44 GND xnib/D2.t0 23.5719
+R45 xpib/D xnib/S1.t0 23.5719
+R46 xpib/D xnib/S1.t1 23.5719
+R47 GND xnib/D0.t0 23.5719
+C21 xnib/D0.t0 GND 0.0163f ; **FLOATING
+C22 xnib/S1.t0 GND 0.03173f ; **FLOATING
+C23 xnib/S1.t1 GND 0.03173f ; **FLOATING
+C24 xnib/D2.t1 GND 0.03173f ; **FLOATING
+C25 xnib/D2.t0 GND 0.03173f ; **FLOATING
+C26 xnib/S2.t0 GND 0.0163f ; **FLOATING
+C27 xpia/D GND 1.60417f
+C28 xnia/D0.t0 GND 0.0163f ; **FLOATING
+C29 xnia/S1.t0 GND 0.03173f ; **FLOATING
+C30 xnia/S1.t1 GND 0.03173f ; **FLOATING
+C31 xnia/D2.t1 GND 0.03173f ; **FLOATING
+C32 xnia/D2.t0 GND 0.03173f ; **FLOATING
+C33 xnia/S2.t0 GND 0.0163f ; **FLOATING
+C34 xpib/D.t0 GND 0.00883f ; **FLOATING
+C35 xpib/S.t0 GND 0.00883f ; **FLOATING
+C36 xpia/D.t0 GND 0.00883f ; **FLOATING
+C37 xpia/S.t0 GND 0.00883f ; **FLOATING
+C38 xp8/D.t0 GND 0.01719f ; **FLOATING
+C39 xp8/S.t0 GND 0.01719f ; **FLOATING
+C40 xp8/S GND 1.02175f
+C41 VDD GND 12.28216f
+C42 xp7/D.t0 GND 0.01719f ; **FLOATING
+C43 xp7/S.t0 GND 0.01719f ; **FLOATING
+C44 xp6/D.t0 GND 0.01719f ; **FLOATING
+C45 xp6/S.t0 GND 0.01719f ; **FLOATING
+C46 xp5/D.t0 GND 0.01719f ; **FLOATING
+C47 xp5/S.t0 GND 0.01719f ; **FLOATING
+C48 B GND 2.25986f
+C49 xn4/a_255_n84.t0 GND 0.14192f ; **FLOATING
+C50 xn4/D0.t0 GND 0.0163f ; **FLOATING
+C51 xn4/S1.t1 GND 0.03173f ; **FLOATING
+C52 xn4/S1.t0 GND 0.03173f ; **FLOATING
+C53 xn4/D2.t1 GND 0.03173f ; **FLOATING
+C54 xn4/D2.t0 GND 0.03173f ; **FLOATING
+C55 xn4/S3.t1 GND 0.03173f ; **FLOATING
+C56 xn4/S3.t0 GND 0.03173f ; **FLOATING
+C57 xn4/D4.t1 GND 0.03173f ; **FLOATING
+C58 xn4/D4.t0 GND 0.03173f ; **FLOATING
+C59 xn4/S5.t0 GND 0.03173f ; **FLOATING
+C60 xn4/S5.t1 GND 0.03173f ; **FLOATING
+C61 xn3/a_255_n84.t0 GND 0.14192f ; **FLOATING
+C62 xn3/D0.t0 GND 0.0163f ; **FLOATING
+C63 xn3/S1.t1 GND 0.03173f ; **FLOATING
+C64 xn3/S1.t0 GND 0.03173f ; **FLOATING
+C65 xn3/D2.t1 GND 0.03173f ; **FLOATING
+C66 xn3/D2.t0 GND 0.03173f ; **FLOATING
+C67 xn3/S3.t1 GND 0.03173f ; **FLOATING
+C68 xn3/S3.t0 GND 0.03173f ; **FLOATING
+C69 xn3/D4.t1 GND 0.03173f ; **FLOATING
+C70 xn3/D4.t0 GND 0.03173f ; **FLOATING
+C71 xn3/S5.t0 GND 0.03173f ; **FLOATING
+C72 xn3/S5.t1 GND 0.03173f ; **FLOATING
+C73 Y GND 5.40457f
+C74 A GND 2.26739f
+C75 xn2/a_255_n84.t0 GND 0.14192f ; **FLOATING
+C76 xn2/D0.t0 GND 0.0163f ; **FLOATING
+C77 xn2/S1.t1 GND 0.03173f ; **FLOATING
+C78 xn2/S1.t0 GND 0.03173f ; **FLOATING
+C79 xn2/D2.t1 GND 0.03173f ; **FLOATING
+C80 xn2/D2.t0 GND 0.03173f ; **FLOATING
+C81 xn2/S3.t1 GND 0.03173f ; **FLOATING
+C82 xn2/S3.t0 GND 0.03173f ; **FLOATING
+C83 xn2/D4.t1 GND 0.03173f ; **FLOATING
+C84 xn2/D4.t0 GND 0.03173f ; **FLOATING
+C85 xn2/S5.t0 GND 0.03173f ; **FLOATING
+C86 xn2/S5.t1 GND 0.03173f ; **FLOATING
+C87 xpib/D GND 4.12693f
+C88 xn1/a_255_n84.t0 GND 0.14192f ; **FLOATING
+C89 xn1/D0.t0 GND 0.0163f ; **FLOATING
+C90 xn1/S1.t1 GND 0.03173f ; **FLOATING
+C91 xn1/S1.t0 GND 0.03173f ; **FLOATING
+C92 xn1/D2.t1 GND 0.03173f ; **FLOATING
+C93 xn1/D2.t0 GND 0.03173f ; **FLOATING
+C94 xn1/S3.t1 GND 0.03173f ; **FLOATING
+C95 xn1/S3.t0 GND 0.03173f ; **FLOATING
+C96 xn1/D4.t1 GND 0.03173f ; **FLOATING
+C97 xn1/D4.t0 GND 0.03173f ; **FLOATING
+C98 xn1/S5.t0 GND 0.03173f ; **FLOATING
+C99 xn1/S5.t1 GND 0.03173f ; **FLOATING
+.ends

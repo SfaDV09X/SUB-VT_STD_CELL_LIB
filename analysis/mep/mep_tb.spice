@@ -1,0 +1,63 @@
+** sch_path: /foss/designs/SUB-VT_STD_CELL_LIB/cells/mep_tb.sch
+**.subckt mep_tb Y Z
+*.opin Y
+*.opin Z
+V2 A 0 PULSE(0 0.4 0 0.1p 0.1p 500n 1u)
+V1 VDD 0 0.4
+XM1 Y A 0 0 sky130_fd_pr__nfet_01v8 L=0.15 W=3.36 nf=4 ad=0.4872 as=0.7308 pd=4.52 ps=6.78 nrd=0.0863095238095238
++ nrs=0.0863095238095238 sa=0 sb=0 sd=0 mult=1
+XM2 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1 ad=0.1218 as=0.1218 pd=1.42 ps=1.42 nrd=0.69047619047619
++ nrs=0.69047619047619 sa=0 sb=0 sd=0 mult=1
+XM3 Z Y 0 0 sky130_fd_pr__nfet_01v8 L=0.15 W=3.36 nf=4 ad=0.4872 as=0.7308 pd=4.52 ps=6.78 nrd=0.0863095238095238
++ nrs=0.0863095238095238 sa=0 sb=0 sd=0 mult=1
+XM4 Z Y VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1 ad=0.1218 as=0.1218 pd=1.42 ps=1.42 nrd=0.69047619047619
++ nrs=0.69047619047619 sa=0 sb=0 sd=0 mult=1
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /foss/pdks/sky130A/libs.tech/combined/sky130.lib.spice tt
+
+
+
+.option savecurrents
+.control
+save all
+
+dc V2 0 0.4 0.0005
+
+let Vdiff = v(Y) - v(A)
+let Vderiv = deriv(v(Y))
+
+meas dc Vth find v(A) when Vdiff=0 cross=1
+meas dc Vil find v(A) when Vderiv=-1 cross=1
+meas dc Vih find v(A) when Vderiv=-1 cross=2
+meas dc Vol find v(Y) when v(A)=Vih
+meas dc Voh find v(Y) when v(A)=Vil
+
+let NMh = Voh - Vih
+let NMl = Vil - Vol
+
+echo ========== INV1X1 DC ==========
+print Vth
+print NMh
+print NMl
+
+plot v(Y) v(A)
+
+tran 50p 1u
+
+meas tran Trise TRIG v(Y) VAL=0.04 RISE=1 TARG v(Y) VAL=0.36 RISE=1
+meas tran Tfall TRIG v(Y) VAL=0.36 FALL=1 TARG v(Y) VAL=0.04 FALL=1
+
+echo ========== INV1X1 TRAN ==========
+print Trise
+print Tfall
+
+plot v(Y) v(A)
+
+.endc
+
+
+**** end user architecture code
+**.ends
+.end

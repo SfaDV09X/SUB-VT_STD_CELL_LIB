@@ -1,0 +1,14 @@
+** sch_path: /foss/designs/dlx1.sch
+.subckt dlx1 D VDD GND CLK QB Q
+*.PININFO D:I VDD:B GND:B CLK:I QB:O Q:O
+XM1 D CLKB net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM2 D CLK net1 GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM3 CLKB CLK VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM4 CLKB CLK GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM9 QB net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM8 QB net1 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM5 Q QB VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM6 Q QB GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM7 net1 CLK Q VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM10 net1 CLKB Q GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+.ends

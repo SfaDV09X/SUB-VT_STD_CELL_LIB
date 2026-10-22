@@ -1,0 +1,245 @@
+library (subvt_sky130_tt_0p40v_27c_dffx1) {
+  delay_model : table_lookup;
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1uA";
+  pulling_resistance_unit : "1kohm";
+  leakage_power_unit : "1nW";
+  capacitive_load_unit (1, pf);
+  nom_process : 1;
+  nom_temperature : 27;
+  nom_voltage : 0.4;
+  input_threshold_pct_rise : 50;
+  input_threshold_pct_fall : 50;
+  output_threshold_pct_rise : 50;
+  output_threshold_pct_fall : 50;
+  slew_lower_threshold_pct_rise : 30;
+  slew_upper_threshold_pct_rise : 70;
+  slew_lower_threshold_pct_fall : 30;
+  slew_upper_threshold_pct_fall : 70;
+  slew_derate_from_library : 1.0;
+  lu_table_template (delay_template_3x3) {
+    variable_1 : total_output_net_capacitance;
+    variable_2 : input_net_transition;
+    index_1 ( \
+      "1000.000000, 1001.000000, 1002.000000" \
+    );
+    index_2 ( \
+      "1000.000000, 1001.000000, 1002.000000" \
+    );
+  }
+  lu_table_template (constraint_template_3x3) {
+    variable_1 : constrained_pin_transition;
+    variable_2 : related_pin_transition;
+    index_1 ( \
+      "1000.000000, 1001.000000, 1002.000000" \
+    );
+    index_2 ( \
+      "1000.000000, 1001.000000, 1002.000000" \
+    );
+  }
+  cell (dffx1) {
+    area : 91.9632;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : VDD;
+    }
+    pg_pin (GND) {
+      pg_type : primary_ground;
+      voltage_name : GND;
+    }
+    ff (IQ, IQN) {
+      clocked_on : "CLK";
+      next_state : "D";
+    }
+    pin (CLK) {
+      direction : input;
+      clock : true;
+      capacitance : 0.006609;
+    }
+    pin (D) {
+      direction : input;
+      capacitance : 0.001757;
+      timing () {
+        related_pin : "CLK";
+        timing_type : setup_rising;
+        rise_constraint (constraint_template_3x3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "933.500167, 1108.283177, 1501.544949", \
+            "1151.978929, 1326.761939, 1720.023712", \
+            "1632.632207, 1807.415216, 2156.981236" \
+          );
+        }
+        fall_constraint (constraint_template_3x3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "1851.110969, 1588.936454, 1151.978929", \
+            "2069.589731, 1807.415216, 1370.457692", \
+            "2550.243009, 2288.068494, 1851.110969" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "CLK";
+        timing_type : hold_rising;
+        rise_constraint (constraint_template_3x3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "-190.672374, -190.672374, -71.502140", \
+            "-349.566020, -270.119197, -150.948963", \
+            "-707.076722, -627.629899, -389.289431" \
+          );
+        }
+        fall_constraint (constraint_template_3x3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "365.455384, 484.625618, 603.795853", \
+            "524.349030, 603.795853, 564.072441", \
+            "961.306555, 1001.029966, 643.519264" \
+          );
+        }
+      }
+    }
+    pin (Q) {
+      direction : output;
+      function : "IQ";
+      timing () {
+        related_pin : "CLK";
+        timing_type : rising_edge;
+        cell_rise (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "3370.114973, 3635.479355, 4186.738833", \
+            "3802.516905, 4067.677322, 4617.074691", \
+            "4658.049197, 4918.840997, 5471.531970" \
+          );
+        }
+        rise_transition (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "296.246142, 295.264848, 295.287063", \
+            "398.842230, 391.950094, 395.165028", \
+            "598.543379, 597.876801, 592.949542" \
+          );
+        }
+        cell_fall (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "3119.995205, 3307.381761, 3768.036480", \
+            "3499.948954, 3696.838115, 4159.640501", \
+            "4242.953792, 4437.571124, 4899.893583" \
+          );
+        }
+        fall_transition (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "387.029550, 380.943893, 378.451432", \
+            "539.964281, 536.973528, 536.187031", \
+            "854.175729, 856.343336, 853.763472" \
+          );
+        }
+      }
+    }
+    pin (QB) {
+      direction : output;
+      function : "IQN";
+      timing () {
+        related_pin : "CLK";
+        timing_type : rising_edge;
+        cell_rise (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "2195.740329, 2394.831875, 2862.353936", \
+            "2342.268924, 2536.138494, 3002.689501", \
+            "2584.142736, 2778.638691, 3243.619659" \
+          );
+        }
+        rise_transition (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "447.953061, 435.800351, 433.351340", \
+            "506.767889, 508.597107, 503.979394", \
+            "644.185579, 639.651383, 638.596297" \
+          );
+        }
+        cell_fall (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "2579.943403, 2842.326280, 3397.139666", \
+            "2750.671776, 3015.410873, 3566.451445", \
+            "3084.800241, 3345.513934, 3900.254579" \
+          );
+        }
+        fall_transition (delay_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "515.306569, 511.946683, 514.710800", \
+            "667.770150, 665.758824, 668.264162", \
+            "980.291426, 980.866038, 979.021905" \
+          );
+        }
+      }
+    }
+  }
+}

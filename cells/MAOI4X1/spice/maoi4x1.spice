@@ -1,0 +1,16 @@
+** sch_path: /foss/designs/maoi4x1.sch
+.subckt maoi4x1 A VDD GND B Y D C
+*.PININFO A:I VDD:B GND:B B:I Y:O D:I C:I
+XM9 Anot A GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM2 Y Anot net1 GND sky130_fd_pr__nfet_01v8 L=0.15 W=5.04 nf=6
+XM5 net3 Anot VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1
+XM10 Anot A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM7 net3 Bnot VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1
+XM8 Y D net3 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1
+XM6 Y C net3 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1
+XM4 Y C net2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=5.04 nf=6
+XM3 net2 D GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5.04 nf=6
+XM1 net1 Bnot GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5.04 nf=6
+XM11 Bnot B GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2.52 nf=3
+XM12 Bnot B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+.ends

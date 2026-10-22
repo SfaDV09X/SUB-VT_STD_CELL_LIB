@@ -1,0 +1,82 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1791817985
+<< nmos >>
+rect -111 -84 -81 84
+rect -15 -84 15 84
+rect 81 -84 111 84
+<< ndiff >>
+rect -173 72 -111 84
+rect -173 -72 -161 72
+rect -127 -72 -111 72
+rect -173 -84 -111 -72
+rect -81 72 -15 84
+rect -81 -72 -65 72
+rect -31 -72 -15 72
+rect -81 -84 -15 -72
+rect 15 72 81 84
+rect 15 -72 31 72
+rect 65 -72 81 72
+rect 15 -84 81 -72
+rect 111 72 173 84
+rect 111 -72 127 72
+rect 161 -72 173 72
+rect 111 -84 173 -72
+<< ndiffc >>
+rect -161 -72 -127 72
+rect -65 -72 -31 72
+rect 31 -72 65 72
+rect 127 -72 161 72
+<< poly >>
+rect -111 84 -81 110
+rect -15 84 15 139
+rect 81 84 111 110
+rect -111 -139 -81 -84
+rect -15 -110 15 -84
+rect 81 -139 111 -84
+<< locali >>
+rect -161 72 -127 88
+rect -161 -88 -127 -72
+rect -65 72 -31 88
+rect -65 -88 -31 -72
+rect 31 72 65 88
+rect 31 -88 65 -72
+rect 127 72 161 88
+rect 127 -88 161 -72
+<< viali >>
+rect -161 -72 -127 72
+rect -65 -72 -31 72
+rect 31 -72 65 72
+rect 127 -72 161 72
+<< metal1 >>
+rect -167 72 -121 84
+rect -167 -72 -161 72
+rect -127 -72 -121 72
+rect -167 -84 -121 -72
+rect -71 72 -25 84
+rect -71 -72 -65 72
+rect -31 -72 -25 72
+rect -71 -84 -25 -72
+rect 25 72 71 84
+rect 25 -72 31 72
+rect 65 -72 71 72
+rect 25 -84 71 -72
+rect 121 72 167 84
+rect 121 -72 127 72
+rect 161 -72 167 72
+rect 121 -84 167 -72
+<< labels >>
+rlabel ndiffc -144 0 -144 0 0 D0
+port 1 nsew
+rlabel ndiffc -48 0 -48 0 0 S1
+port 2 nsew
+rlabel ndiffc 48 0 48 0 0 D2
+port 3 nsew
+rlabel ndiffc 144 0 144 0 0 S2
+port 4 nsew
+<< properties >>
+string gencell sky130_fd_pr__nfet_01v8
+string library sky130
+string parameters w 0.84 l 0.15 m 1 nf 3 diffcov 100 polycov 100 guard 0 glc 1 grc 1 gtc 1 gbc 1 tbcov 100 rlcov 100 topc 0 botc 0 poverlap 0 doverlap 1 lmin 0.15 wmin 0.42 class mosfet compatible {sky130_fd_pr__nfet_01v8 sky130_fd_pr__nfet_01v8_lvt  sky130_fd_bs_flash__special_sonosfet_star  sky130_fd_pr__nfet_g5v0d10v5 sky130_fd_pr__nfet_05v0_nvt  sky130_fd_pr__nfet_03v3_nvt} full_metal 1 conn_gates 0 viasrc 100 viadrn 100 viagate 100 viagb 0 viagr 0 viagl 0 viagt 0 doports 1
+<< end >>

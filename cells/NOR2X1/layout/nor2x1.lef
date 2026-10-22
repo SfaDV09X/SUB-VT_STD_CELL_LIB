@@ -1,0 +1,99 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO nor2x1
+  CLASS BLOCK ;
+  FOREIGN nor2x1 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 4.600 BY 4.080 ;
+  PIN B
+    ANTENNAGATEAREA 0.504000 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.985 1.660 1.315 1.850 ;
+      LAYER met1 ;
+        RECT 1.000 1.600 1.300 1.920 ;
+    END
+  END B
+  PIN A
+    ANTENNAGATEAREA 0.504000 ;
+    PORT
+      LAYER li1 ;
+        RECT 3.285 1.660 3.615 1.850 ;
+      LAYER met1 ;
+        RECT 3.300 1.600 3.600 1.920 ;
+    END
+  END A
+  PIN Y
+    ANTENNADIFFAREA 1.318800 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.845 2.660 1.015 3.540 ;
+        RECT 0.825 0.490 0.995 1.370 ;
+        RECT 1.785 0.490 1.955 1.370 ;
+        RECT 3.125 0.490 3.295 1.370 ;
+        RECT 4.085 0.490 4.255 1.370 ;
+      LAYER met1 ;
+        RECT 0.815 2.520 1.045 3.520 ;
+        RECT 0.720 2.140 4.360 2.520 ;
+        RECT 0.720 1.010 1.100 1.390 ;
+        RECT 1.680 1.010 2.060 1.390 ;
+        RECT 3.020 1.010 3.400 1.390 ;
+        RECT 3.980 1.010 4.360 1.390 ;
+        RECT 0.795 0.510 1.025 1.010 ;
+        RECT 1.755 0.510 1.985 1.010 ;
+        RECT 3.095 0.510 3.325 1.010 ;
+        RECT 4.055 0.510 4.285 1.010 ;
+      LAYER met2 ;
+        RECT 0.720 1.010 1.100 2.520 ;
+        RECT 1.680 1.010 2.060 2.520 ;
+        RECT 3.020 1.010 3.400 2.520 ;
+        RECT 3.980 1.010 4.360 2.520 ;
+    END
+  END Y
+  PIN VDD
+    ANTENNADIFFAREA 1.473200 ;
+    PORT
+      LAYER nwell ;
+        RECT -0.230 1.870 4.830 4.410 ;
+      LAYER li1 ;
+        RECT 0.210 3.915 4.390 4.245 ;
+        RECT 3.585 2.660 3.755 3.540 ;
+      LAYER met1 ;
+        RECT 0.000 3.840 4.600 4.320 ;
+        RECT 3.585 3.520 3.755 3.840 ;
+        RECT 3.555 2.680 3.785 3.520 ;
+    END
+  END VDD
+  PIN GND
+    ANTENNADIFFAREA 2.304800 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.345 0.490 0.515 1.370 ;
+        RECT 1.305 0.490 1.475 1.370 ;
+        RECT 2.645 0.490 2.815 1.370 ;
+        RECT 3.605 0.490 3.775 1.370 ;
+        RECT 0.210 -0.165 4.390 0.165 ;
+      LAYER met1 ;
+        RECT 0.315 0.240 0.545 1.350 ;
+        RECT 1.275 0.240 1.505 1.350 ;
+        RECT 2.615 0.240 2.845 1.350 ;
+        RECT 3.575 0.240 3.805 1.350 ;
+        RECT 0.000 -0.240 4.600 0.240 ;
+    END
+  END GND
+  OBS
+      LAYER li1 ;
+        RECT 1.285 2.660 1.455 3.540 ;
+        RECT 3.145 2.660 3.315 3.540 ;
+      LAYER met1 ;
+        RECT 1.255 3.200 1.485 3.520 ;
+        RECT 3.115 3.200 3.345 3.520 ;
+        RECT 1.255 3.000 3.345 3.200 ;
+        RECT 1.255 2.680 1.485 3.000 ;
+        RECT 3.115 2.680 3.345 3.000 ;
+  END
+END nor2x1
+END LIBRARY
+
