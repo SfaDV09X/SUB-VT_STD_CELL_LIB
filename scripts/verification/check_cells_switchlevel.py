@@ -16,7 +16,7 @@ for m in re.finditer(r'cell\s*\(\s*(\w+)\s*\)\s*\{', txt):
         depth += (txt[i] == '{') - (txt[i] == '}'); i += 1
     body = txt[m.end():i-1]
     if re.search(r'\b(latch|ff)\s*\(', body):
-        continue                                  # sequential: not checked here
+        continue
     ins  = re.findall(r'pin\s*\(\s*(\w+)\s*\)\s*\{\s*direction : input', body)
     out  = re.search(r'pin\s*\(\s*(\w+)\s*\)\s*\{\s*direction : output;\s*function : "([^"]+)"', body)
     funcs[name] = (ins, out.group(1), out.group(2).replace('!', '~').replace('+', '|'))
@@ -34,8 +34,8 @@ def parse(path):
 
 bad = 0
 for name, (ins, outp, expr) in sorted(funcs.items()):
-    f = os.path.join(sdir, name, name + '.spice')          # <dir>/<cell>/<cell>.spice (repo layout)
-    f = f if os.path.exists(f) else os.path.join(sdir, name.upper(), 'spice', name + '.spice')   # repo layout: cells/<CELL>/spice/<cell>.spice
+    f = os.path.join(sdir, name, name + '.spice')
+    f = f if os.path.exists(f) else os.path.join(sdir, name.upper(), 'spice', name + '.spice')
     f = f if os.path.exists(f) else os.path.join(sdir, name + '.spice')
     ports, fets = parse(f)
     assert set(ins) <= set(ports) and outp in ports, (name, ports)
@@ -43,13 +43,12 @@ for name, (ins, outp, expr) in sorted(funcs.items()):
     ok = True
     for vec in itertools.product([0, 1], repeat=len(ins)):
         env = dict(zip(ins, vec))
-        val = {n: None for n in internal}       # None = unknown/undriven
-        for _ in range(20):                      # settle through internal inverters
+        val = {n: None for n in internal}
+        for _ in range(20):
             def lvl(n):
                 if n == 'VDD': return 1
                 if n == 'GND': return 0
                 return env[n] if n in env else val[n]
-            # conducting edges
             edges = []
             for k, d, g, s in fets:
                 gv = lvl(g)
@@ -69,7 +68,7 @@ for name, (ins, outp, expr) in sorted(funcs.items()):
                 if n in up and n in dn: new[n] = 'X'
                 elif n in up: new[n] = 1
                 elif n in dn: new[n] = 0
-                else: new[n] = val[n]            # floating: keep (flagged below if it is the output)
+                else: new[n] = val[n]
             if new == val: break
             val = new
         got = val[outp]

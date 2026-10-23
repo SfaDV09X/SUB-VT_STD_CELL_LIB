@@ -46,7 +46,7 @@ for _ in range(200):
     s = s_new
 loads = cin * np.array([0.5, 1, 2, 4, 8]); slews = s * np.array([0.25, 0.5, 1, 2, 4])
 pt = [[loads[-1], slews[-1]]]
-window = slews[-1] / 0.4 + max(f(pt)[0] for f in delay) + max(f(pt)[0] for f in trans)   # ns
+window = slews[-1] / 0.4 + max(f(pt)[0] for f in delay) + max(f(pt)[0] for f in trans)
 need = 3 * window * 1e-9 / 1e5
 e = 10 ** math.floor(math.log10(need))
 step = next(m * e for m in (1, 2, 5, 10) if m * e >= need)

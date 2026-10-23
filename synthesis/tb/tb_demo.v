@@ -28,7 +28,6 @@ module tb_demo;
     localparam N = (1 << 17) + 4000;
 
     initial begin
-        // 3 cycles of reset with defined data
         repeat (3) @(negedge clk);
         rst = 0;
         for (i = 0; i < N; i = i + 1) begin
@@ -43,7 +42,6 @@ module tb_demo;
         $finish;
     end
 
-    // compare every cycle once registers are settled (after the 3-cycle reset)
     always @(posedge clk) if ($time > 400) begin
         #40;
         checks = checks + 1;
