@@ -1,4 +1,3 @@
-# extract
 set subvt_root /foss/designs/SUB-VT_STD_CELL_LIB
 set cellu [string toupper $cell]
 cd $subvt_root/cells/$cellu/layout

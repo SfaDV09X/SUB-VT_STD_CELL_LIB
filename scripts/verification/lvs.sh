@@ -1,7 +1,4 @@
 #!/bin/bash
-# Netgen LVS of one cell: extracted layout netlist vs schematic netlist.
-# usage: scripts/verification/lvs.sh <cell>      (lowercase, e.g. inv1x1)
-# Run scripts/verification/lvs.tcl in Magic first (writes cells/<CELL>/verification/lvs/<cell>_layout.spice).
 cell=${1:?usage: lvs.sh <cell>}
 ROOT=${ROOT:-/foss/designs/SUB-VT_STD_CELL_LIB}
 CELLDIR=$ROOT/cells/${cell^^}

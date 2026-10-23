@@ -7,35 +7,33 @@
 (* keep_hierarchy *) module cov_xnor2x1 (input a, b,    output y); assign y = ~(a ^ b);                  endmodule
 (* keep_hierarchy *) module cov_aoi3x1  (input a, b, c, output y); assign y = ~((a & b) | c);            endmodule
 (* keep_hierarchy *) module cov_oai3x1  (input a, b, c, output y); assign y = ~((a | b) & c);            endmodule
-(* keep_hierarchy *) module cov_moai4x1 (input a, b, c, d, output y); assign y = (a & b) | (~c & ~d);     endmodule
+(* keep_hierarchy *) module cov_moai4x1 (input a, b, c, d, output y); assign y = (a & b) | (~c & ~d);    endmodule
 (* keep_hierarchy *) module cov_maoi4x1 (input a, b, c, d, output y); assign y = (a | b) & ~(c & d);     endmodule
 
 module demo (
     input        clk,
-    input        rst,        // synchronous reset (active high)
-    input        set,        // synchronous set   (active high, lower priority than rst)
-    input        ld,         // load enable of sr_q
-    input        en_l,       // latch enable (transparent while 1)
+    input        rst,
+    input        set,
+    input        ld,
+    input        en_l,
     input  [3:0] a, b, c, d,
     input        cin,
-    // directed-coverage cones (one library cell each)
-    output [3:0] a_n,        // INV1X1   ~a
-    output       y_nand,     // NAND2X1  ~(a0 & b0)
-    output       y_nor,      // NOR2X1   ~(a1 | b1)
-    output       y_and,      // AND2X1   a2 & b2
-    output       y_or,       // OR2X1    a3 | b3
-    output [3:0] x_ab,       // XOR2X1   a ^ b
-    output [3:0] xn_ab,      // XNOR2X1  ~(a ^ b)
-    output       y_aoi,      // AOI3X1   ~((c0 & d0) | cin)
-    output       y_oai,      // OAI3X1   ~((c1 | d1) & cin)
-    output       y_moai,     // MOAI4X1  (a0 & c2) | (~b2 & ~d2)
-    output       y_maoi,     // MAOI4X1  (a1 | c3) & ~(b3 & d3)
-    // freely mapped logic
-    output reg [4:0] sum_q,  // a + b + cin           (DFFX1)
-    output reg       eq_q,   // a == b                (DFFX1)
-    output reg       par_q,  // ^c                    (DFFX1)
-    output reg [3:0] sr_q,   // sync reset/set/load/toggle register  (DFFX1 + logic)
-    output reg [3:0] lat_q   // transparent latch     (DLX1)
+    output [3:0] a_n,
+    output       y_nand,
+    output       y_nor,
+    output       y_and,
+    output       y_or,
+    output [3:0] x_ab,
+    output [3:0] xn_ab,
+    output       y_aoi,
+    output       y_oai,
+    output       y_moai,
+    output       y_maoi,
+    output reg [4:0] sum_q,
+    output reg       eq_q,
+    output reg       par_q,
+    output reg [3:0] sr_q  
+    output reg [3:0] lat_q     
 );
     genvar i;
     generate for (i = 0; i < 4; i = i + 1) begin : g

@@ -7,7 +7,6 @@ import re, sys
 lib, out = sys.argv[1], sys.argv[2]
 txt = open(lib).read()
 
-# split into cell blocks by brace matching
 cells = {}
 for m in re.finditer(r'^\s*cell\s*\(\s*(\w+)\s*\)\s*\{', txt, re.M):
     i, depth = m.end(), 1

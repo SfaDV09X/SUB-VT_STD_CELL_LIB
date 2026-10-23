@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Verify the synthesized netlist: (1) cells vs transistor netlists, (2) formal equivalence, (3) simulation.
-# usage: scripts/synthesis/run_verify.sh [rtl.v] [top]   (run after run_synth.sh; same defaults)
-# env:   LIB=<liberty>  CELLS=<cells folder>  YOSYS  TB=<testbench>
 set -uo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 ROOT=$(cd "$HERE/../.." && pwd)

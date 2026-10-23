@@ -19,7 +19,7 @@ import numpy as np
 from concurrent.futures import ProcessPoolExecutor
 
 _trapz = getattr(np, 'trapezoid', None) or np.trapz
-A = None  # parsed args (set in main, inherited by workers via fork)
+A = None
 PUSHOUT = 1.10
 
 
@@ -102,11 +102,10 @@ def edge_meas(w, node, rising, t_ref, t0, t1):
     return t50 - t_ref, abs(t70 - t30)
 
 
-# ---------------------------------------------------------------- input capacitance
 def input_cap(pin):
     """Mean of rise/fall charge-integration capacitance (pF). Other input is held in the state where the pin is 'seen':
     D with the master/transparent phase open, CLK with D=0."""
-    V = A.vdd; ramp = 10.0                          # ns, 0-100% ramp
+    V = A.vdd; ramp = 10.0
     res = []
     for rising in (True, False):
         t0, T = 200.0, 600.0
@@ -143,27 +142,25 @@ quit
         subprocess.run([A.ngspice, "-b", base + ".sp"], capture_output=True, env=dict(os.environ, OMP_NUM_THREADS="1"))
         x = np.loadtxt(base + ".dat"); t = x[:, 0] * 1e9; i = x[:, 1]
         for e in (".sp", ".dat"): os.remove(base + e)
-        i0 = np.mean(i[(t > t0 - 80) & (t < t0 - 5)])                 # static current before the ramp (A, leakage)
-        i1 = np.mean(i[(t > t0 + ramp + 80) & (t < t0 + ramp + 150)])   # static current after the ramp
-        a, b = t0 - 5, t0 + ramp + 60                                    # integrate ramp + short settling
+        i0 = np.mean(i[(t > t0 - 80) & (t < t0 - 5)])
+        i1 = np.mean(i[(t > t0 + ramp + 80) & (t < t0 + ramp + 150)])
+        a, b = t0 - 5, t0 + ramp + 60
         q = _trapz(i[(t >= a) & (t <= b)] - np.interp(t[(t >= a) & (t <= b)], [a, b], [i0, i1]),
                          t[(t >= a) & (t <= b)]) * 1e-9
-        res.append(abs(q) / V * 1e12)                                     # pF
+        res.append(abs(q) / V * 1e12)
     return float(np.mean(res))
 
 
-# ---------------------------------------------------------------- stimuli
 def clk_to_q(args):
     """Edge-triggered / opening-edge delays. args=(sc, load, H). Returns dict[(out,'rise'|'fall')] = (delay, slew)."""
     sc, load, H = args
-    # CLK: pulses at H-2H, 3H-4H, 5H-6H ; D: 0, ->1 at 2.5H, ->0 at 4.5H
     clk = pwl(0, [(H, 1, sc), (2 * H, 0, sc), (3 * H, 1, sc), (4 * H, 0, sc), (5 * H, 1, sc), (6 * H, 0, sc)])
     d = pwl(0, [(2.5 * H, 1, sc), (4.5 * H, 0, sc)])
     w = simulate(clk, d, 7 * H, load, "cq_%g_%g" % (sc, load))
     r = {}
     for out, (r2, f3) in (("q", (True, False)), ("qb", (False, True))):
-        m1 = edge_meas(w, out, r2, 3 * H, 3 * H, 4 * H)           # edge 2: Q rises, QB falls
-        m2 = edge_meas(w, out, f3, 5 * H, 5 * H, 6 * H)           # edge 3: Q falls, QB rises
+        m1 = edge_meas(w, out, r2, 3 * H, 3 * H, 4 * H)
+        m2 = edge_meas(w, out, f3, 5 * H, 5 * H, 6 * H)
         if out == "q":
             r[("q", "rise")], r[("q", "fall")] = m1, m2
         else:
@@ -198,7 +195,7 @@ def setup_trial(sd, sc, rising_d, t_su, H):
         dly = None if meas is None else meas[0]
         ok = w["q"][-1] > 0.9 * A.vdd if new else w["q"][-1] < 0.1 * A.vdd
         return ok and dly is not None, dly
-    else:  # latch: transparent until CLK falls at tc
+    else:
         clk = pwl(0, [(H, 1, sc), (tc, 0, sc)])
         d = pwl(old, [(tc - t_su, new, sd)])
         end = 4.6 * H
@@ -241,7 +238,7 @@ def bisect(trial, lo, hi, d_nom, H, iters=9):
         if hi2 < 0.4 * H and passes(hi2): hi = hi2
         else: return None
     if passes(lo):
-        return lo                     # constraint is below the search window; clipped
+        return lo
     for _ in range(iters):
         mid = 0.5 * (lo + hi)
         if passes(mid): hi = mid
@@ -261,7 +258,6 @@ def constraint(args):
     return bisect(tr, -2 * d_ref, 3 * d_ref, dnom if A.kind == "dff" else None, H)
 
 
-# ---------------------------------------------------------------- liberty writer
 def tab(rows):
     return ", \\\n".join('            "%s"' % ", ".join("%.6f" % v for v in r) for r in rows)
 
@@ -285,13 +281,11 @@ def main():
     pool = ProcessPoolExecutor(A.jobs, mp_context=mp.get_context('fork'))
     log = lambda s: print(s, flush=True)
 
-    # 1) FO1 load from input caps
     cD, cC = pool.submit(input_cap, "D"), pool.submit(input_cap, "CLK")
     cD, cC = cD.result(), cC.result()
     C = 0.5 * (cD + cC)
     log("input caps: D=%.4f pF  CLK=%.4f pF  -> C_FO1 = %.4f pF" % (cD, cC, C))
 
-    # 2) s* fixed point (clock slew -> mean output transition at C_FO1)
     H = A.H
     s = 500.0
     for it in range(10):
@@ -304,7 +298,6 @@ def main():
     slews = s * np.array([0.5, 1, 2]); loads = C * np.array([0.5, 1, 2])
     log("grid: slews %s ns, loads %s pF" % (slews.round(1), loads.round(5)))
 
-    # 3) delay tables (clock slew x load)
     jobs = {(i, j): pool.submit(clk_to_q, (slews[i], loads[j], H)) for i in range(3) for j in range(3)}
     cq = {k: f.result() for k, f in jobs.items()}
     arcs = [("q", "rise"), ("q", "fall"), ("qb", "rise"), ("qb", "fall")]
@@ -320,7 +313,6 @@ def main():
         if any(x is None for r in dq.values() for x in r.values()): sys.exit("missing D->Q transition")
     log("delay tables done")
 
-    # 4) constraints (D slew x CLK slew), per D direction
     d_ref = cq[(1, 1)][("q", "rise")][0]
     cj = {}
     for kind in ("setup", "hold"):
@@ -333,13 +325,11 @@ def main():
                                                        [k for k, v in con.items() if v is None])
     log("constraints done")
 
-    # 5) write liberty
     m = re.search(r"SIZE\s+([\d.]+)\s+BY\s+([\d.]+)", open(A.lef).read())
     area = float(m.group(1)) * float(m.group(2))
     edge = "rising" if A.kind == "dff" else "falling"
     T = "delay_template_3x3"
     def delay_tbl(arc_get, which):
-        # rows: loads (index_1), cols: slews (index_2), as lctime writes them
         return [[arc_get(i, j)[which] for i in range(3)] for j in range(3)]
     def timing_block(related, out, ttype, srcs, sense=None):
         s_ = ""
