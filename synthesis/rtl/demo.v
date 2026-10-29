@@ -32,7 +32,7 @@ module demo (
     output reg [4:0] sum_q,
     output reg       eq_q,
     output reg       par_q,
-    output reg [3:0] sr_q  
+    output reg [3:0] sr_q,  
     output reg [3:0] lat_q     
 );
     genvar i;
