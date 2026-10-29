@@ -108,9 +108,9 @@ plot v(Y) v(A)
 .endc
 " }
 C {sky130_fd_pr/nfet_01v8.sym} 60 40 0 0 {name=M1
-W=3.36
+W=2.52
 L=0.15
-nf=4 
+nf=1 
 mult=1
 ad="expr('int((@nf + 1)/2) * @W / @nf * 0.29')"
 pd="expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')"
@@ -136,9 +136,9 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 300 40 0 0 {name=M3
-W=3.36
+W=2.52
 L=0.15
-nf=4 
+nf=1 
 mult=1
 ad="expr('int((@nf + 1)/2) * @W / @nf * 0.29')"
 pd="expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')"
