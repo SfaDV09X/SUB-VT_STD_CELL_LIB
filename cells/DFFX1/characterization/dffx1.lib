@@ -38,8 +38,57 @@ library (subvt_sky130_tt_0p40v_27c_dffx1) {
       "1000.000000, 1001.000000, 1002.000000" \
     );
   }
+  power_lut_template (energy_template_3x3) {
+    variable_1 : total_output_net_capacitance;
+    variable_2 : input_net_transition;
+    index_1 ( \
+      "1000.000000, 1001.000000, 1002.000000" \
+    );
+    index_2 ( \
+      "1000.000000, 1001.000000, 1002.000000" \
+    );
+  }
+  power_lut_template (energy_template_3) {
+    variable_1 : input_net_transition;
+    index_1 ( \
+      "1000.000000, 1001.000000, 1002.000000" \
+    );
+  }
   cell (dffx1) {
     area : 91.9632;
+    cell_leakage_power : 0.00546229;
+    leakage_power () {
+      when : "!CLK&!D&!Q";
+      value : 0.00458083;
+    }
+    leakage_power () {
+      when : "!CLK&!D&Q";
+      value : 0.00579527;
+    }
+    leakage_power () {
+      when : "!CLK&D&!Q";
+      value : 0.00530185;
+    }
+    leakage_power () {
+      when : "!CLK&D&Q";
+      value : 0.00408961;
+    }
+    leakage_power () {
+      when : "CLK&!D&!Q";
+      value : 0.00576033;
+    }
+    leakage_power () {
+      when : "CLK&!D&Q";
+      value : 0.00697684;
+    }
+    leakage_power () {
+      when : "CLK&D&!Q";
+      value : 0.00559611;
+    }
+    leakage_power () {
+      when : "CLK&D&Q";
+      value : 0.0055975;
+    }
     pg_pin (VDD) {
       pg_type : primary_power;
       voltage_name : VDD;
@@ -56,6 +105,24 @@ library (subvt_sky130_tt_0p40v_27c_dffx1) {
       direction : input;
       clock : true;
       capacitance : 0.006609;
+      internal_power () {
+        rise_power (energy_template_3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "-8.215942e-05, -8.686032e-05, -9.012131e-05" \
+          );
+        }
+        fall_power (energy_template_3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "1.165445e-03, 1.165552e-03, 1.159892e-03" \
+          );
+        }
+      }
     }
     pin (D) {
       direction : input;
@@ -120,6 +187,44 @@ library (subvt_sky130_tt_0p40v_27c_dffx1) {
           );
         }
       }
+      internal_power () {
+        when : "!CLK";
+        rise_power (energy_template_3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "3.817173e-04, 3.771960e-04, 3.702024e-04" \
+          );
+        }
+        fall_power (energy_template_3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "1.058743e-03, 1.055395e-03, 1.052996e-03" \
+          );
+        }
+      }
+      internal_power () {
+        when : "CLK";
+        rise_power (energy_template_3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "-1.410630e-05, -1.401331e-05, -1.385707e-05" \
+          );
+        }
+        fall_power (energy_template_3) {
+          index_1 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "1.422191e-05, 1.438034e-05, 1.456148e-05" \
+          );
+        }
+      }
     }
     pin (Q) {
       direction : output;
@@ -180,6 +285,35 @@ library (subvt_sky130_tt_0p40v_27c_dffx1) {
           );
         }
       }
+      internal_power () {
+        related_pin : "CLK";
+        rise_power (energy_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "1.302339e-03, 1.327571e-03, 1.354840e-03", \
+            "1.307316e-03, 1.331611e-03, 1.358718e-03", \
+            "1.314625e-03, 1.336897e-03, 1.363345e-03" \
+          );
+        }
+        fall_power (energy_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "9.316552e-04, 9.114066e-04, 8.931977e-04", \
+            "9.366313e-04, 9.163745e-04, 8.979525e-04", \
+            "9.422002e-04, 9.218690e-04, 9.030235e-04" \
+          );
+        }
+      }
     }
     pin (QB) {
       direction : output;
@@ -237,6 +371,35 @@ library (subvt_sky130_tt_0p40v_27c_dffx1) {
             "515.306569, 511.946683, 514.710800", \
             "667.770150, 665.758824, 668.264162", \
             "980.291426, 980.866038, 979.021905" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CLK";
+        rise_power (energy_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "3.538061e-06, 3.041383e-06, 2.271340e-06", \
+            "5.514458e-06, 4.545376e-06, 3.298639e-06", \
+            "7.233604e-06, 5.695744e-06, 4.021518e-06" \
+          );
+        }
+        fall_power (energy_template_3x3) {
+          index_1 ( \
+            "0.002091, 0.004183, 0.008366" \
+          );
+          index_2 ( \
+            "262.910162, 525.820325, 1051.640649" \
+          );
+          values ( \
+            "2.862337e-06, 2.887029e-06, 2.860526e-06", \
+            "4.700377e-06, 4.724626e-06, 4.703204e-06", \
+            "7.250385e-06, 7.286498e-06, 7.305042e-06" \
           );
         }
       }
