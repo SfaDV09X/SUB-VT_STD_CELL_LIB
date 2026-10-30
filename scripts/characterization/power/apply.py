@@ -7,6 +7,8 @@ from libtools import cell_blocks, cell_info, blocks, get_index, floats
 SCALE = 0.4
 SEQ = {"dffx1", "dlx1"}
 LIB = "subvt_sky130_tt_0p40v_27c.lib"
+NBASE = 18      # events 1..NBASE form the original stimulus program; later events are extensions
+W_DEQ = 0.5     # DFF CLK-fall pin energy = W_DEQ * mean(D==Q events) + (1 - W_DEQ) * mean(D!=Q events)
 
 
 def fmt_list(v, f):
@@ -110,25 +112,49 @@ def seq_tables(rows, cell, info, kind):
     idx = defaultdict(list)
     for r in R:
         key = (round(float(r["cq_pF"]), 9), round(float(r["cqb_pF"]), 9), int(r["jj"]))
-        idx[key].append(dict(sig=r["sig"], edge=r["edge"], c=int(r["c"]), qb=int(r["q_before"]), qa=int(r["q_after"]),
-                             E=float(r["Eint_fJ"])))
+        idx[key].append(dict(n=int(r["n"]), sig=r["sig"], edge=r["edge"], c=int(r["c"]), d=int(r["d"]),
+                             qb=int(r["q_before"]), qa=int(r["q_after"]), E=float(r["Eint_fJ"])))
     nj = len(slews)
 
-    def pick(cq, cqb, jj, **kw):
+    def match(x, k, w):
+        if k == "nosw":
+            return (x["qb"] == x["qa"]) == w
+        if k == "deq":
+            return (x["d"] == x["qb"]) == w
+        return x[k] == w
+
+    def pick(cq, cqb, jj, ext=False, allow_empty=False, **kw):
+        # ext=False: original program only (events 1..NBASE), so every table except the DFF CLK-fall pin energy
+        # is computed exactly as before; ext=True: events beyond NBASE only
         v = [x["E"] for x in idx.get((round(cq, 9), round(cqb, 9), jj), [])
-             if all((k != "nosw" and x[k] == w) or (k == "nosw" and (x["qb"] == x["qa"]) == w) for k, w in kw.items())]
-        if not v:
-            sys.exit("%s: no events for config cq=%g cqb=%g jj=%d %s" % (cell, cq, cqb, jj, kw))
+             if (x["n"] > NBASE) == ext and all(match(x, k, w) for k, w in kw.items())]
+        if not v and not allow_empty:
+            sys.exit("%s: no events for config cq=%g cqb=%g jj=%d ext=%s %s" % (cell, cq, cqb, jj, ext, kw))
         return v
 
     mean = lambda v: float(np.mean(v)) * 1e-3
     out = dict(slews=slews, loads=loads, pin={}, arc={}, stats=[])
     for key, kw in (("pin_clk", dict(sig="CLK", nosw=True)),):
         r = [pick(0, 0, j, edge="rise", **kw) for j in range(nj)]
-        f = [pick(0, 0, j, edge="fall", **kw) for j in range(nj)]
-        out["pin"][key] = ([mean(v) for v in r], [mean(v) for v in f])
+        f_eq = [pick(0, 0, j, edge="fall", deq=True, **kw) for j in range(nj)]
+        f_ne = [pick(0, 0, j, ext=True, allow_empty=True, edge="fall", deq=False, **kw) for j in range(nj)]
+        if kind == "dff":
+            if not all(f_ne):
+                sys.exit("%s: no CLK-fall events with D != Q in seq_power.csv: rerun  run_power.sh cell %s "
+                         "with the extended stimulus program" % (cell, cell))
+            f_mean = [W_DEQ * float(np.mean(a)) * 1e-3 + (1 - W_DEQ) * float(np.mean(b)) * 1e-3 for a, b in zip(f_eq, f_ne)]
+            f_all = [a + b for a, b in zip(f_eq, f_ne)]
+        else:
+            if any(pick(0, 0, j, allow_empty=True, edge="fall", deq=False, **kw) for j in range(nj)):
+                sys.exit("%s: CLK-fall events with D != Q found in a latch; the pin energy needs a state split" % cell)
+            f_mean = [mean(a) for a in f_eq]
+            f_all = f_eq
+        out["pin"][key] = ([mean(v) for v in r], f_mean)
         out["stats"].append(("CLK pin rise", [(min(v) * 1e-3, mean(v), max(v) * 1e-3) for v in r]))
-        out["stats"].append(("CLK pin fall", [(min(v) * 1e-3, mean(v), max(v) * 1e-3) for v in f]))
+        if kind == "dff":
+            out["stats"].append(("CLK fall, D=Q", [(min(v) * 1e-3, mean(v), max(v) * 1e-3) for v in f_eq]))
+            out["stats"].append(("CLK fall, D!=Q", [(min(v) * 1e-3, mean(v), max(v) * 1e-3) for v in f_ne]))
+        out["stats"].append(("CLK pin fall (table)", [(min(v) * 1e-3, m, max(v) * 1e-3) for v, m in zip(f_all, f_mean)]))
     for key, c in (("d_clk0", 0), ("d_clk1", 1)):
         if key == "d_clk1" and kind == "latch":
             continue
