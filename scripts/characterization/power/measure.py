@@ -248,7 +248,9 @@ def leak_jobs(lib_text, cells, repo):
 
 SEQ_PROG = {
     "dff": [("CLK", 1), ("CLK", 0), ("D", 1), ("CLK", 1), ("CLK", 0), ("CLK", 1), ("D", 0), ("D", 1), ("CLK", 0),
-            ("D", 0), ("D", 1), ("D", 0), ("CLK", 1), ("D", 1), ("D", 0), ("CLK", 0), ("D", 1), ("D", 0)],
+            ("D", 0), ("D", 1), ("D", 0), ("CLK", 1), ("D", 1), ("D", 0), ("CLK", 0), ("D", 1), ("D", 0),
+            # events 19-24: CLK falls with D != Q (D changed while CLK high). Used only for the CLK fall pin energy.
+            ("CLK", 1), ("D", 1), ("CLK", 0), ("CLK", 1), ("D", 0), ("CLK", 0)],
     "latch": [("CLK", 1), ("D", 1), ("CLK", 0), ("D", 0), ("CLK", 1), ("CLK", 0), ("D", 1), ("CLK", 1), ("D", 0),
               ("CLK", 0), ("D", 1), ("D", 0), ("D", 1), ("CLK", 1), ("CLK", 0), ("D", 0), ("D", 1), ("CLK", 1)],
 }
