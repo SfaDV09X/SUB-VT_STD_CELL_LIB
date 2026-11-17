@@ -1,0 +1,95 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO nand2x4
+  CLASS BLOCK ;
+  FOREIGN nand2x4 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 7.360 BY 4.080 ;
+  PIN A
+    ANTENNAGATEAREA 1.982400 ;
+    PORT
+      LAYER li1 ;
+        RECT 1.675 2.145 2.005 2.315 ;
+        RECT 3.835 2.145 4.165 2.315 ;
+        RECT 5.935 2.145 6.265 2.315 ;
+      LAYER met1 ;
+        RECT 1.680 2.100 6.260 2.360 ;
+    END
+  END A
+  PIN B
+    ANTENNAGATEAREA 1.982400 ;
+    PORT
+      LAYER li1 ;
+        RECT 1.115 1.745 1.445 1.915 ;
+        RECT 2.755 1.745 3.085 1.915 ;
+        RECT 4.915 1.745 5.245 1.915 ;
+      LAYER met1 ;
+        RECT 1.120 1.700 5.240 1.960 ;
+    END
+  END B
+  PIN VDD
+    ANTENNADIFFAREA 3.836000 ;
+    PORT
+      LAYER nwell ;
+        RECT -0.230 2.200 7.590 4.410 ;
+      LAYER li1 ;
+        RECT 0.210 3.915 7.150 4.245 ;
+        RECT 0.425 2.800 0.595 3.915 ;
+        RECT 1.485 2.800 1.655 3.915 ;
+        RECT 2.565 2.800 2.735 3.915 ;
+        RECT 3.645 2.800 3.815 3.915 ;
+        RECT 4.725 2.800 4.895 3.915 ;
+        RECT 5.765 2.800 5.935 3.915 ;
+        RECT 6.765 2.800 6.935 3.915 ;
+      LAYER met1 ;
+        RECT 0.000 3.840 7.360 4.320 ;
+    END
+  END VDD
+  PIN GND
+    ANTENNADIFFAREA 2.744000 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.925 0.165 1.095 1.280 ;
+        RECT 3.105 0.165 3.275 1.280 ;
+        RECT 5.265 0.165 5.435 1.280 ;
+        RECT 0.210 -0.165 7.150 0.165 ;
+      LAYER met1 ;
+        RECT 0.000 -0.240 7.360 0.240 ;
+    END
+  END GND
+  PIN Y
+    ANTENNADIFFAREA 2.016000 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.925 2.800 1.095 3.680 ;
+        RECT 2.025 2.800 2.195 3.680 ;
+        RECT 3.105 2.800 3.275 3.680 ;
+        RECT 4.185 2.800 4.355 3.680 ;
+        RECT 5.265 2.800 5.435 3.680 ;
+        RECT 6.265 2.800 6.435 3.680 ;
+        RECT 2.025 0.400 2.195 1.280 ;
+        RECT 4.185 0.400 4.355 1.280 ;
+      LAYER met1 ;
+        RECT 0.850 3.040 6.510 3.300 ;
+        RECT 1.950 0.380 4.430 0.640 ;
+      LAYER met2 ;
+        RECT 1.980 0.350 2.240 3.330 ;
+    END
+  END Y
+  OBS
+      LAYER li1 ;
+        RECT 1.485 0.400 1.655 1.280 ;
+        RECT 2.565 0.400 2.735 1.280 ;
+        RECT 3.645 0.400 3.815 1.280 ;
+        RECT 4.725 0.400 4.895 1.280 ;
+      LAYER met1 ;
+        RECT 1.410 0.780 4.970 1.040 ;
+        RECT 1.410 0.380 1.730 0.640 ;
+      LAYER met2 ;
+        RECT 1.440 0.350 1.700 1.070 ;
+  END
+END nand2x4
+END LIBRARY
+

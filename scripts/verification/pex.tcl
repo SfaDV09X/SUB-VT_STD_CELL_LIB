@@ -19,7 +19,8 @@ ext2sim labels on
 ext2sim
 
 extresist threshold 0
-extresist minresist 0
+extresist minres 0
+extresist mindelay 0
 extresist extout on
 extresist all
 

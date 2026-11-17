@@ -1,0 +1,130 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO dlx4
+  CLASS BLOCK ;
+  FOREIGN dlx4 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 12.420 BY 4.080 ;
+  PIN D
+    ANTENNADIFFAREA 0.705600 ;
+    PORT
+      LAYER li1 ;
+        RECT 3.565 2.800 3.735 3.680 ;
+        RECT 4.505 2.800 4.675 3.680 ;
+        RECT 3.565 0.400 3.735 1.280 ;
+      LAYER met1 ;
+        RECT 3.490 3.440 4.750 3.700 ;
+        RECT 3.490 0.380 3.810 0.640 ;
+      LAYER met2 ;
+        RECT 3.520 0.350 3.780 3.730 ;
+    END
+  END D
+  PIN VDD
+    ANTENNADIFFAREA 5.597400 ;
+    PORT
+      LAYER nwell ;
+        RECT -0.230 2.200 12.650 4.410 ;
+      LAYER li1 ;
+        RECT 0.210 3.915 12.210 4.245 ;
+        RECT 0.415 2.800 0.585 3.915 ;
+        RECT 1.555 2.800 1.725 3.915 ;
+        RECT 2.535 2.800 2.705 3.915 ;
+        RECT 7.595 2.800 7.765 3.915 ;
+        RECT 8.735 2.800 8.905 3.915 ;
+        RECT 9.875 2.800 10.045 3.915 ;
+        RECT 10.855 2.800 11.025 3.915 ;
+        RECT 11.835 2.800 12.005 3.915 ;
+      LAYER met1 ;
+        RECT 0.000 3.840 12.420 4.320 ;
+    END
+  END VDD
+  PIN GND
+    ANTENNADIFFAREA 4.690200 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.415 0.165 0.585 1.280 ;
+        RECT 1.555 0.165 1.725 1.280 ;
+        RECT 7.595 0.165 7.765 1.280 ;
+        RECT 8.735 0.165 8.905 1.280 ;
+        RECT 9.875 0.165 10.045 1.280 ;
+        RECT 0.210 -0.165 12.210 0.165 ;
+      LAYER met1 ;
+        RECT 0.000 -0.240 12.420 0.240 ;
+    END
+  END GND
+  PIN CLK
+    ANTENNAGATEAREA 1.906800 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.620 1.745 0.950 1.915 ;
+        RECT 3.250 1.745 3.580 1.915 ;
+        RECT 5.270 1.745 5.600 1.915 ;
+      LAYER met1 ;
+        RECT 0.625 1.700 5.595 1.960 ;
+    END
+  END CLK
+  PIN QB
+    ANTENNAGATEAREA 1.192800 ;
+    ANTENNADIFFAREA 0.840000 ;
+    PORT
+      LAYER li1 ;
+        RECT 8.165 2.800 8.335 3.680 ;
+        RECT 9.305 2.800 9.475 3.680 ;
+        RECT 8.940 2.145 9.270 2.315 ;
+        RECT 10.040 2.145 10.370 2.315 ;
+        RECT 8.165 0.400 8.335 1.280 ;
+      LAYER met1 ;
+        RECT 8.090 3.440 9.550 3.700 ;
+        RECT 8.660 2.100 10.365 2.360 ;
+        RECT 8.090 0.780 8.980 1.040 ;
+      LAYER met2 ;
+        RECT 8.690 0.750 8.950 3.730 ;
+    END
+  END QB
+  PIN Q
+    ANTENNADIFFAREA 1.064700 ;
+    PORT
+      LAYER li1 ;
+        RECT 5.725 2.800 5.895 3.680 ;
+        RECT 10.365 2.800 10.535 3.680 ;
+        RECT 11.345 2.800 11.515 3.680 ;
+        RECT 7.035 0.400 7.205 0.860 ;
+        RECT 9.305 0.400 9.475 1.280 ;
+      LAYER met1 ;
+        RECT 5.650 3.040 11.590 3.300 ;
+        RECT 6.960 0.380 9.550 0.640 ;
+      LAYER met2 ;
+        RECT 6.990 0.350 7.250 3.330 ;
+    END
+  END Q
+  OBS
+      LAYER li1 ;
+        RECT 0.985 2.800 1.155 3.680 ;
+        RECT 2.045 2.800 2.215 3.680 ;
+        RECT 3.095 2.800 3.265 3.680 ;
+        RECT 4.035 2.800 4.205 3.680 ;
+        RECT 4.975 2.800 5.145 3.680 ;
+        RECT 4.190 2.145 4.520 2.315 ;
+        RECT 6.580 2.145 6.910 2.315 ;
+        RECT 7.800 1.745 8.130 1.915 ;
+        RECT 0.985 0.400 1.155 1.280 ;
+        RECT 3.095 0.400 3.265 1.280 ;
+        RECT 4.035 0.400 4.205 1.280 ;
+        RECT 6.285 0.400 6.455 0.995 ;
+      LAYER met1 ;
+        RECT 0.910 3.040 2.780 3.300 ;
+        RECT 3.020 3.040 5.220 3.300 ;
+        RECT 2.460 2.100 6.905 2.360 ;
+        RECT 7.520 1.700 8.125 1.960 ;
+        RECT 0.910 0.780 2.780 1.040 ;
+        RECT 3.020 0.780 7.840 1.040 ;
+      LAYER met2 ;
+        RECT 2.490 0.750 2.750 3.330 ;
+        RECT 3.050 0.750 3.310 3.330 ;
+        RECT 7.550 0.750 7.810 1.990 ;
+  END
+END dlx4
+END LIBRARY
+

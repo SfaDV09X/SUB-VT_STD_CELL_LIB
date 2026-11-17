@@ -1,0 +1,16 @@
+** sch_path: /foss/designs/xor2x4.sch
+.subckt xor2x4 A Y VDD GND B
+*.PININFO A:I Y:O VDD:B GND:B B:I
+XM2 Y A net1 GND sky130_fd_pr__nfet_01v8 L=0.29 W=4.2 nf=5
+XM5 net3 A VDD VDD sky130_fd_pr__pfet_01v8 L=0.19 W=4.2 nf=5
+XM9 Abar A GND GND sky130_fd_pr__nfet_01v8 L=0.29 W=0.84 nf=1
+XM10 Abar A VDD VDD sky130_fd_pr__pfet_01v8 L=0.21 W=1.68 nf=2
+XM6 Y Abar net3 VDD sky130_fd_pr__pfet_01v8 L=0.19 W=4.2 nf=5
+XM8 Y Bbar net3 VDD sky130_fd_pr__pfet_01v8 L=0.19 W=4.2 nf=5
+XM7 net3 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.19 W=4.2 nf=5
+XM1 net1 B GND GND sky130_fd_pr__nfet_01v8 L=0.29 W=4.2 nf=5
+XM4 Y Abar net2 GND sky130_fd_pr__nfet_01v8 L=0.29 W=4.2 nf=5
+XM3 net2 Bbar GND GND sky130_fd_pr__nfet_01v8 L=0.29 W=4.2 nf=5
+XM12 Bbar B VDD VDD sky130_fd_pr__pfet_01v8 L=0.21 W=1.68 nf=2
+XM11 Bbar B GND GND sky130_fd_pr__nfet_01v8 L=0.29 W=0.84 nf=1
+.ends

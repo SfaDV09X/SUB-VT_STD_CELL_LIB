@@ -1,0 +1,113 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO aoi3x4
+  CLASS BLOCK ;
+  FOREIGN aoi3x4 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 10.580 BY 4.080 ;
+  PIN VDD
+    ANTENNADIFFAREA 4.652200 ;
+    PORT
+      LAYER nwell ;
+        RECT -0.230 2.200 10.810 4.410 ;
+      LAYER li1 ;
+        RECT 0.210 3.915 10.370 4.245 ;
+        RECT 0.965 2.800 1.135 3.915 ;
+        RECT 2.065 2.800 2.235 3.915 ;
+        RECT 3.145 2.800 3.315 3.915 ;
+        RECT 4.225 2.800 4.395 3.915 ;
+        RECT 5.305 2.800 5.475 3.915 ;
+        RECT 6.385 2.800 6.555 3.915 ;
+      LAYER met1 ;
+        RECT 0.000 3.840 10.580 4.320 ;
+    END
+  END VDD
+  PIN GND
+    ANTENNADIFFAREA 3.904600 ;
+    PORT
+      LAYER li1 ;
+        RECT 2.065 0.165 2.235 1.280 ;
+        RECT 4.225 0.165 4.395 1.280 ;
+        RECT 6.385 0.165 6.555 1.280 ;
+        RECT 7.465 0.165 7.635 1.280 ;
+        RECT 0.210 -0.165 10.370 0.165 ;
+      LAYER met1 ;
+        RECT 0.000 -0.240 10.580 0.240 ;
+    END
+  END GND
+  PIN A
+    ANTENNAGATEAREA 2.100000 ;
+    PORT
+      LAYER li1 ;
+        RECT 1.155 1.745 1.485 1.915 ;
+        RECT 2.795 1.745 3.125 1.915 ;
+        RECT 4.955 1.745 5.285 1.915 ;
+      LAYER met1 ;
+        RECT 1.160 1.700 5.280 1.960 ;
+    END
+  END A
+  PIN B
+    ANTENNAGATEAREA 2.100000 ;
+    PORT
+      LAYER li1 ;
+        RECT 1.715 2.145 2.045 2.315 ;
+        RECT 3.875 2.145 4.205 2.315 ;
+        RECT 6.035 2.145 6.365 2.315 ;
+      LAYER met1 ;
+        RECT 1.720 2.100 6.360 2.360 ;
+    END
+  END B
+  PIN C
+    ANTENNAGATEAREA 1.663200 ;
+    PORT
+      LAYER li1 ;
+        RECT 7.115 1.745 7.445 1.915 ;
+      LAYER met1 ;
+        RECT 7.120 1.700 7.440 1.960 ;
+    END
+  END C
+  PIN Y
+    ANTENNADIFFAREA 1.940400 ;
+    PORT
+      LAYER li1 ;
+        RECT 7.465 2.800 7.635 3.680 ;
+        RECT 8.485 2.800 8.655 3.680 ;
+        RECT 9.445 2.800 9.615 3.680 ;
+        RECT 0.965 0.400 1.135 1.280 ;
+        RECT 3.145 0.400 3.315 1.280 ;
+        RECT 5.305 0.400 5.475 1.280 ;
+        RECT 6.925 0.400 7.095 1.280 ;
+        RECT 8.005 0.400 8.175 1.280 ;
+      LAYER met1 ;
+        RECT 7.390 3.440 9.690 3.700 ;
+        RECT 0.890 0.380 8.250 0.640 ;
+      LAYER met2 ;
+        RECT 7.420 0.350 7.680 3.730 ;
+    END
+  END Y
+  OBS
+      LAYER li1 ;
+        RECT 0.485 2.800 0.655 3.680 ;
+        RECT 1.525 2.800 1.695 3.680 ;
+        RECT 2.605 2.800 2.775 3.680 ;
+        RECT 3.685 2.800 3.855 3.680 ;
+        RECT 4.765 2.800 4.935 3.680 ;
+        RECT 5.845 2.800 6.015 3.680 ;
+        RECT 6.925 2.800 7.095 3.680 ;
+        RECT 8.005 2.800 8.175 3.680 ;
+        RECT 8.965 2.800 9.135 3.680 ;
+        RECT 9.925 2.800 10.095 3.680 ;
+        RECT 1.525 0.400 1.695 1.280 ;
+        RECT 2.605 0.400 2.775 1.280 ;
+        RECT 3.685 0.400 3.855 1.280 ;
+        RECT 4.765 0.400 4.935 1.280 ;
+        RECT 5.845 0.400 6.015 1.280 ;
+      LAYER met1 ;
+        RECT 0.410 3.040 10.170 3.300 ;
+        RECT 1.450 0.780 6.090 1.040 ;
+  END
+END aoi3x4
+END LIBRARY
+

@@ -1,14 +1,14 @@
-(* keep_hierarchy *) module cov_inv1x1  (input a,       output y); assign y = ~a;                        endmodule
-(* keep_hierarchy *) module cov_nand2x1 (input a, b,    output y); assign y = ~(a & b);                  endmodule
-(* keep_hierarchy *) module cov_nor2x1  (input a, b,    output y); assign y = ~(a | b);                  endmodule
-(* keep_hierarchy *) module cov_and2x1  (input a, b,    output y); assign y = a & b;                     endmodule
-(* keep_hierarchy *) module cov_or2x1   (input a, b,    output y); assign y = a | b;                     endmodule
-(* keep_hierarchy *) module cov_xor2x1  (input a, b,    output y); assign y = a ^ b;                     endmodule
-(* keep_hierarchy *) module cov_xnor2x1 (input a, b,    output y); assign y = ~(a ^ b);                  endmodule
-(* keep_hierarchy *) module cov_aoi3x1  (input a, b, c, output y); assign y = ~((a & b) | c);            endmodule
-(* keep_hierarchy *) module cov_oai3x1  (input a, b, c, output y); assign y = ~((a | b) & c);            endmodule
-(* keep_hierarchy *) module cov_moai4x1 (input a, b, c, d, output y); assign y = (a & b) | (~c & ~d);    endmodule
-(* keep_hierarchy *) module cov_maoi4x1 (input a, b, c, d, output y); assign y = (a | b) & ~(c & d);     endmodule
+(* keep_hierarchy *) module cov_inv1  (input a,       output y); assign y = ~a;                        endmodule
+(* keep_hierarchy *) module cov_nand2 (input a, b,    output y); assign y = ~(a & b);                  endmodule
+(* keep_hierarchy *) module cov_nor2  (input a, b,    output y); assign y = ~(a | b);                  endmodule
+(* keep_hierarchy *) module cov_and2  (input a, b,    output y); assign y = a & b;                     endmodule
+(* keep_hierarchy *) module cov_or2   (input a, b,    output y); assign y = a | b;                     endmodule
+(* keep_hierarchy *) module cov_xor2  (input a, b,    output y); assign y = a ^ b;                     endmodule
+(* keep_hierarchy *) module cov_xnor2 (input a, b,    output y); assign y = ~(a ^ b);                  endmodule
+(* keep_hierarchy *) module cov_aoi3  (input a, b, c, output y); assign y = ~((a & b) | c);            endmodule
+(* keep_hierarchy *) module cov_oai3  (input a, b, c, output y); assign y = ~((a | b) & c);            endmodule
+(* keep_hierarchy *) module cov_moai4 (input a, b, c, d, output y); assign y = (a & b) | (~c & ~d);    endmodule
+(* keep_hierarchy *) module cov_maoi4 (input a, b, c, d, output y); assign y = (a | b) & ~(c & d);     endmodule
 
 module demo (
     input        clk,
@@ -37,19 +37,19 @@ module demo (
 );
     genvar i;
     generate for (i = 0; i < 4; i = i + 1) begin : g
-        cov_inv1x1  u_inv  (.a(a[i]),            .y(a_n[i]));
-        cov_xor2x1  u_xor  (.a(a[i]), .b(b[i]),  .y(x_ab[i]));
-        cov_xnor2x1 u_xnor (.a(a[i]), .b(b[i]),  .y(xn_ab[i]));
+        cov_inv1  u_inv  (.a(a[i]),            .y(a_n[i]));
+        cov_xor2  u_xor  (.a(a[i]), .b(b[i]),  .y(x_ab[i]));
+        cov_xnor2 u_xnor (.a(a[i]), .b(b[i]),  .y(xn_ab[i]));
     end endgenerate
 
-    cov_nand2x1 u_nand (.a(a[0]), .b(b[0]), .y(y_nand));
-    cov_nor2x1  u_nor  (.a(a[1]), .b(b[1]), .y(y_nor));
-    cov_and2x1  u_and  (.a(a[2]), .b(b[2]), .y(y_and));
-    cov_or2x1   u_or   (.a(a[3]), .b(b[3]), .y(y_or));
-    cov_aoi3x1  u_aoi  (.a(c[0]), .b(d[0]), .c(cin),  .y(y_aoi));
-    cov_oai3x1  u_oai  (.a(c[1]), .b(d[1]), .c(cin),  .y(y_oai));
-    cov_moai4x1 u_moai (.a(a[0]), .b(c[2]), .c(b[2]), .d(d[2]), .y(y_moai));
-    cov_maoi4x1 u_maoi (.a(a[1]), .b(c[3]), .c(b[3]), .d(d[3]), .y(y_maoi));
+    cov_nand2 u_nand (.a(a[0]), .b(b[0]), .y(y_nand));
+    cov_nor2  u_nor  (.a(a[1]), .b(b[1]), .y(y_nor));
+    cov_and2  u_and  (.a(a[2]), .b(b[2]), .y(y_and));
+    cov_or2   u_or   (.a(a[3]), .b(b[3]), .y(y_or));
+    cov_aoi3  u_aoi  (.a(c[0]), .b(d[0]), .c(cin),  .y(y_aoi));
+    cov_oai3  u_oai  (.a(c[1]), .b(d[1]), .c(cin),  .y(y_oai));
+    cov_moai4 u_moai (.a(a[0]), .b(c[2]), .c(b[2]), .d(d[2]), .y(y_moai));
+    cov_maoi4 u_maoi (.a(a[1]), .b(c[3]), .c(b[3]), .d(d[3]), .y(y_maoi));
 
     always @(posedge clk) begin
         sum_q <= a + b + cin;

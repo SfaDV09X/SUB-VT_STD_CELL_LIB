@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""Switch-level truth-table check: transistor netlists (cells/<c>/<c>.spice) vs Liberty functions.
-Static CMOS only (combinational cells). For every input vector, iterate node values to a fixed point:
-a node is driven 1 if a conducting path to VDD exists, 0 if a conducting path to GND exists.
-PASS requires: every output is driven (never floating), never contended (VDD and GND paths both),
-and equals the Liberty function.
-usage: check_cells_switchlevel.py <lib> <dir with <CELL>/spice/<cell>.spice, <cell>/<cell>.spice or <cell>.spice>"""
 import re, sys, itertools, os
 
 lib, sdir = sys.argv[1], sys.argv[2]
@@ -18,7 +12,7 @@ for m in re.finditer(r'cell\s*\(\s*(\w+)\s*\)\s*\{', txt):
     if re.search(r'\b(latch|ff)\s*\(', body):
         continue
     ins  = re.findall(r'pin\s*\(\s*(\w+)\s*\)\s*\{\s*direction : input', body)
-    out  = re.search(r'pin\s*\(\s*(\w+)\s*\)\s*\{\s*direction : output;\s*function : "([^"]+)"', body)
+    out  = re.search(r'pin\s*\(\s*(\w+)\s*\)\s*\{\s*direction : output;[^{}]*?function : "([^"]+)"', body)
     funcs[name] = (ins, out.group(1), out.group(2).replace('!', '~').replace('+', '|'))
 
 def parse(path):
