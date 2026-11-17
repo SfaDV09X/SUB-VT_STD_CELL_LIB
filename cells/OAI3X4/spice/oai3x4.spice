@@ -1,0 +1,10 @@
+** sch_path: /foss/designs/oai3x4.sch
+.subckt oai3x4 VDD GND A B C Y
+*.PININFO VDD:B GND:B A:I B:I C:I Y:O
+XM2 net2 A VDD VDD sky130_fd_pr__pfet_01v8 L=0.2 W=5.04 nf=6
+XM3 Y C VDD VDD sky130_fd_pr__pfet_01v8 L=0.2 W=2.52 nf=3
+XM4 Y A net1 GND sky130_fd_pr__nfet_01v8 L=0.26 W=4.2 nf=5
+XM1 Y B net2 VDD sky130_fd_pr__pfet_01v8 L=0.2 W=5.04 nf=6
+XM6 net1 C GND GND sky130_fd_pr__nfet_01v8 L=0.26 W=4.2 nf=5
+XM5 Y B net1 GND sky130_fd_pr__nfet_01v8 L=0.26 W=4.2 nf=5
+.ends

@@ -1,0 +1,10 @@
+** sch_path: /foss/designs/and2x4.sch
+.subckt and2x4 A B VDD GND Y
+*.PININFO A:I B:I VDD:B GND:B Y:O
+XM2 net1 A net2 GND sky130_fd_pr__nfet_01v8 L=0.26 W=3.36 nf=4
+XM3 net1 A VDD VDD sky130_fd_pr__pfet_01v8 L=0.22 W=5.04 nf=6
+XM5 Y net1 GND GND sky130_fd_pr__nfet_01v8 L=0.29 W=2.52 nf=3
+XM4 net1 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.22 W=5.04 nf=6
+XM6 Y net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.21 W=5.04 nf=6
+XM1 net2 B GND GND sky130_fd_pr__nfet_01v8 L=0.26 W=3.36 nf=4
+.ends

@@ -1,0 +1,14 @@
+CELL      WIDTH    DRC    LVS                        R      C      PORTS
+INV1X4    2.300    0      Circuits match uniquely.   20     23     ok
+NAND2X4   7.360    0      Circuits match uniquely.   130    125    ok
+NOR2X4    6.440    0      Circuits match uniquely.   103    96     ok
+AND2X4    10.580   0      Circuits match uniquely.   190    177    ok
+OR2X4     9.660    0      Circuits match uniquely.   162    147    ok
+AOI3X4    10.580   0      Circuits match uniquely.   203    191    ok
+OAI3X4    9.200    0      Circuits match uniquely.   196    187    ok
+XOR2X4    15.180   0      Circuits match uniquely.   301    270    ok
+XNOR2X4   15.180   0      Circuits match uniquely.   303    272    ok
+MAOI4X4   15.180   0      Circuits match uniquely.   270    253    ok
+MOAI4X4   14.720   0      Circuits match uniquely.   271    255    ok
+DLX4      12.420   0      Circuits match uniquely.   167    163    ok
+DFFX4     15.640   0      Circuits match uniquely.   213    203    ok

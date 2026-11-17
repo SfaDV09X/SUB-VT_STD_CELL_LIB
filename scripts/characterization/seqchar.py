@@ -1,19 +1,4 @@
 #!/usr/bin/env python3
-"""Characterize one sequential cell (rising-edge DFF or active-high latch) with ngspice and write a Liberty file.
-Why not lctime: lctime has no latch support, and its flip-flop code hard-codes ps/ns-scale timing (2 ns setup, 100 ps pulse,
-100 ns max delay) which do not fit a 0.4 V sub-threshold cell (delays are microseconds).
-
-usage: seqchar.py --kind dff|latch --cell NAME --net PEXC.spice --lef CELL.lef --models MODELS.lib --corner tt
-                  --out OUT.lib [--jobs N] [--ngspice ngspice] [--workdir DIR] [--vdd 0.4] [--temp 27]
-Cell ports (read from the .subckt line): CLK D Q QB VDD GND.
-Definitions (all thresholds as in the combinational libs: delay 50%/50%, slew 30%/70%):
-  C_FO1   = mean of the CLK and D input-pin capacitances (measured by charge integration of a fast ramp)
-  s*      = fixed point of mean Q/QB transition at load C_FO1 with CLK slew s  (steady slew, as for the other cells)
-  grid    = loads C_FO1*[0.5,1,2] (both Q and QB loaded), slews s*[0.5,1,2] (CLK, and D for constraints)
-  clk->Q  : DFF CLK rising; latch CLK rising (opening edge)       latch D->Q: CLK high, D toggles
-  setup/hold: DFF vs CLK rising; latch vs CLK falling (closing edge). Setup = smallest D->CLK 50%-50% time for which the
-  output is correct with delay <= 1.10 x nominal; hold = smallest CLK->D 50%-50% time for which the old data is captured
-  (DFF: also delay <= 1.10 x nominal). Constraint sims use zero external load, as lctime does."""
 import argparse, os, re, subprocess, sys, tempfile, math
 import numpy as np
 from concurrent.futures import ProcessPoolExecutor
@@ -21,6 +6,52 @@ from concurrent.futures import ProcessPoolExecutor
 _trapz = getattr(np, 'trapezoid', None) or np.trapz
 A = None
 PUSHOUT = 1.10
+CACHE_DIR = lambda: A.workdir
+KEYX = lambda: getattr(A, "tcap", None)
+
+
+def cached(fn):
+    import functools, hashlib, json
+    @functools.wraps(fn)
+    def w(args):
+        d = os.path.join(CACHE_DIR(), "cache")
+        os.makedirs(d, exist_ok=True)
+        k = os.path.join(d, fn.__name__ + "_" + hashlib.sha1(repr((args, KEYX())).encode()).hexdigest() + ".json")
+        if os.path.isfile(k):
+            try:
+                return _dec(json.load(open(k)))
+            except Exception:
+                pass
+        r = fn(args)
+        tmp = k + ".%d" % os.getpid()
+        json.dump(_enc(r), open(tmp, "w"))
+        os.replace(tmp, k)
+        return r
+    return w
+
+
+def _enc(x):
+    if isinstance(x, dict):
+        return {"__d__": [[_enc(k), _enc(v)] for k, v in x.items()]}
+    if isinstance(x, tuple):
+        return {"__t__": [_enc(v) for v in x]}
+    if isinstance(x, list):
+        return [_enc(v) for v in x]
+    if isinstance(x, (np.floating, np.integer)):
+        return x.item()
+    return x
+
+
+def _dec(x):
+    if isinstance(x, dict) and "__d__" in x:
+        return {_dec(k): _dec(v) for k, v in x["__d__"]}
+    if isinstance(x, dict) and "__t__" in x:
+        return tuple(_dec(v) for v in x["__t__"])
+    if isinstance(x, list):
+        return [_dec(v) for v in x]
+    if isinstance(x, dict):
+        return {k: _dec(v) for k, v in x.items()}
+    return x
 
 
 def ports(net, cell):
@@ -31,7 +62,6 @@ def ports(net, cell):
 
 
 def pwl(init, trans):
-    """trans: list of (t50_ns, level 0/1, slew_ns 30-70). Linear ramp, 50% point at t50. Returns PWL string in seconds."""
     v = lambda x: x * A.vdd
     pts = [(0.0, v(init))]
     cur = init
@@ -46,11 +76,10 @@ def pwl(init, trans):
 
 
 def simulate(clk, d, tstop_ns, load_pf, tag, tmax_ns=None):
-    """clk, d = PWL strings. Returns dict t,clk,d,q,qb in ns / V."""
     P = ports(A.net, A.cell)
     pin = {"CLK": "clk", "D": "d", "Q": "q", "QB": "qb", "VDD": "vdd", "GND": "0"}
     inst = " ".join(pin[p] for p in P)
-    tmax = tmax_ns or max(tstop_ns / 3000.0, 1.0)
+    tmax = tmax_ns or max(min(tstop_ns / 3000.0, getattr(A, "tcap", 1e30)), 1.0)
     base = os.path.join(A.workdir, tag)
     cir = """* seqchar
 .lib "%s" %s
@@ -82,7 +111,6 @@ quit
 
 
 def cross(t, v, level, rising, t0, t1):
-    """first crossing of `level` with given direction in [t0,t1] (ns), linear interpolation, or None."""
     m = (t >= t0) & (t <= t1)
     tt, vv = t[m], v[m]
     s = (vv[:-1] - level) * (vv[1:] - level) < 0
@@ -93,7 +121,6 @@ def cross(t, v, level, rising, t0, t1):
 
 
 def edge_meas(w, node, rising, t_ref, t0, t1):
-    """(delay, slew) of node's transition in [t0,t1] relative to t_ref (ns); None if no full transition."""
     v = w[node]; V = A.vdd
     t50 = cross(w["t"], v, 0.5 * V, rising, t0, t1)
     t30 = cross(w["t"], v, (0.3 if rising else 0.7) * V, rising, t0, t1)
@@ -102,9 +129,8 @@ def edge_meas(w, node, rising, t_ref, t0, t1):
     return t50 - t_ref, abs(t70 - t30)
 
 
+@cached
 def input_cap(pin):
-    """Mean of rise/fall charge-integration capacitance (pF). Other input is held in the state where the pin is 'seen':
-    D with the master/transparent phase open, CLK with D=0."""
     V = A.vdd; ramp = 10.0
     res = []
     for rising in (True, False):
@@ -151,16 +177,17 @@ quit
     return float(np.mean(res))
 
 
+@cached
 def clk_to_q(args):
-    """Edge-triggered / opening-edge delays. args=(sc, load, H). Returns dict[(out,'rise'|'fall')] = (delay, slew)."""
     sc, load, H = args
     clk = pwl(0, [(H, 1, sc), (2 * H, 0, sc), (3 * H, 1, sc), (4 * H, 0, sc), (5 * H, 1, sc), (6 * H, 0, sc)])
     d = pwl(0, [(2.5 * H, 1, sc), (4.5 * H, 0, sc)])
-    w = simulate(clk, d, 7 * H, load, "cq_%g_%g" % (sc, load))
+    w = simulate(clk, d, 7 * H, load, "cq_%d_%r_%r" % (os.getpid(), float(sc), float(load)))
     r = {}
     for out, (r2, f3) in (("q", (True, False)), ("qb", (False, True))):
-        m1 = edge_meas(w, out, r2, 3 * H, 3 * H, 4 * H)
-        m2 = edge_meas(w, out, f3, 5 * H, 5 * H, 6 * H)
+        e0 = 0.5 * sc / 0.4
+        m1 = edge_meas(w, out, r2, 3 * H, 3 * H - e0, 4 * H)
+        m2 = edge_meas(w, out, f3, 5 * H, 5 * H - e0, 6 * H)
         if out == "q":
             r[("q", "rise")], r[("q", "fall")] = m1, m2
         else:
@@ -168,29 +195,29 @@ def clk_to_q(args):
     return r
 
 
+@cached
 def d_to_q(args):
-    """Latch transparent delays: CLK high from H; D rises at 3H, falls at 5H. args=(sd, load, H)."""
     sd, load, H = args
     clk = pwl(0, [(H, 1, sd)])
     d = pwl(0, [(3 * H, 1, sd), (5 * H, 0, sd)])
-    w = simulate(clk, d, 7 * H, load, "dq_%g_%g" % (sd, load))
+    w = simulate(clk, d, 7 * H, load, "dq_%d_%r_%r" % (os.getpid(), float(sd), float(load)))
     r = {}
-    r[("q", "rise")] = edge_meas(w, "q", True, 3 * H, 3 * H, 4 * H)
-    r[("q", "fall")] = edge_meas(w, "q", False, 5 * H, 5 * H, 6 * H)
-    r[("qb", "fall")] = edge_meas(w, "qb", False, 3 * H, 3 * H, 4 * H)
-    r[("qb", "rise")] = edge_meas(w, "qb", True, 5 * H, 5 * H, 6 * H)
+    e0 = 0.5 * sd / 0.4
+    r[("q", "rise")] = edge_meas(w, "q", True, 3 * H, 3 * H - e0, 4 * H)
+    r[("q", "fall")] = edge_meas(w, "q", False, 5 * H, 5 * H - e0, 6 * H)
+    r[("qb", "fall")] = edge_meas(w, "qb", False, 3 * H, 3 * H - e0, 4 * H)
+    r[("qb", "rise")] = edge_meas(w, "qb", True, 5 * H, 5 * H - e0, 6 * H)
     return r
 
 
 def setup_trial(sd, sc, rising_d, t_su, H):
-    """True if captured correctly with delay <= PUSHOUT*nominal (nominal supplied by caller via closure), returns (ok, delay)."""
     new = 1 if rising_d else 0; old = 1 - new
     tc = 3 * H
     if A.kind == "dff":
         clk = pwl(0, [(H, 1, sc), (2 * H, 0, sc), (tc, 1, sc)])
         d = pwl(old, [(tc - t_su, new, sd)])
         end = 4.6 * H
-        w = simulate(clk, d, end, 0.0, "su_%g" % abs(hash((sd, sc, rising_d, round(t_su, 4)))))
+        w = simulate(clk, d, end, 0.0, "su_%d_%d" % (os.getpid(), abs(hash((sd, sc, rising_d, round(t_su, 4))))), tmax_ns=max(end / 3000.0, 1.0))
         meas = edge_meas(w, "q", bool(new), tc, tc - 0.2 * H, end)
         dly = None if meas is None else meas[0]
         ok = w["q"][-1] > 0.9 * A.vdd if new else w["q"][-1] < 0.1 * A.vdd
@@ -199,7 +226,7 @@ def setup_trial(sd, sc, rising_d, t_su, H):
         clk = pwl(0, [(H, 1, sc), (tc, 0, sc)])
         d = pwl(old, [(tc - t_su, new, sd)])
         end = 4.6 * H
-        w = simulate(clk, d, end, 0.0, "su_%g" % abs(hash((sd, sc, rising_d, round(t_su, 4)))))
+        w = simulate(clk, d, end, 0.0, "su_%d_%d" % (os.getpid(), abs(hash((sd, sc, rising_d, round(t_su, 4))))), tmax_ns=max(end / 3000.0, 1.0))
         tD = tc - t_su
         meas = edge_meas(w, "q", bool(new), tD, tD - 0.1 * H, end)
         dly = None if meas is None else meas[0]
@@ -208,14 +235,13 @@ def setup_trial(sd, sc, rising_d, t_su, H):
 
 
 def hold_trial(sd, sc, rising_d, t_h, H):
-    """D value V=new is captured at the active clock edge; D flips to !V at t_edge + t_h. Returns (ok, delay)."""
     V = 1 if rising_d else 0; nV = 1 - V
     tc = 3 * H
     if A.kind == "dff":
         clk = pwl(0, [(H, 1, sc), (2 * H, 0, sc), (tc, 1, sc)])
         d = pwl(nV, [(2.5 * H, V, sd), (tc + t_h, nV, sd)])
         end = 4.6 * H
-        w = simulate(clk, d, end, 0.0, "ho_%g" % abs(hash((sd, sc, rising_d, round(t_h, 4)))))
+        w = simulate(clk, d, end, 0.0, "ho_%d_%d" % (os.getpid(), abs(hash((sd, sc, rising_d, round(t_h, 4))))), tmax_ns=max(end / 3000.0, 1.0))
         meas = edge_meas(w, "q", bool(V), tc, tc - 0.2 * H, end)
         dly = None if meas is None else meas[0]
         ok = w["q"][-1] > 0.9 * A.vdd if V else w["q"][-1] < 0.1 * A.vdd
@@ -224,15 +250,14 @@ def hold_trial(sd, sc, rising_d, t_h, H):
         clk = pwl(0, [(H, 1, sc), (tc, 0, sc)])
         d = pwl(nV, [(2 * H, V, sd), (tc + t_h, nV, sd)])
         end = 4.6 * H
-        w = simulate(clk, d, end, 0.0, "ho_%g" % abs(hash((sd, sc, rising_d, round(t_h, 4)))))
+        w = simulate(clk, d, end, 0.0, "ho_%d_%d" % (os.getpid(), abs(hash((sd, sc, rising_d, round(t_h, 4))))), tmax_ns=max(end / 3000.0, 1.0))
         return (w["q"][-1] > 0.9 * A.vdd if V else w["q"][-1] < 0.1 * A.vdd), None
 
 
 def bisect(trial, lo, hi, d_nom, H, iters=9):
-    """smallest x in [lo,hi] with trial passing (pass at hi, fail at lo assumed, checked). Returns x or None if hi fails."""
     def passes(x):
         ok, dly = trial(x)
-        return ok and (d_nom is None or dly <= PUSHOUT * d_nom)
+        return ok and (d_nom is None or dly <= d_nom + (PUSHOUT - 1.0) * abs(d_nom))
     if not passes(hi):
         hi2 = hi * 2
         if hi2 < 0.4 * H and passes(hi2): hi = hi2
@@ -246,8 +271,8 @@ def bisect(trial, lo, hi, d_nom, H, iters=9):
     return hi
 
 
+@cached
 def constraint(args):
-    """args=(kind 'setup'|'hold', sd, sc, rising_d, H, d_ref). Returns time in ns."""
     k, sd, sc, rd, H, d_ref = args
     if k == "setup":
         tr = lambda x: setup_trial(sd, sc, rd, x, H)
@@ -273,7 +298,8 @@ def main():
     p.add_argument("--jobs", type=int, default=os.cpu_count()); p.add_argument("--ngspice", default="ngspice")
     p.add_argument("--workdir", default=None); p.add_argument("--vdd", type=float, default=0.4)
     p.add_argument("--temp", type=float, default=27.0)
-    p.add_argument("--H", type=float, default=100000.0, help="half-period of the stimulus in ns (must exceed ~8x the largest delay)")
+    p.add_argument("--H", type=float, default=0.0)
+    p.add_argument("--libname", required=True)
     A = p.parse_args()
     A.workdir = A.workdir or tempfile.mkdtemp(prefix="seq_")
     os.makedirs(A.workdir, exist_ok=True)
@@ -283,42 +309,60 @@ def main():
 
     cD, cC = pool.submit(input_cap, "D"), pool.submit(input_cap, "CLK")
     cD, cC = cD.result(), cC.result()
-    C = 0.5 * (cD + cC)
-    log("input caps: D=%.4f pF  CLK=%.4f pF  -> C_FO1 = %.4f pF" % (cD, cC, C))
+    C = 4.0 * 0.5 * (cD + cC)
+    log("input caps: D=%.4f pF  CLK=%.4f pF  -> C_FO4 = %.4f pF" % (cD, cC, C))
 
-    H = A.H
-    s = 500.0
-    for it in range(10):
+    H = A.H or 200000.0
+    s = 200.0
+    for it in range(12):
+        A.tcap = s / 10.0
         r = clk_to_q((s, C, H))
-        if any(v is None for v in r.values()): sys.exit("clk->Q did not complete; increase --H")
+        grow = 0
+        while any(v is None for v in r.values()):
+            grow += 1
+            if grow > 4: sys.exit("clk->Q did not complete; increase --H")
+            H *= 4.0
+            r = clk_to_q((s, C, H))
         s_new = float(np.mean([v[1] for v in r.values()]))
-        log("  s* iteration %d: %.1f -> %.1f ns" % (it, s, s_new))
+        dmid = max(v[0] for v in r.values())
+        log("  s* iteration %d: %.2f -> %.2f ns (H %.0f ns)" % (it, s, s_new, H))
+        if not A.H:
+            H = float(max(30.0 * dmid, 10.0 * s_new / 0.4, 200.0))
         if abs(s_new - s) < 0.01 * s: s = s_new; break
         s = s_new
-    slews = s * np.array([0.5, 1, 2]); loads = C * np.array([0.5, 1, 2])
+    if not A.H:
+        H = float(max(30.0 * dmid, 4.0 * 4 * s / 0.4, 200.0))
+    G = np.array([0.25, 0.5, 1, 2, 4])
+    slews = s * G; loads = C * G
+    A.tcap = slews[0] / 10.0
+    pool.shutdown(wait=True)
+    pool = ProcessPoolExecutor(A.jobs, mp_context=mp.get_context('fork'))
     log("grid: slews %s ns, loads %s pF" % (slews.round(1), loads.round(5)))
 
-    jobs = {(i, j): pool.submit(clk_to_q, (slews[i], loads[j], H)) for i in range(3) for j in range(3)}
-    cq = {k: f.result() for k, f in jobs.items()}
-    arcs = [("q", "rise"), ("q", "fall"), ("qb", "rise"), ("qb", "fall")]
-    for k, v in cq.items():
-        if any(x is None for x in v.values()): sys.exit("missing transition at grid point %s" % (k,))
-    dmax = max(v[0] for r in cq.values() for v in r.values())
-    log("max clk->out delay on grid: %.0f ns (H=%.0f ns)" % (dmax, H))
-    if H < 6 * dmax: sys.exit("H too small for the slowest delay; rerun with --H %d" % (8 * dmax))
+    for attempt in range(4):
+        jobs = {(i, j): pool.submit(clk_to_q, (slews[i], loads[j], H)) for i in range(5) for j in range(5)}
+        cq = {k: f.result() for k, f in jobs.items()}
+        ok = all(x is not None for v in cq.values() for x in v.values())
+        dmax = max((v[0] for r in cq.values() for v in r.values() if v is not None), default=H)
+        log("max clk->out delay on grid: %.0f ns (H=%.0f ns)" % (dmax, H))
+        if ok and H >= 6 * dmax:
+            break
+        H = float(max(2 * H, 10 * dmax))
+    else:
+        sys.exit("clk->Q grid did not settle within the stimulus window")
     dq = None
     if A.kind == "latch":
-        jobs = {(i, j): pool.submit(d_to_q, (slews[i], loads[j], H)) for i in range(3) for j in range(3)}
+        jobs = {(i, j): pool.submit(d_to_q, (slews[i], loads[j], H)) for i in range(5) for j in range(5)}
         dq = {k: f.result() for k, f in jobs.items()}
         if any(x is None for r in dq.values() for x in r.values()): sys.exit("missing D->Q transition")
     log("delay tables done")
 
-    d_ref = cq[(1, 1)][("q", "rise")][0]
+    d_ref = cq[(2, 2)][("q", "rise")][0]
     cj = {}
     for kind in ("setup", "hold"):
         for rd in (True, False):
-            for i in range(3):
-                for j in range(3):
+            for i in range(5):
+                for j in range(5):
                     cj[(kind, rd, i, j)] = pool.submit(constraint, (kind, slews[i], slews[j], rd, H, d_ref))
     con = {k: f.result() for k, f in cj.items()}
     if any(v is None for v in con.values()): sys.exit("a constraint search failed (no passing point): %s" %
@@ -328,14 +372,9 @@ def main():
     m = re.search(r"SIZE\s+([\d.]+)\s+BY\s+([\d.]+)", open(A.lef).read())
     area = float(m.group(1)) * float(m.group(2))
     edge = "rising" if A.kind == "dff" else "falling"
-    T = "delay_template_3x3"
+    T = "delay_template_5x5"
     def delay_tbl(arc_get, which):
-        return [[arc_get(i, j)[which] for i in range(3)] for j in range(3)]
-    def timing_block(related, out, ttype, srcs, sense=None):
-        s_ = ""
-        for rf in ("rise", "fall"):
-            pass
-        return s_
+        return [[arc_get(i, j)[which] for i in range(5)] for j in range(5)]
     def block(related, ttype, src, out, sense):
         t = "      timing () {\n        related_pin : \"%s\";\n        timing_type : %s;\n" % (related, ttype)
         if sense: t += "        timing_sense : %s;\n" % sense
@@ -348,15 +387,15 @@ def main():
     def cons_block(ttype, key):
         t = "      timing () {\n        related_pin : \"CLK\";\n        timing_type : %s_%s;\n" % (key, edge)
         for rd, nm in ((True, "rise_constraint"), (False, "fall_constraint")):
-            rows = [[con[(key, rd, i, j)] for j in range(3)] for i in range(3)]
-            t += "        %s (constraint_template_3x3) {\n          index_1 ( \\\n            \"%s\" \\\n          );\n          index_2 ( \\\n            \"%s\" \\\n          );\n          values ( \\\n%s \\\n          );\n        }\n" % (
+            rows = [[con[(key, rd, i, j)] for j in range(5)] for i in range(5)]
+            t += "        %s (constraint_template_5x5) {\n          index_1 ( \\\n            \"%s\" \\\n          );\n          index_2 ( \\\n            \"%s\" \\\n          );\n          values ( \\\n%s \\\n          );\n        }\n" % (
                 nm, fmt_idx(slews), fmt_idx(slews), tab(rows))
         return t + "      }\n"
     clk_type = "rising_edge"
     seq = ("  ff (IQ, IQN) {\n      clocked_on : \"CLK\";\n      next_state : \"D\";\n    }\n" if A.kind == "dff" else
            "  latch (IQ, IQN) {\n      enable : \"CLK\";\n      data_in : \"D\";\n    }\n")
-    dummy = fmt_idx([1000, 1001, 1002])
-    lib = """library (subvt_sky130_%(c)s_0p40v_27c_%(cell)s) {
+    dummy = fmt_idx([1000, 1001, 1002, 1003, 1004])
+    lib = """library (%(lib)s) {
   delay_model : table_lookup;
   time_unit : "1ns";
   voltage_unit : "1V";
@@ -376,7 +415,7 @@ def main():
   slew_lower_threshold_pct_fall : 30;
   slew_upper_threshold_pct_fall : 70;
   slew_derate_from_library : 1.0;
-  lu_table_template (delay_template_3x3) {
+  lu_table_template (delay_template_5x5) {
     variable_1 : total_output_net_capacitance;
     variable_2 : input_net_transition;
     index_1 ( \\
@@ -386,7 +425,7 @@ def main():
       "%(dm)s" \\
     );
   }
-  lu_table_template (constraint_template_3x3) {
+  lu_table_template (constraint_template_5x5) {
     variable_1 : constrained_pin_transition;
     variable_2 : related_pin_transition;
     index_1 ( \\
@@ -415,7 +454,7 @@ def main():
       direction : input;
       capacitance : %(cD).6f;
 %(dcons)s    }
-""" % dict(c=A.corner, cell=A.cell, T=A.temp, V=A.vdd, dm=dummy, area=area, seq=seq, cC=cC, cD=cD,
+""" % dict(lib=A.libname, c=A.corner, cell=A.cell, T=A.temp, V=A.vdd, dm=dummy, area=area, seq=seq, cC=cC, cD=cD,
            dcons=cons_block(None, "setup") + cons_block(None, "hold"))
     for out, fn in (("q", "IQ"), ("qb", "IQN")):
         lib += "    pin (%s) {\n      direction : output;\n      function : \"%s\";\n" % (out.upper(), fn)

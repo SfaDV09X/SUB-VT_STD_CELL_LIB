@@ -1,0 +1,1082 @@
+<HTML>
+<HEAD><TITLE>XOR2X4</TITLE>
+<SCRIPT>
+function sel(v){var d=document.getElementsByClassName('corner');for(var i=0;i<d.length;i++){d[i].style.display=(d[i].id==v)?'block':'none';}var o=document.getElementById('cs');for(var i=0;i<o.options.length;i++){if(o.options[i].value==v){o.selectedIndex=i;document.getElementById('hdr').innerHTML=o.options[i].getAttribute('data-h');}}try{window.localStorage.setItem('subvt_corner',v);}catch(e){}}
+window.onload=function(){var v=null;try{v=window.localStorage.getItem('subvt_corner');}catch(e){}if(!v||!document.getElementById(v)){v='c_tt_0';}sel(v);};
+</SCRIPT>
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#00FFFF">
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=5 WIDTH=100%>
+<TR align=center><th align=left><H1><font size=+3>XOR2X4</font></H1></th><th align=right>Corner: <SELECT id=cs onchange="sel(this.value)"><OPTION value="c_tt_0" data-h="SUBVT_SKY130 Cell Library: Process tt, Voltage 0.40, Temp 0.00">tt, 0 C</OPTION><OPTION value="c_tt_27" data-h="SUBVT_SKY130 Cell Library: Process tt, Voltage 0.40, Temp 27.00">tt, 27 C</OPTION><OPTION value="c_tt_85" data-h="SUBVT_SKY130 Cell Library: Process tt, Voltage 0.40, Temp 85.00">tt, 85 C</OPTION><OPTION value="c_ss_0" data-h="SUBVT_SKY130 Cell Library: Process ss, Voltage 0.40, Temp 0.00">ss, 0 C</OPTION><OPTION value="c_ss_27" data-h="SUBVT_SKY130 Cell Library: Process ss, Voltage 0.40, Temp 27.00">ss, 27 C</OPTION><OPTION value="c_ss_85" data-h="SUBVT_SKY130 Cell Library: Process ss, Voltage 0.40, Temp 85.00">ss, 85 C</OPTION><OPTION value="c_ff_0" data-h="SUBVT_SKY130 Cell Library: Process ff, Voltage 0.40, Temp 0.00">ff, 0 C</OPTION><OPTION value="c_ff_27" data-h="SUBVT_SKY130 Cell Library: Process ff, Voltage 0.40, Temp 27.00">ff, 27 C</OPTION><OPTION value="c_ff_85" data-h="SUBVT_SKY130 Cell Library: Process ff, Voltage 0.40, Temp 85.00">ff, 85 C</OPTION><OPTION value="c_sf_0" data-h="SUBVT_SKY130 Cell Library: Process sf, Voltage 0.40, Temp 0.00">sf, 0 C</OPTION><OPTION value="c_sf_27" data-h="SUBVT_SKY130 Cell Library: Process sf, Voltage 0.40, Temp 27.00">sf, 27 C</OPTION><OPTION value="c_sf_85" data-h="SUBVT_SKY130 Cell Library: Process sf, Voltage 0.40, Temp 85.00">sf, 85 C</OPTION><OPTION value="c_fs_0" data-h="SUBVT_SKY130 Cell Library: Process fs, Voltage 0.40, Temp 0.00">fs, 0 C</OPTION><OPTION value="c_fs_27" data-h="SUBVT_SKY130 Cell Library: Process fs, Voltage 0.40, Temp 27.00">fs, 27 C</OPTION><OPTION value="c_fs_85" data-h="SUBVT_SKY130 Cell Library: Process fs, Voltage 0.40, Temp 85.00">fs, 85 C</OPTION></SELECT></th></TR>
+<TR align=center><th align=left></th><th align=right><h5><em><A id=hdr></A></em></h5></th></TR>
+</TABLE>
+<HR>
+<BR>
+<FONT SIZE=+2><B>Truth Table</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4>
+<TR valign=middle><TH colspan=2>INPUT</TH><TH colspan=1>OUTPUT</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH><font size=2>0</font></TH><TH><font size=2>0</font></TH><TH><font size=2>0</font></TH></TR>
+<TR><TH><font size=2>0</font></TH><TH><font size=2>1</font></TH><TH><font size=2>1</font></TH></TR>
+<TR><TH><font size=2>1</font></TH><TH><font size=2>0</font></TH><TH><font size=2>1</font></TH></TR>
+<TR><TH><font size=2>1</font></TH><TH><font size=2>1</font></TH><TH><font size=2>0</font></TH></TR>
+</TABLE>
+<DIV class=corner id="c_tt_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01598</TD><TD align=center>0.01644</TD><TD align=center>0.25938</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00196</TD><TD align=center>0.00291</TD><TD align=center>0.00395</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>19424.36998</TD><TD align=center>39392.98839</TD><TD align=center>118398.53000</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>11561.08747</TD><TD align=center>30230.45784</TD><TD align=center>104293.01879</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>19354.04466</TD><TD align=center>39381.60175</TD><TD align=center>118473.32174</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>12869.34956</TD><TD align=center>31574.56306</TD><TD align=center>105397.29824</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>25238.34643</TD><TD align=center>39811.94179</TD><TD align=center>98017.33588</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>7590.74419</TD><TD align=center>21848.33932</TD><TD align=center>79000.03685</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>26469.41621</TD><TD align=center>41171.99740</TD><TD align=center>99465.47112</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>8352.72030</TD><TD align=center>23080.27466</TD><TD align=center>81022.68141</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (2968.38800 ns, 0.01621 pF) / (11873.56000 ns, 0.06484 pF) / (47494.00000 ns, 0.25938 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00374</TD><TD align=center>0.00370</TD><TD align=center>0.00350</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00401</TD><TD align=center>0.00395</TD><TD align=center>0.00374</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00225</TD><TD align=center>0.00219</TD><TD align=center>0.00202</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00227</TD><TD align=center>0.00223</TD><TD align=center>0.00208</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_tt_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01604</TD><TD align=center>0.01654</TD><TD align=center>0.26068</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00271</TD><TD align=center>0.00356</TD><TD align=center>0.00508</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>5252.23924</TD><TD align=center>9832.96516</TD><TD align=center>28045.95123</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>2638.30714</TD><TD align=center>6850.02803</TD><TD align=center>23387.40258</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>5222.30779</TD><TD align=center>9818.90055</TD><TD align=center>28056.81037</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>2931.29398</TD><TD align=center>7135.63610</TD><TD align=center>23636.27665</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>5698.44336</TD><TD align=center>9869.80105</TD><TD align=center>26508.45106</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>2430.69258</TD><TD align=center>6581.83860</TD><TD align=center>23178.89673</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>6122.29834</TD><TD align=center>10308.93743</TD><TD align=center>26982.91978</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>2718.14173</TD><TD align=center>7030.92104</TD><TD align=center>23827.75151</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (766.28400 ns, 0.01629 pF) / (3065.14000 ns, 0.06517 pF) / (12260.56000 ns, 0.26068 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00385</TD><TD align=center>0.00386</TD><TD align=center>0.00385</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00422</TD><TD align=center>0.00422</TD><TD align=center>0.00417</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00236</TD><TD align=center>0.00234</TD><TD align=center>0.00229</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00242</TD><TD align=center>0.00241</TD><TD align=center>0.00237</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_tt_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01642</TD><TD align=center>0.01701</TD><TD align=center>0.26745</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01536</TD><TD align=center>0.05384</TD><TD align=center>0.09389</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>711.34582</TD><TD align=center>1172.38089</TD><TD align=center>3005.69205</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>239.77942</TD><TD align=center>626.76136</TD><TD align=center>2146.14988</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>704.41482</TD><TD align=center>1167.86033</TD><TD align=center>3004.22347</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>265.88574</TD><TD align=center>652.16654</TD><TD align=center>2169.20097</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>603.02244</TD><TD align=center>1216.03343</TD><TD align=center>3483.08819</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>419.03568</TD><TD align=center>1038.67891</TD><TD align=center>3523.18611</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>670.85135</TD><TD align=center>1285.46098</TD><TD align=center>3576.07805</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>479.68948</TD><TD align=center>1125.97737</TD><TD align=center>3628.48269</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (96.96920 ns, 0.01672 pF) / (387.87760 ns, 0.06686 pF) / (1551.50800 ns, 0.26745 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00402</TD><TD align=center>0.00401</TD><TD align=center>0.00406</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00448</TD><TD align=center>0.00449</TD><TD align=center>0.00445</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00250</TD><TD align=center>0.00250</TD><TD align=center>0.00260</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00261</TD><TD align=center>0.00262</TD><TD align=center>0.00271</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ss_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01578</TD><TD align=center>0.01622</TD><TD align=center>0.25601</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00193</TD><TD align=center>0.00279</TD><TD align=center>0.00364</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>46743.80811</TD><TD align=center>97083.30339</TD><TD align=center>295041.64954</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>29533.84943</TD><TD align=center>77497.19025</TD><TD align=center>266634.41373</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>46604.42017</TD><TD align=center>97100.18477</TD><TD align=center>295238.05163</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>33142.10302</TD><TD align=center>80872.20632</TD><TD align=center>269392.10037</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>61211.60794</TD><TD align=center>94772.51623</TD><TD align=center>228397.44292</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>16522.99780</TD><TD align=center>48644.97646</TD><TD align=center>177585.83467</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>63569.30878</TD><TD align=center>97478.09165</TD><TD align=center>231317.06348</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>18112.08492</TD><TD align=center>51193.67111</TD><TD align=center>181944.58512</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (7215.32000 ns, 0.01600 pF) / (28861.32000 ns, 0.06400 pF) / (115445.20000 ns, 0.25601 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00375</TD><TD align=center>0.00362</TD><TD align=center>0.00313</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00396</TD><TD align=center>0.00383</TD><TD align=center>0.00334</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00218</TD><TD align=center>0.00208</TD><TD align=center>0.00171</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00219</TD><TD align=center>0.00210</TD><TD align=center>0.00178</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ss_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01581</TD><TD align=center>0.01629</TD><TD align=center>0.25678</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00211</TD><TD align=center>0.00313</TD><TD align=center>0.00428</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>11135.59698</TD><TD align=center>21235.43959</TD><TD align=center>61287.07715</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>5972.94061</TD><TD align=center>15535.88034</TD><TD align=center>52828.50903</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>11079.81669</TD><TD align=center>21211.25095</TD><TD align=center>61312.34211</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>6672.69448</TD><TD align=center>16156.28202</TD><TD align=center>53370.82328</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>12123.15502</TD><TD align=center>20659.55356</TD><TD align=center>54790.60657</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>4804.13503</TD><TD align=center>13155.26010</TD><TD align=center>46577.45544</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>12927.06318</TD><TD align=center>21501.07881</TD><TD align=center>55680.27623</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>5360.08959</TD><TD align=center>14020.75776</TD><TD align=center>47850.63887</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (1627.92400 ns, 0.01605 pF) / (6511.72000 ns, 0.06419 pF) / (26046.80000 ns, 0.25678 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00390</TD><TD align=center>0.00390</TD><TD align=center>0.00384</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00424</TD><TD align=center>0.00421</TD><TD align=center>0.00410</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00235</TD><TD align=center>0.00232</TD><TD align=center>0.00220</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00239</TD><TD align=center>0.00236</TD><TD align=center>0.00227</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ss_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01610</TD><TD align=center>0.01666</TD><TD align=center>0.26204</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01003</TD><TD align=center>0.02007</TD><TD align=center>0.03213</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>1289.52685</TD><TD align=center>2145.78053</TD><TD align=center>5558.42119</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>469.19967</TD><TD align=center>1220.08830</TD><TD align=center>4143.39085</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>1277.42135</TD><TD align=center>2137.91498</TD><TD align=center>5555.83745</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>521.31561</TD><TD align=center>1266.65403</TD><TD align=center>4186.03850</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>1085.62289</TD><TD align=center>2172.56407</TD><TD align=center>6247.56063</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>731.96069</TD><TD align=center>1819.10230</TD><TD align=center>6165.93735</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>1204.26120</TD><TD align=center>2293.86316</TD><TD align=center>6405.55767</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>837.95686</TD><TD align=center>1972.43281</TD><TD align=center>6353.86472</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (176.63200 ns, 0.01638 pF) / (706.52800 ns, 0.06551 pF) / (2826.11600 ns, 0.26204 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00409</TD><TD align=center>0.00411</TD><TD align=center>0.00422</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00455</TD><TD align=center>0.00457</TD><TD align=center>0.00457</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00252</TD><TD align=center>0.00251</TD><TD align=center>0.00255</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00262</TD><TD align=center>0.00262</TD><TD align=center>0.00266</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ff_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01623</TD><TD align=center>0.01672</TD><TD align=center>0.26358</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00219</TD><TD align=center>0.00313</TD><TD align=center>0.00443</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>8571.21235</TD><TD align=center>17110.44673</TD><TD align=center>50992.15734</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>4834.91688</TD><TD align=center>12619.90585</TD><TD align=center>43610.76163</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>8535.57012</TD><TD align=center>17101.12744</TD><TD align=center>51024.29811</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>5348.29872</TD><TD align=center>13183.33267</TD><TD align=center>44087.72338</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>10940.39639</TD><TD align=center>17623.96930</TD><TD align=center>44346.73634</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>3635.86225</TD><TD align=center>10332.90778</TD><TD align=center>37137.63044</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>11573.12406</TD><TD align=center>18306.34893</TD><TD align=center>45070.81885</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>4010.35298</TD><TD align=center>10942.71417</TD><TD align=center>38114.47428</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (1314.88800 ns, 0.01647 pF) / (5259.56000 ns, 0.06589 pF) / (21038.20000 ns, 0.26358 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00370</TD><TD align=center>0.00368</TD><TD align=center>0.00361</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00401</TD><TD align=center>0.00398</TD><TD align=center>0.00388</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00227</TD><TD align=center>0.00224</TD><TD align=center>0.00215</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00231</TD><TD align=center>0.00229</TD><TD align=center>0.00222</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ff_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01633</TD><TD align=center>0.01686</TD><TD align=center>0.26553</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00351</TD><TD align=center>0.00539</TD><TD align=center>0.00833</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>2567.90138</TD><TD align=center>4739.50031</TD><TD align=center>13392.54297</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>1204.13435</TD><TD align=center>3137.24896</TD><TD align=center>10775.48607</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>2551.25055</TD><TD align=center>4731.74496</TD><TD align=center>13397.32096</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>1331.65995</TD><TD align=center>3272.15053</TD><TD align=center>10894.81825</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>2766.50507</TD><TD align=center>4872.30089</TD><TD align=center>13220.67258</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>1262.43245</TD><TD align=center>3397.47577</TD><TD align=center>11929.99365</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>2991.75205</TD><TD align=center>5104.18629</TD><TD align=center>13482.16712</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>1413.77997</TD><TD align=center>3633.91863</TD><TD align=center>12268.02182</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (376.35600 ns, 0.01660 pF) / (1505.42400 ns, 0.06638 pF) / (6021.68000 ns, 0.26553 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00379</TD><TD align=center>0.00378</TD><TD align=center>0.00378</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00416</TD><TD align=center>0.00417</TD><TD align=center>0.00415</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00236</TD><TD align=center>0.00234</TD><TD align=center>0.00232</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00243</TD><TD align=center>0.00242</TD><TD align=center>0.00241</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ff_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01682</TD><TD align=center>0.01744</TD><TD align=center>0.27409</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.02927</TD><TD align=center>0.18944</TD><TD align=center>0.35524</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>401.20162</TD><TD align=center>664.21556</TD><TD align=center>1700.98695</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>125.44629</TD><TD align=center>333.75266</TD><TD align=center>1159.35214</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>397.25424</TD><TD align=center>661.49477</TD><TD align=center>1699.99906</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>138.38670</TD><TD align=center>347.46602</TD><TD align=center>1171.70007</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>342.13245</TD><TD align=center>704.22236</TD><TD align=center>2000.29990</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>247.38027</TD><TD align=center>617.68323</TD><TD align=center>2108.10404</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>380.99428</TD><TD align=center>744.25001</TD><TD align=center>2056.93733</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>282.88875</TD><TD align=center>668.24860</TD><TD align=center>2167.59815</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (57.63960 ns, 0.01713 pF) / (230.55920 ns, 0.06852 pF) / (922.23600 ns, 0.27409 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00392</TD><TD align=center>0.00387</TD><TD align=center>0.00379</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00437</TD><TD align=center>0.00434</TD><TD align=center>0.00419</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00247</TD><TD align=center>0.00249</TD><TD align=center>0.00273</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00260</TD><TD align=center>0.00263</TD><TD align=center>0.00284</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_sf_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01607</TD><TD align=center>0.01659</TD><TD align=center>0.26127</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00194</TD><TD align=center>0.00287</TD><TD align=center>0.00338</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>93743.12686</TD><TD align=center>220683.00919</TD><TD align=center>665948.87545</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>84393.31472</TD><TD align=center>228364.83257</TD><TD align=center>791809.20739</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>95530.00989</TD><TD align=center>223522.63545</TD><TD align=center>669326.66127</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>98341.86487</TD><TD align=center>239783.94485</TD><TD align=center>802116.46214</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>146444.11097</TD><TD align=center>218226.22280</TD><TD align=center>469026.97845</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>15141.04367</TD><TD align=center>51609.61513</TD><TD align=center>193418.63780</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>148754.63729</TD><TD align=center>220540.32256</TD><TD align=center>471928.21544</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>16189.18904</TD><TD align=center>54919.95113</TD><TD align=center>202982.53896</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (18731.00000 ns, 0.01633 pF) / (74924.00000 ns, 0.06532 pF) / (299696.40000 ns, 0.26127 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00337</TD><TD align=center>0.00308</TD><TD align=center>0.00203</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00365</TD><TD align=center>0.00336</TD><TD align=center>0.00233</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00205</TD><TD align=center>0.00186</TD><TD align=center>0.00123</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00211</TD><TD align=center>0.00196</TD><TD align=center>0.00146</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_sf_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01612</TD><TD align=center>0.01668</TD><TD align=center>0.26239</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00210</TD><TD align=center>0.00342</TD><TD align=center>0.00391</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>14847.62063</TD><TD align=center>35043.74302</TD><TD align=center>105813.98910</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>13457.90086</TD><TD align=center>35043.11966</TD><TD align=center>118802.31431</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>15042.13716</TD><TD align=center>35448.22752</TD><TD align=center>106333.72876</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>15593.54548</TD><TD align=center>36767.70058</TD><TD align=center>120480.39713</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>21986.93938</TD><TD align=center>32544.66178</TD><TD align=center>69414.96101</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>2797.49823</TD><TD align=center>9581.87474</TD><TD align=center>36027.51344</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>22766.66380</TD><TD align=center>33242.49664</TD><TD align=center>70255.63302</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>2999.07713</TD><TD align=center>10113.80131</TD><TD align=center>37460.58740</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (2762.74000 ns, 0.01640 pF) / (11050.96000 ns, 0.06560 pF) / (44204.00000 ns, 0.26239 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00374</TD><TD align=center>0.00367</TD><TD align=center>0.00348</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00404</TD><TD align=center>0.00398</TD><TD align=center>0.00382</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00234</TD><TD align=center>0.00230</TD><TD align=center>0.00218</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00242</TD><TD align=center>0.00238</TD><TD align=center>0.00229</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_sf_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01641</TD><TD align=center>0.01708</TD><TD align=center>0.26790</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01558</TD><TD align=center>0.01994</TD><TD align=center>0.02429</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>909.33421</TD><TD align=center>2014.48796</TD><TD align=center>6010.89441</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>731.77744</TD><TD align=center>1810.06128</TD><TD align=center>5967.26979</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>910.25397</TD><TD align=center>2030.38134</TD><TD align=center>6036.52812</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>846.79874</TD><TD align=center>1909.30969</TD><TD align=center>6065.12710</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>1155.00779</TD><TD align=center>1731.07290</TD><TD align=center>3878.36135</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>229.13090</TD><TD align=center>741.47654</TD><TD align=center>2768.50753</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>1220.84893</TD><TD align=center>1800.02694</TD><TD align=center>3963.35931</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>255.17523</TD><TD align=center>776.17416</TD><TD align=center>2825.42883</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (150.69280 ns, 0.01674 pF) / (602.77200 ns, 0.06698 pF) / (2411.08400 ns, 0.26790 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00405</TD><TD align=center>0.00406</TD><TD align=center>0.00404</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00441</TD><TD align=center>0.00440</TD><TD align=center>0.00443</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00256</TD><TD align=center>0.00255</TD><TD align=center>0.00256</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00268</TD><TD align=center>0.00268</TD><TD align=center>0.00269</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_fs_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01598</TD><TD align=center>0.01641</TD><TD align=center>0.25913</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00273</TD><TD align=center>0.00335</TD><TD align=center>0.00516</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>34876.18460</TD><TD align=center>56163.83232</TD><TD align=center>132291.29897</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>6125.58967</TD><TD align=center>18657.41046</TD><TD align=center>66621.38863</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>34294.83851</TD><TD align=center>55505.88778</TD><TD align=center>131627.83552</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>6324.27052</TD><TD align=center>19097.35338</TD><TD align=center>67122.99681</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>27008.34808</TD><TD align=center>65819.05948</TD><TD align=center>199564.25903</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>28572.55049</TD><TD align=center>69484.69952</TD><TD align=center>234322.96459</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>28809.73435</TD><TD align=center>68032.33616</TD><TD align=center>202783.29564</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>31459.38750</TD><TD align=center>73837.85383</TD><TD align=center>240253.23093</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (5335.56000 ns, 0.01620 pF) / (21342.28000 ns, 0.06478 pF) / (85369.20000 ns, 0.25913 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00387</TD><TD align=center>0.00382</TD><TD align=center>0.00357</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00412</TD><TD align=center>0.00404</TD><TD align=center>0.00379</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00217</TD><TD align=center>0.00207</TD><TD align=center>0.00179</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00221</TD><TD align=center>0.00213</TD><TD align=center>0.00186</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_fs_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01609</TD><TD align=center>0.01655</TD><TD align=center>0.26116</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.00336</TD><TD align=center>0.00872</TD><TD align=center>0.01526</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>9893.40678</TD><TD align=center>16419.21118</TD><TD align=center>39517.83324</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>1670.34878</TD><TD align=center>4732.34476</TD><TD align=center>16246.16990</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>9741.98286</TD><TD align=center>16241.88274</TD><TD align=center>39322.89766</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>1731.94068</TD><TD align=center>4884.11837</TD><TD align=center>16413.80807</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>7987.90638</TD><TD align=center>19129.27016</TD><TD align=center>56144.56471</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>8798.47921</TD><TD align=center>21214.37712</TD><TD align=center>71406.70865</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>8697.25508</TD><TD align=center>20015.40923</TD><TD align=center>57422.15905</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>9849.39896</TD><TD align=center>22725.90792</TD><TD align=center>73311.04052</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (1650.03600 ns, 0.01632 pF) / (6600.16000 ns, 0.06529 pF) / (26400.56000 ns, 0.26116 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00395</TD><TD align=center>0.00394</TD><TD align=center>0.00384</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00429</TD><TD align=center>0.00425</TD><TD align=center>0.00409</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00229</TD><TD align=center>0.00228</TD><TD align=center>0.00243</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00236</TD><TD align=center>0.00238</TD><TD align=center>0.00250</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_fs_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>61.93440</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=1>Max Cap(pf)</TH></TR>
+<TR><TH>A</TH><TH>B</TH><TH>Y</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.01661</TD><TD align=center>0.01715</TD><TD align=center>0.27010</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>XOR2X4</TH><TD align=center>0.04366</TD><TD align=center>0.37106</TD><TD align=center>0.71002</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (RR)</font></TH><TD align=center>1249.33746</TD><TD align=center>2354.59001</TD><TD align=center>6311.23878</TD></TR>
+<TR><TH><font>A->Y (FR)</font></TH><TD align=center>169.23966</TD><TD align=center>307.83404</TD><TD align=center>754.49210</TD></TR>
+<TR><TH><font>B->Y (RR)</font></TH><TD align=center>1236.81699</TD><TD align=center>2339.13167</TD><TD align=center>6289.95482</TD></TR>
+<TR><TH><font>B->Y (FR)</font></TH><TD align=center>182.53296</TD><TD align=center>340.59356</TD><TD align=center>785.70807</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=4>XOR2X4</TH><TH><font>A->Y (FF)</font></TH><TD align=center>1205.16429</TD><TD align=center>2691.13842</TD><TD align=center>7202.93229</TD></TR>
+<TR><TH><font>A->Y (RF)</font></TH><TD align=center>1445.84377</TD><TD align=center>3517.63251</TD><TD align=center>11925.97595</TD></TR>
+<TR><TH><font>B->Y (FF)</font></TH><TD align=center>1350.99236</TD><TD align=center>2875.64309</TD><TD align=center>7456.45125</TD></TR>
+<TR><TH><font>B->Y (RF)</font></TH><TD align=center>1645.68113</TD><TD align=center>3751.48507</TD><TD align=center>12127.98266</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (291.50840 ns, 0.01688 pF) / (1166.03200 ns, 0.06753 pF) / (4664.12000 ns, 0.27010 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00384</TD><TD align=center>0.00361</TD><TD align=center>0.00291</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00429</TD><TD align=center>0.00405</TD><TD align=center>0.00319</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>XOR2X4</TH><TH><font>A</font></TH><TD align=center>0.00269</TD><TD align=center>0.00329</TD><TD align=center>0.00602</TD></TR>
+<TR><TH><font>B</font></TH><TD align=center>0.00285</TD><TD align=center>0.00339</TD><TD align=center>0.00593</TD></TR>
+</TABLE>
+</DIV>
+<BR>
+<DIV class=NOPRINT>
+<HR>
+<TABLE BORDER=0 WIDTH=100%>
+<TR><TD ALIGN=LEFT><TABLE BORDER=5><TR><TD><em><A hREF="OR2X4.html">Prev (OR2X4)</A></em></TD></TR></TABLE></TD><TD ALIGN=RIGHT><TABLE BORDER=5><TR><TD><em><A hREF="XNOR2X4.html">Next (XNOR2X4)</A></em></TD></TR></TABLE></TD></TR>
+</TABLE>
+</DIV>
+</BODY>
+</HTML>

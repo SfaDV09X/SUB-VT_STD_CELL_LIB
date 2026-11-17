@@ -1,0 +1,2221 @@
+<HTML>
+<HEAD><TITLE>DLX4</TITLE>
+<SCRIPT>
+function sel(v){var d=document.getElementsByClassName('corner');for(var i=0;i<d.length;i++){d[i].style.display=(d[i].id==v)?'block':'none';}var o=document.getElementById('cs');for(var i=0;i<o.options.length;i++){if(o.options[i].value==v){o.selectedIndex=i;document.getElementById('hdr').innerHTML=o.options[i].getAttribute('data-h');}}try{window.localStorage.setItem('subvt_corner',v);}catch(e){}}
+window.onload=function(){var v=null;try{v=window.localStorage.getItem('subvt_corner');}catch(e){}if(!v||!document.getElementById(v)){v='c_tt_0';}sel(v);};
+</SCRIPT>
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#00FFFF">
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=5 WIDTH=100%>
+<TR align=center><th align=left><H1><font size=+3>DLX4</font></H1></th><th align=right>Corner: <SELECT id=cs onchange="sel(this.value)"><OPTION value="c_tt_0" data-h="SUBVT_SKY130 Cell Library: Process tt, Voltage 0.40, Temp 0.00">tt, 0 C</OPTION><OPTION value="c_tt_27" data-h="SUBVT_SKY130 Cell Library: Process tt, Voltage 0.40, Temp 27.00">tt, 27 C</OPTION><OPTION value="c_tt_85" data-h="SUBVT_SKY130 Cell Library: Process tt, Voltage 0.40, Temp 85.00">tt, 85 C</OPTION><OPTION value="c_ss_0" data-h="SUBVT_SKY130 Cell Library: Process ss, Voltage 0.40, Temp 0.00">ss, 0 C</OPTION><OPTION value="c_ss_27" data-h="SUBVT_SKY130 Cell Library: Process ss, Voltage 0.40, Temp 27.00">ss, 27 C</OPTION><OPTION value="c_ss_85" data-h="SUBVT_SKY130 Cell Library: Process ss, Voltage 0.40, Temp 85.00">ss, 85 C</OPTION><OPTION value="c_ff_0" data-h="SUBVT_SKY130 Cell Library: Process ff, Voltage 0.40, Temp 0.00">ff, 0 C</OPTION><OPTION value="c_ff_27" data-h="SUBVT_SKY130 Cell Library: Process ff, Voltage 0.40, Temp 27.00">ff, 27 C</OPTION><OPTION value="c_ff_85" data-h="SUBVT_SKY130 Cell Library: Process ff, Voltage 0.40, Temp 85.00">ff, 85 C</OPTION><OPTION value="c_sf_0" data-h="SUBVT_SKY130 Cell Library: Process sf, Voltage 0.40, Temp 0.00">sf, 0 C</OPTION><OPTION value="c_sf_27" data-h="SUBVT_SKY130 Cell Library: Process sf, Voltage 0.40, Temp 27.00">sf, 27 C</OPTION><OPTION value="c_sf_85" data-h="SUBVT_SKY130 Cell Library: Process sf, Voltage 0.40, Temp 85.00">sf, 85 C</OPTION><OPTION value="c_fs_0" data-h="SUBVT_SKY130 Cell Library: Process fs, Voltage 0.40, Temp 0.00">fs, 0 C</OPTION><OPTION value="c_fs_27" data-h="SUBVT_SKY130 Cell Library: Process fs, Voltage 0.40, Temp 27.00">fs, 27 C</OPTION><OPTION value="c_fs_85" data-h="SUBVT_SKY130 Cell Library: Process fs, Voltage 0.40, Temp 85.00">fs, 85 C</OPTION></SELECT></th></TR>
+<TR align=center><th align=left></th><th align=right><h5><em><A id=hdr></A></em></h5></th></TR>
+</TABLE>
+<HR>
+<BR>
+<FONT SIZE=+2><B>Truth Table</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4>
+<TR valign=middle><TH colspan=2>INPUT</TH><TH colspan=2>OUTPUT</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH><font size=2>1</font></TH><TH><font size=2>0</font></TH><TH><font size=2>0</font></TH><TH><font size=2>1</font></TH></TR>
+<TR><TH><font size=2>1</font></TH><TH><font size=2>1</font></TH><TH><font size=2>1</font></TH><TH><font size=2>0</font></TH></TR>
+<TR><TH><font size=2>0</font></TH><TH><font size=2>x</font></TH><TH><font size=2>Q</font></TH><TH><font size=2>QB</font></TH></TR>
+</TABLE>
+<DIV class=corner id="c_tt_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01043</TD><TD align=center>0.00472</TD><TD align=center>0.12116</TD><TD align=center>0.12116</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00167</TD><TD align=center>0.00235</TD><TD align=center>0.00321</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>19162.89053</TD><TD align=center>39087.79595</TD><TD align=center>115867.43739</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>16563.49006</TD><TD align=center>36152.03637</TD><TD align=center>115245.13203</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>24465.14977</TD><TD align=center>49006.16448</TD><TD align=center>146942.31687</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>23899.81226</TD><TD align=center>48072.94316</TD><TD align=center>146412.77248</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>15095.86704</TD><TD align=center>28744.41211</TD><TD align=center>83130.46596</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>14530.60904</TD><TD align=center>27810.94800</TD><TD align=center>82600.67392</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>10789.16953</TD><TD align=center>20375.85720</TD><TD align=center>55874.82295</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>8189.85005</TD><TD align=center>17440.68711</TD><TD align=center>55264.13371</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (2037.69275 ns, 0.00757 pF) / (8150.77098 ns, 0.03029 pF) / (32603.08392 ns, 0.12116 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00112</TD><TD align=center>0.00114</TD><TD align=center>0.00111</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00089</TD><TD align=center>0.00087</TD><TD align=center>0.00076</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00240</TD><TD align=center>0.00241</TD><TD align=center>0.00241</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00266</TD><TD align=center>0.00266</TD><TD align=center>0.00269</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00003</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>0.00000</TD><TD align=center>0.00001</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00003</TD><TD align=center>-0.00005</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00008</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00019</TD><TD align=center>-0.00021</TD><TD align=center>-0.00024</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00141</TD><TD align=center>0.00139</TD><TD align=center>0.00137</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00026</TD><TD align=center>-0.00026</TD><TD align=center>-0.00026</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00025</TD><TD align=center>0.00025</TD><TD align=center>0.00025</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>3511.79417</TD><TD align=center>5611.23633</TD><TD align=center>18207.88933</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-7557.99180</TD><TD align=center>-20154.64479</TD><TD align=center>-67487.52270</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>11069.78596</TD><TD align=center>24086.32739</TD><TD align=center>76572.38153</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-1832.24043</TD><TD align=center>-3740.82422</TD><TD align=center>-14047.17667</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_tt_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01046</TD><TD align=center>0.00515</TD><TD align=center>0.12485</TD><TD align=center>0.12485</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00192</TD><TD align=center>0.00258</TD><TD align=center>0.00336</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>5164.77970</TD><TD align=center>10391.69896</TD><TD align=center>30806.85216</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>4286.12218</TD><TD align=center>9413.22002</TD><TD align=center>30185.61928</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>6184.60544</TD><TD align=center>11867.32545</TD><TD align=center>34499.23165</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>5665.11612</TD><TD align=center>11208.96896</TD><TD align=center>33864.09991</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>3945.37046</TD><TD align=center>6952.53748</TD><TD align=center>18891.82980</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>3425.92740</TD><TD align=center>6294.25437</TD><TD align=center>18256.85139</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>3110.38753</TD><TD align=center>5803.10010</TD><TD align=center>16095.72301</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>2231.76413</TD><TD align=center>4824.86501</TD><TD align=center>15476.62864</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (499.41667 ns, 0.00780 pF) / (1997.66666 ns, 0.03121 pF) / (7990.66665 ns, 0.12485 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00113</TD><TD align=center>0.00114</TD><TD align=center>0.00114</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00091</TD><TD align=center>0.00090</TD><TD align=center>0.00087</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00244</TD><TD align=center>0.00245</TD><TD align=center>0.00245</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00267</TD><TD align=center>0.00268</TD><TD align=center>0.00269</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00004</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00003</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00013</TD><TD align=center>-0.00015</TD><TD align=center>-0.00016</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00149</TD><TD align=center>0.00148</TD><TD align=center>0.00148</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00026</TD><TD align=center>-0.00026</TD><TD align=center>-0.00026</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00026</TD><TD align=center>0.00026</TD><TD align=center>0.00026</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>821.99963</TD><TD align=center>1491.77710</TD><TD align=center>4729.03488</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-1603.40668</TD><TD align=center>-4647.84973</TD><TD align=center>-14390.06751</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>2831.33204</TD><TD align=center>5845.33067</TD><TD align=center>18571.10264</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-487.11089</TD><TD align=center>-994.51806</TD><TD align=center>-3734.51681</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_tt_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01096</TD><TD align=center>0.01211</TD><TD align=center>0.18454</TD><TD align=center>0.18454</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01398</TD><TD align=center>0.02174</TD><TD align=center>0.04251</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>798.89320</TD><TD align=center>1774.52987</TD><TD align=center>5546.82640</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>641.62395</TD><TD align=center>1599.60233</TD><TD align=center>5487.12972</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>791.93219</TD><TD align=center>1664.95033</TD><TD align=center>5120.78392</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>684.42377</TD><TD align=center>1530.46036</TD><TD align=center>4924.54391</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>478.26529</TD><TD align=center>882.02218</TD><TD align=center>2459.00145</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>370.68754</TD><TD align=center>747.68161</TD><TD align=center>2263.30527</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>521.70252</TD><TD align=center>1085.85206</TD><TD align=center>3214.24200</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>364.46553</TD><TD align=center>911.01757</TD><TD align=center>3154.52045</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (84.15019 ns, 0.01153 pF) / (336.60076 ns, 0.04614 pF) / (1346.40306 ns, 0.18454 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00115</TD><TD align=center>0.00116</TD><TD align=center>0.00116</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00091</TD><TD align=center>0.00090</TD><TD align=center>0.00092</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00250</TD><TD align=center>0.00251</TD><TD align=center>0.00246</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00276</TD><TD align=center>0.00278</TD><TD align=center>0.00286</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00003</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00007</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00013</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00009</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00017</TD><TD align=center>-0.00018</TD><TD align=center>-0.00011</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00156</TD><TD align=center>0.00157</TD><TD align=center>0.00166</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00026</TD><TD align=center>-0.00026</TD><TD align=center>-0.00026</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00025</TD><TD align=center>0.00026</TD><TD align=center>0.00027</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>121.30575</TD><TD align=center>254.74208</TD><TD align=center>960.04839</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-187.15745</TD><TD align=center>-308.46320</TD><TD align=center>-308.46320</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>350.05374</TD><TD align=center>845.67439</TD><TD align=center>2237.22467</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-65.85169</TD><TD align=center>-187.15745</TD><TD align=center>-759.02742</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ss_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01032</TD><TD align=center>0.00478</TD><TD align=center>0.12080</TD><TD align=center>0.12080</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00166</TD><TD align=center>0.00234</TD><TD align=center>0.00320</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>45020.45909</TD><TD align=center>91747.72746</TD><TD align=center>270191.98010</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>39524.87829</TD><TD align=center>85750.82217</TD><TD align=center>272061.63888</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>57763.53698</TD><TD align=center>117251.04807</TD><TD align=center>354560.04589</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>58862.64923</TD><TD align=center>117649.39168</TD><TD align=center>356756.61040</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>35318.12163</TD><TD align=center>68960.75120</TD><TD align=center>202916.32622</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>36415.59142</TD><TD align=center>69357.00725</TD><TD align=center>205111.28720</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>24826.34261</TD><TD align=center>46737.23201</TD><TD align=center>126095.32662</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>19331.07047</TD><TD align=center>40742.05006</TD><TD align=center>127991.73890</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (4915.74743 ns, 0.00755 pF) / (19662.98972 ns, 0.03020 pF) / (78651.95888 ns, 0.12080 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00112</TD><TD align=center>0.00113</TD><TD align=center>0.00107</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00085</TD><TD align=center>0.00079</TD><TD align=center>0.00056</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00237</TD><TD align=center>0.00241</TD><TD align=center>0.00241</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00270</TD><TD align=center>0.00272</TD><TD align=center>0.00278</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00003</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00004</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00004</TD><TD align=center>-0.00012</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00005</TD><TD align=center>-0.00016</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00019</TD><TD align=center>-0.00022</TD><TD align=center>-0.00027</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00138</TD><TD align=center>0.00135</TD><TD align=center>0.00131</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00025</TD><TD align=center>-0.00027</TD><TD align=center>-0.00027</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00027</TD><TD align=center>0.00027</TD><TD align=center>0.00027</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>9228.53118</TD><TD align=center>14156.38763</TD><TD align=center>48651.38282</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-20428.20494</TD><TD align=center>-49995.34367</TD><TD align=center>-167367.92469</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>26968.81442</TD><TD align=center>58507.09573</TD><TD align=center>185645.79227</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-5196.64862</TD><TD align=center>-9676.51813</TD><TD align=center>-36555.73516</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ss_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01032</TD><TD align=center>0.00501</TD><TD align=center>0.12266</TD><TD align=center>0.12266</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00182</TD><TD align=center>0.00245</TD><TD align=center>0.00326</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>10695.41177</TD><TD align=center>21367.35729</TD><TD align=center>62932.71719</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>8969.62822</TD><TD align=center>19502.98355</TD><TD align=center>62004.25414</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>13500.00685</TD><TD align=center>25365.80279</TD><TD align=center>72668.50365</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>12475.18594</TD><TD align=center>24058.31568</TD><TD align=center>71531.23963</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>8811.42125</TD><TD align=center>15190.37874</TD><TD align=center>40559.12787</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>7786.74263</TD><TD align=center>13883.05245</TD><TD align=center>39422.01757</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>6346.50505</TD><TD align=center>11726.64819</TD><TD align=center>32153.78295</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>4620.72261</TD><TD align=center>9862.66489</TD><TD align=center>31229.37010</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (1036.08194 ns, 0.00767 pF) / (4144.32777 ns, 0.03067 pF) / (16577.31106 ns, 0.12266 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00114</TD><TD align=center>0.00115</TD><TD align=center>0.00114</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00090</TD><TD align=center>0.00089</TD><TD align=center>0.00084</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00242</TD><TD align=center>0.00247</TD><TD align=center>0.00246</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00270</TD><TD align=center>0.00271</TD><TD align=center>0.00273</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00000</TD><TD align=center>0.00000</TD><TD align=center>-0.00000</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00005</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00006</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00012</TD><TD align=center>-0.00014</TD><TD align=center>-0.00015</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00148</TD><TD align=center>0.00146</TD><TD align=center>0.00146</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00027</TD><TD align=center>-0.00027</TD><TD align=center>-0.00027</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00027</TD><TD align=center>0.00027</TD><TD align=center>0.00027</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>1690.19135</TD><TD align=center>3067.38430</TD><TD align=center>9953.34905</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-4131.57885</TD><TD align=center>-10182.88121</TD><TD align=center>-32718.76585</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>6510.36667</TD><TD align=center>12707.73495</TD><TD align=center>39103.93316</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-1001.59487</TD><TD align=center>-2253.58846</TD><TD align=center>-7887.55962</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ss_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01057</TD><TD align=center>0.00619</TD><TD align=center>0.13404</TD><TD align=center>0.13404</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00737</TD><TD align=center>0.01012</TD><TD align=center>0.01707</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>1285.57519</TD><TD align=center>2574.74071</TD><TD align=center>7626.68016</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>1011.52722</TD><TD align=center>2276.83225</TD><TD align=center>7410.51009</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>1378.50854</TD><TD align=center>2538.14976</TD><TD align=center>7149.65921</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>1176.39928</TD><TD align=center>2289.40144</TD><TD align=center>6853.54188</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>890.47281</TD><TD align=center>1446.78403</TD><TD align=center>3631.57598</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>688.33408</TD><TD align=center>1198.12865</TD><TD align=center>3336.00356</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>845.16470</TD><TD align=center>1585.81797</TD><TD align=center>4446.94167</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>571.11379</TD><TD align=center>1288.02897</TD><TD align=center>4230.99440</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (116.17588 ns, 0.00838 pF) / (464.70352 ns, 0.03351 pF) / (1858.81407 ns, 0.13404 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00115</TD><TD align=center>0.00117</TD><TD align=center>0.00117</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00091</TD><TD align=center>0.00090</TD><TD align=center>0.00090</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00251</TD><TD align=center>0.00253</TD><TD align=center>0.00251</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00278</TD><TD align=center>0.00279</TD><TD align=center>0.00285</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00005</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00001</TD><TD align=center>0.00005</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00001</TD><TD align=center>0.00004</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00014</TD><TD align=center>-0.00016</TD><TD align=center>-0.00012</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00155</TD><TD align=center>0.00155</TD><TD align=center>0.00159</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00028</TD><TD align=center>-0.00028</TD><TD align=center>-0.00027</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00027</TD><TD align=center>0.00027</TD><TD align=center>0.00028</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>286.64106</TD><TD align=center>369.61610</TD><TD align=center>1309.99991</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-346.98654</TD><TD align=center>-900.15349</TD><TD align=center>-1101.30511</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>618.54123</TD><TD align=center>1309.99991</TD><TD align=center>3937.54293</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-95.54702</TD><TD align=center>-271.55469</TD><TD align=center>-1051.01721</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ff_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01057</TD><TD align=center>0.00477</TD><TD align=center>0.12271</TD><TD align=center>0.12271</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00172</TD><TD align=center>0.00239</TD><TD align=center>0.00323</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>8564.05951</TD><TD align=center>17515.35965</TD><TD align=center>52235.64237</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>7301.93351</TD><TD align=center>16044.09974</TD><TD align=center>51506.84061</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>10525.81418</TD><TD align=center>21255.03172</TD><TD align=center>64078.28655</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>10011.08838</TD><TD align=center>20567.64504</TD><TD align=center>63453.60768</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>6411.53075</TD><TD align=center>12271.27273</TD><TD align=center>35631.91402</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>5896.85434</TD><TD align=center>11583.83755</TD><TD align=center>35007.20587</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>4932.86985</TD><TD align=center>9350.24949</TD><TD align=center>25966.28081</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>3670.81097</TD><TD align=center>7879.32703</TD><TD align=center>25242.95877</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (897.12206 ns, 0.00767 pF) / (3588.48823 ns, 0.03068 pF) / (14353.95291 ns, 0.12271 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00112</TD><TD align=center>0.00114</TD><TD align=center>0.00112</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00090</TD><TD align=center>0.00089</TD><TD align=center>0.00084</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00239</TD><TD align=center>0.00240</TD><TD align=center>0.00239</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00259</TD><TD align=center>0.00262</TD><TD align=center>0.00264</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00003</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00000</TD><TD align=center>-0.00000</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00005</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00004</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00017</TD><TD align=center>-0.00019</TD><TD align=center>-0.00021</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00145</TD><TD align=center>0.00144</TD><TD align=center>0.00143</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00024</TD><TD align=center>-0.00025</TD><TD align=center>-0.00025</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00023</TD><TD align=center>0.00023</TD><TD align=center>0.00024</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>1385.49232</TD><TD align=center>2514.41198</TD><TD align=center>7970.85703</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-2702.56526</TD><TD align=center>-8347.16358</TD><TD align=center>-27675.63663</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>4584.09803</TD><TD align=center>10228.69636</TD><TD align=center>33371.54948</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-821.03248</TD><TD align=center>-1847.32309</TD><TD align=center>-6294.58237</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ff_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01065</TD><TD align=center>0.00554</TD><TD align=center>0.12953</TD><TD align=center>0.12953</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00220</TD><TD align=center>0.00301</TD><TD align=center>0.00397</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>2576.85691</TD><TD align=center>5255.78205</TD><TD align=center>15726.67493</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>2119.41214</TD><TD align=center>4732.16419</TD><TD align=center>15367.16928</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>2873.35068</TD><TD align=center>5728.81072</TD><TD align=center>17107.03731</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>2634.90484</TD><TD align=center>5422.19429</TD><TD align=center>16743.95708</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>1762.95388</TD><TD align=center>3246.29156</TD><TD align=center>9143.29475</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>1524.56068</TD><TD align=center>2939.70486</TD><TD align=center>8780.41124</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>1574.01119</TD><TD align=center>2985.19790</TD><TD align=center>8392.60077</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>1116.57314</TD><TD align=center>2461.73607</TD><TD align=center>8034.14675</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (252.31135 ns, 0.00810 pF) / (1009.24540 ns, 0.03238 pF) / (4036.98160 ns, 0.12953 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00112</TD><TD align=center>0.00113</TD><TD align=center>0.00113</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00091</TD><TD align=center>0.00090</TD><TD align=center>0.00088</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00242</TD><TD align=center>0.00243</TD><TD align=center>0.00242</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00264</TD><TD align=center>0.00265</TD><TD align=center>0.00267</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00001</TD><TD align=center>-0.00001</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00015</TD><TD align=center>-0.00017</TD><TD align=center>-0.00017</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00150</TD><TD align=center>0.00149</TD><TD align=center>0.00150</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00025</TD><TD align=center>-0.00025</TD><TD align=center>-0.00025</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00024</TD><TD align=center>0.00024</TD><TD align=center>0.00024</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>415.74057</TD><TD align=center>754.49215</TD><TD align=center>2448.25004</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-708.29875</TD><TD align=center>-2145.42666</TD><TD align=center>-4249.79252</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>1262.61952</TD><TD align=center>2843.46021</TD><TD align=center>9110.36440</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-246.36478</TD><TD align=center>-554.32076</TD><TD align=center>-1940.12267</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_ff_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01155</TD><TD align=center>0.01448</TD><TD align=center>0.20826</TD><TD align=center>0.20826</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.03539</TD><TD align=center>0.06039</TD><TD align=center>0.12801</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>473.22889</TD><TD align=center>1093.23234</TD><TD align=center>3478.19080</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>381.70957</TD><TD align=center>990.86652</TD><TD align=center>3463.06788</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>434.32432</TD><TD align=center>986.86137</TD><TD align=center>3151.68652</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>382.03661</TD><TD align=center>915.41044</TD><TD align=center>3031.62787</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>245.99794</TD><TD align=center>496.33448</TD><TD align=center>1453.12766</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>193.70173</TD><TD align=center>425.05908</TD><TD align=center>1333.55956</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>311.90339</TD><TD align=center>677.44119</TD><TD align=center>2045.84891</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>220.40351</TD><TD align=center>575.13184</TD><TD align=center>2030.55608</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (53.26311 ns, 0.01302 pF) / (213.05244 ns, 0.05207 pF) / (852.20975 ns, 0.20826 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00113</TD><TD align=center>0.00116</TD><TD align=center>0.00116</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00090</TD><TD align=center>0.00089</TD><TD align=center>0.00096</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00248</TD><TD align=center>0.00247</TD><TD align=center>0.00237</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00275</TD><TD align=center>0.00276</TD><TD align=center>0.00289</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00003</TD><TD align=center>-0.00007</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00002</TD><TD align=center>-0.00012</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00000</TD><TD align=center>0.00004</TD><TD align=center>0.00025</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00000</TD><TD align=center>0.00003</TD><TD align=center>0.00012</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00020</TD><TD align=center>-0.00020</TD><TD align=center>-0.00009</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00159</TD><TD align=center>0.00160</TD><TD align=center>0.00174</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00025</TD><TD align=center>-0.00025</TD><TD align=center>-0.00024</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00023</TD><TD align=center>0.00024</TD><TD align=center>0.00027</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>74.73268</TD><TD align=center>168.68233</TD><TD align=center>638.43061</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-83.27356</TD><TD align=center>-61.92136</TD><TD align=center>-51.24527</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>192.16975</TD><TD align=center>509.24983</TD><TD align=center>614.94319</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-40.56917</TD><TD align=center>-125.97795</TD><TD align=center>-531.66964</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_sf_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01060</TD><TD align=center>0.00495</TD><TD align=center>0.12441</TD><TD align=center>0.12441</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00168</TD><TD align=center>0.00236</TD><TD align=center>0.00322</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>87998.15401</TD><TD align=center>184294.33409</TD><TD align=center>506290.36391</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>85948.43122</TD><TD align=center>205899.72444</TD><TD align=center>671001.68352</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>109061.50491</TD><TD align=center>248177.28108</TD><TD align=center>757213.01536</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>111698.69271</TD><TD align=center>269262.67627</TD><TD align=center>897088.18939</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>74634.27080</TD><TD align=center>173079.35348</TD><TD align=center>519466.32720</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>77265.38433</TD><TD align=center>194169.67265</TD><TD align=center>659380.66716</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>34341.15167</TD><TD align=center>60426.81799</TD><TD align=center>102512.10558</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>32290.03158</TD><TD align=center>81957.69356</TD><TD align=center>259589.72920</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (15424.07278 ns, 0.00777 pF) / (61696.29114 ns, 0.03110 pF) / (246785.16455 ns, 0.12441 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00101</TD><TD align=center>0.00088</TD><TD align=center>0.00073</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00066</TD><TD align=center>0.00045</TD><TD align=center>-0.00038</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00242</TD><TD align=center>0.00242</TD><TD align=center>0.00242</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00272</TD><TD align=center>0.00279</TD><TD align=center>0.00294</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD><TD align=center>-0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00002</TD><TD align=center>0.00005</TD><TD align=center>0.00024</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>0.00006</TD><TD align=center>-0.00001</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00001</TD><TD align=center>-0.00000</TD><TD align=center>-0.00013</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00020</TD><TD align=center>-0.00026</TD><TD align=center>-0.00027</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00132</TD><TD align=center>0.00130</TD><TD align=center>0.00129</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00027</TD><TD align=center>-0.00028</TD><TD align=center>-0.00028</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00028</TD><TD align=center>0.00028</TD><TD align=center>0.00028</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>30415.76412</TD><TD align=center>36354.93700</TD><TD align=center>230367.91761</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-30235.78919</TD><TD align=center>-105825.26215</TD><TD align=center>-348791.42526</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>34375.21271</TD><TD align=center>115543.90868</TD><TD align=center>394685.03385</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-6839.04755</TD><TD align=center>-19437.29305</TD><TD align=center>-62631.27760</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_sf_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01064</TD><TD align=center>0.00560</TD><TD align=center>0.12995</TD><TD align=center>0.12995</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00190</TD><TD align=center>0.00258</TD><TD align=center>0.00334</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>13589.53759</TD><TD align=center>28558.19518</TD><TD align=center>78996.39081</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>12939.16967</TD><TD align=center>30016.28957</TD><TD align=center>97804.44317</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>16911.55677</TD><TD align=center>39145.76695</TD><TD align=center>120549.49661</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>16979.00797</TD><TD align=center>40704.49522</TD><TD align=center>134998.33048</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>10901.99256</TD><TD align=center>25849.40203</TD><TD align=center>78119.53929</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>10968.03593</TD><TD align=center>27408.60405</TD><TD align=center>92572.12069</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>5858.26072</TD><TD align=center>10626.55938</TD><TD align=center>20254.52944</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>5207.68616</TD><TD align=center>12082.42789</TD><TD align=center>38005.91593</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (2146.54021 ns, 0.00812 pF) / (8586.16085 ns, 0.03249 pF) / (34344.64341 ns, 0.12995 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00106</TD><TD align=center>0.00112</TD><TD align=center>0.00106</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00081</TD><TD align=center>0.00078</TD><TD align=center>0.00068</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00246</TD><TD align=center>0.00246</TD><TD align=center>0.00245</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00273</TD><TD align=center>0.00273</TD><TD align=center>0.00275</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00008</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00003</TD><TD align=center>-0.00001</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00000</TD><TD align=center>0.00002</TD><TD align=center>-0.00004</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00016</TD><TD align=center>-0.00016</TD><TD align=center>-0.00015</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00139</TD><TD align=center>0.00138</TD><TD align=center>0.00140</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00028</TD><TD align=center>-0.00028</TD><TD align=center>-0.00028</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00027</TD><TD align=center>0.00027</TD><TD align=center>0.00027</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>2258.99786</TD><TD align=center>5019.99525</TD><TD align=center>22506.31202</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-4406.44027</TD><TD align=center>-15283.09664</TD><TD align=center>-49028.62023</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>5019.99525</TD><TD align=center>16984.31725</TD><TD align=center>57478.94556</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-1338.66540</TD><TD align=center>-3011.99715</TD><TD align=center>-9705.32414</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_sf_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01116</TD><TD align=center>0.01120</TD><TD align=center>0.17887</TD><TD align=center>0.17887</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00765</TD><TD align=center>0.01121</TD><TD align=center>0.01620</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>892.10525</TD><TD align=center>2009.11321</TD><TD align=center>5875.61495</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>815.49931</TD><TD align=center>1963.10421</TD><TD align=center>6597.51437</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>1058.95732</TD><TD align=center>2625.06118</TD><TD align=center>8381.58042</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>1045.44574</TD><TD align=center>2634.61399</TD><TD align=center>8904.73788</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>628.83341</TD><TD align=center>1573.64342</TD><TD align=center>4847.21745</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>615.29100</TD><TD align=center>1583.19072</TD><TD align=center>5370.53620</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>442.83334</TD><TD align=center>873.26043</TD><TD align=center>2001.47802</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>366.25412</TD><TD align=center>827.64012</TD><TD align=center>2725.67373</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (129.86925 ns, 0.01118 pF) / (519.47702 ns, 0.04472 pF) / (2077.90806 ns, 0.17887 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00111</TD><TD align=center>0.00111</TD><TD align=center>0.00112</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00082</TD><TD align=center>0.00085</TD><TD align=center>0.00092</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00252</TD><TD align=center>0.00254</TD><TD align=center>0.00253</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00280</TD><TD align=center>0.00280</TD><TD align=center>0.00287</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00013</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00010</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00002</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00002</TD><TD align=center>-0.00008</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00011</TD><TD align=center>-0.00012</TD><TD align=center>-0.00005</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00148</TD><TD align=center>0.00149</TD><TD align=center>0.00158</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00028</TD><TD align=center>-0.00028</TD><TD align=center>-0.00028</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00028</TD><TD align=center>0.00027</TD><TD align=center>0.00027</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>158.92399</TD><TD align=center>374.74670</TD><TD align=center>1281.20208</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-290.37964</TD><TD align=center>-937.84777</TD><TD align=center>-2664.42944</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>331.58216</TD><TD align=center>1086.96164</TD><TD align=center>3612.08733</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-94.17718</TD><TD align=center>-231.51890</TD><TD align=center>-702.40481</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_fs_0" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01035</TD><TD align=center>0.00503</TD><TD align=center>0.12305</TD><TD align=center>0.12305</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00186</TD><TD align=center>0.00250</TD><TD align=center>0.00331</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>36276.19769</TD><TD align=center>73601.62854</TD><TD align=center>221841.47730</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>26625.77837</TD><TD align=center>63750.51221</TD><TD align=center>212866.03098</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>51330.05140</TD><TD align=center>83812.59006</TD><TD align=center>201094.71921</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>38462.95311</TD><TD align=center>67854.78430</TD><TD align=center>182473.88846</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>34460.50388</TD><TD align=center>51292.30177</TD><TD align=center>106894.07186</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>21585.17569</TD><TD align=center>35089.07268</TD><TD align=center>87340.35535</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>26689.52431</TD><TD align=center>52593.49192</TD><TD align=center>155170.45778</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>17041.06945</TD><TD align=center>42748.45376</TD><TD align=center>146201.50265</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (3640.68113 ns, 0.00769 pF) / (14562.72454 ns, 0.03076 pF) / (58250.89817 ns, 0.12305 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00113</TD><TD align=center>0.00115</TD><TD align=center>0.00117</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00091</TD><TD align=center>0.00088</TD><TD align=center>0.00078</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00231</TD><TD align=center>0.00232</TD><TD align=center>0.00229</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00256</TD><TD align=center>0.00258</TD><TD align=center>0.00262</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00000</TD><TD align=center>0.00000</TD><TD align=center>-0.00001</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00003</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00003</TD><TD align=center>-0.00008</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00002</TD><TD align=center>-0.00005</TD><TD align=center>-0.00015</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00018</TD><TD align=center>-0.00021</TD><TD align=center>-0.00023</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00151</TD><TD align=center>0.00150</TD><TD align=center>0.00150</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00024</TD><TD align=center>-0.00024</TD><TD align=center>-0.00024</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00024</TD><TD align=center>0.00024</TD><TD align=center>0.00024</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>8984.57380</TD><TD align=center>12937.78627</TD><TD align=center>51679.26848</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-4168.84224</TD><TD align=center>-2731.31043</TD><TD align=center>-2731.31043</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>20844.21121</TD><TD align=center>39819.63107</TD><TD align=center>46144.77102</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-2012.54453</TD><TD align=center>-8481.43766</TD><TD align=center>-42263.43514</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_fs_27" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01044</TD><TD align=center>0.00578</TD><TD align=center>0.12974</TD><TD align=center>0.12974</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.00273</TD><TD align=center>0.00412</TD><TD align=center>0.00680</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>10468.34064</TD><TD align=center>21591.06374</TD><TD align=center>65457.71093</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>7685.46728</TD><TD align=center>18739.31804</TD><TD align=center>63148.86841</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>12800.34895</TD><TD align=center>22658.52598</TD><TD align=center>58712.54651</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>9020.41646</TD><TD align=center>17850.78593</TD><TD align=center>52437.02441</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>8019.40954</TD><TD align=center>12848.48425</TD><TD align=center>29247.98215</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>4226.15689</TD><TD align=center>7820.88918</TD><TD align=center>21399.07393</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>8056.89825</TD><TD align=center>16195.27655</TD><TD align=center>48138.65408</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>5275.26318</TD><TD align=center>13346.00954</TD><TD align=center>45830.35395</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (1127.65173 ns, 0.00811 pF) / (4510.60691 ns, 0.03243 pF) / (18042.42764 ns, 0.12974 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00110</TD><TD align=center>0.00118</TD><TD align=center>0.00118</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00093</TD><TD align=center>0.00091</TD><TD align=center>0.00090</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00232</TD><TD align=center>0.00231</TD><TD align=center>0.00222</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00253</TD><TD align=center>0.00258</TD><TD align=center>0.00265</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00000</TD><TD align=center>-0.00001</TD><TD align=center>-0.00004</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00000</TD><TD align=center>0.00001</TD><TD align=center>-0.00004</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00000</TD><TD align=center>0.00001</TD><TD align=center>0.00009</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00000</TD><TD align=center>0.00000</TD><TD align=center>0.00001</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00020</TD><TD align=center>-0.00021</TD><TD align=center>-0.00017</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00153</TD><TD align=center>0.00154</TD><TD align=center>0.00160</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00024</TD><TD align=center>-0.00024</TD><TD align=center>-0.00023</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00024</TD><TD align=center>0.00024</TD><TD align=center>0.00027</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>2171.75739</TD><TD align=center>4259.17468</TD><TD align=center>17711.41947</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-379.53042</TD><TD align=center>-168.68018</TD><TD align=center>885.57097</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>4027.23943</TD><TD align=center>5650.78621</TD><TD align=center>10521.42657</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-801.23088</TD><TD align=center>-3120.58343</TD><TD align=center>-15349.89688</TD></TR>
+</TABLE>
+</DIV>
+<DIV class=corner id="c_fs_85" style="display:none">
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR><TH>Cell Name</TH><TH>Area (um<sup>2</sup>)</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>50.67360</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=2>Pin Cap(pf)</TH><TH colspan=2>Max Cap(pf)</TH></TR>
+<TR><TH>CLK</TH><TH>D</TH><TH>Q</TH><TH>QB</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.01113</TD><TD align=center>0.00788</TD><TD align=center>0.15214</TD><TD align=center>0.15214</TD></TR>
+</TABLE>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(nW)</TH></TR>
+<TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><TH>DLX4</TH><TD align=center>0.07726</TD><TD align=center>0.13590</TD><TD align=center>0.27949</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RR)</font></TH><TD align=center>1371.30189</TD><TD align=center>2992.95208</TD><TD align=center>9265.96013</TD></TR>
+<TR><TH><font>D->Q (RR)</font></TH><TD align=center>1017.07989</TD><TD align=center>2615.33351</TD><TD align=center>9049.07432</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->Q (RF)</font></TH><TD align=center>1450.01046</TD><TD align=center>2982.17568</TD><TD align=center>8759.89356</TD></TR>
+<TR><TH><font>D->Q (FF)</font></TH><TD align=center>940.49611</TD><TD align=center>2193.47877</TD><TD align=center>7059.15630</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RR)</font></TH><TD align=center>793.40379</TD><TD align=center>1469.37782</TD><TD align=center>3895.59176</TD></TR>
+<TR><TH><font>D->QB (FR)</font></TH><TD align=center>278.64877</TD><TD align=center>541.47344</TD><TD align=center>1558.19336</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Delay(ns) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH><TH colspan=3>Delay(ns)</TH></TR>
+<TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK->QB (RF)</font></TH><TD align=center>1194.14984</TD><TD align=center>2553.35060</TD><TD align=center>7787.63244</TD></TR>
+<TR><TH><font>D->QB (RF)</font></TH><TD align=center>840.33853</TD><TD align=center>2176.00746</TD><TD align=center>7567.78450</TD></TR>
+</TABLE>
+<BR><em>First / Mid / Last = (input slew, output load) = (184.04781 ns, 0.00951 pF) / (736.19125 ns, 0.03803 pF) / (2944.76499 ns, 0.15214 pF); slew 30-70 %, delay 50-50 %.</em><BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00126</TD><TD align=center>0.00134</TD><TD align=center>0.00154</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00091</TD><TD align=center>0.00092</TD><TD align=center>0.00124</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00222</TD><TD align=center>0.00204</TD><TD align=center>0.00153</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00264</TD><TD align=center>0.00266</TD><TD align=center>0.00284</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>-0.00002</TD><TD align=center>-0.00012</TD><TD align=center>-0.00072</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>-0.00001</TD><TD align=center>-0.00005</TD><TD align=center>-0.00043</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Internal switching power(pJ) to QB falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>CLK</font></TH><TD align=center>0.00004</TD><TD align=center>0.00019</TD><TD align=center>0.00073</TD></TR>
+<TR><TH><font>D</font></TH><TD align=center>0.00003</TD><TD align=center>0.00009</TD><TD align=center>0.00022</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK rising:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>-0.00028</TD><TD align=center>-0.00026</TD><TD align=center>-0.00005</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for CLK falling:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>-</font></TH><TD align=center>0.00165</TD><TD align=center>0.00167</TD><TD align=center>0.00190</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>-0.00028</TD><TD align=center>-0.00026</TD><TD align=center>-0.00017</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Passive power(pJ) for D falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>When</TH><TH colspan=3>Power(pJ)</TH></TR>
+<TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=1>DLX4</TH><TH><font>!CLK</font></TH><TD align=center>0.00026</TD><TD align=center>0.00033</TD><TD align=center>0.00056</TD></TR>
+</TABLE>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>236.74719</TD><TD align=center>879.76424</TD><TD align=center>3612.58670</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>35.07366</TD><TD align=center>93.52975</TD><TD align=center>502.72242</TD></TR>
+</TABLE>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH><TH colspan=3>Reference Slew Rate(ns)</TH></TR>
+<TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
+<TR><TH rowspan=2>DLX4</TH><TH><font>setup</font></TH><TH><font>CLK (F)</font></TH><TD align=center>204.59633</TD><TD align=center>461.80315</TD><TD align=center>1683.53555</TD></TR>
+<TR><TH><font>hold</font></TH><TH><font>CLK (F)</font></TH><TD align=center>-140.29463</TD><TD align=center>-695.62753</TD><TD align=center>-3413.83597</TD></TR>
+</TABLE>
+</DIV>
+<BR>
+<DIV class=NOPRINT>
+<HR>
+<TABLE BORDER=0 WIDTH=100%>
+<TR><TD ALIGN=LEFT><TABLE BORDER=5><TR><TD><em><A hREF="MOAI4X4.html">Prev (MOAI4X4)</A></em></TD></TR></TABLE></TD><TD ALIGN=RIGHT><TABLE BORDER=5><TR><TD><em><A hREF="DFFX4.html">Next (DFFX4)</A></em></TD></TR></TABLE></TD></TR>
+</TABLE>
+</DIV>
+</BODY>
+</HTML>

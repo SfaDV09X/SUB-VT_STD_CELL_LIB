@@ -24,3 +24,8 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Flow work and output folders
+characterization_work/
+synthesis/out/
+sizing_work/

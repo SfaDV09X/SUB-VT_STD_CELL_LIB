@@ -1,0 +1,6 @@
+** sch_path: /foss/designs/inv1x4.sch
+.subckt inv1x4 A Y VDD GND
+*.PININFO A:I Y:O VDD:B GND:B
+XM1 Y A GND GND sky130_fd_pr__nfet_01v8 L=0.29 W=0.84 nf=1
+XM2 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.21 W=1.68 nf=2
+.ends
