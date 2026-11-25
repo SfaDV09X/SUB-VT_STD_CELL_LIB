@@ -1,3 +1,8 @@
+// Coverage design: uses every one of the 13 library cells at least once, so the benchmark
+// exercises the whole library.
+
+// One module per logic function, kept as a separate block; synth.py maps each one onto the
+// matching library cell only.
 (* keep_hierarchy *) module cov_inv1  (input a,       output y); assign y = ~a;                        endmodule
 (* keep_hierarchy *) module cov_nand2 (input a, b,    output y); assign y = ~(a & b);                  endmodule
 (* keep_hierarchy *) module cov_nor2  (input a, b,    output y); assign y = ~(a | b);                  endmodule
@@ -51,6 +56,7 @@ module demo (
     cov_moai4 u_moai (.a(a[0]), .b(c[2]), .c(b[2]), .d(d[2]), .y(y_moai));
     cov_maoi4 u_maoi (.a(a[1]), .b(c[3]), .c(b[3]), .d(d[3]), .y(y_maoi));
 
+    // Registered logic (adder, compare, parity, shift register) for the flip-flops.
     always @(posedge clk) begin
         sum_q <= a + b + cin;
         eq_q  <= (a == b);
@@ -61,5 +67,6 @@ module demo (
         else          sr_q <= sr_q ^ d;
     end
 
+    // Level-sensitive latch for the DLX cell.
     always @* if (en_l) lat_q = d;
 endmodule

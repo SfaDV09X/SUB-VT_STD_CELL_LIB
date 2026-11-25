@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
+# Small text-level Liberty helpers (no full parser): find brace blocks, cells, pins,
+# index/values tables, evaluate a cell function and list the side-input states that make an
+# input pin control the output. Same file in scripts/characterization and scripts/synthesis.
+
 import re
 import itertools
 
 TABLE_NAMES = ("cell_rise", "cell_fall", "rise_transition", "fall_transition")
 
 
+# Index of the '}' that closes the '{' at position i.
 def match_brace(text, i):
     assert text[i] == "{"
     depth = 0
@@ -19,6 +24,7 @@ def match_brace(text, i):
     raise ValueError("unbalanced braces")
 
 
+# (start, end, match) for every block whose header matches the regex.
 def blocks(text, header_regex):
     out = []
     for m in re.finditer(header_regex, text):
@@ -46,6 +52,7 @@ def get_values(block):
     return [floats(r) for r in re.findall(r"\"([^\"]*)\"", m.group(1))]
 
 
+# Area, pins, function and timing tables of one cell block.
 def cell_info(cell_text):
     area = float(re.search(r"area : ([\d.eE+-]+);", cell_text).group(1))
     pins = {}
@@ -68,6 +75,7 @@ def cell_info(cell_text):
     return info
 
 
+# Evaluate a Liberty function string (! & * | +) for the given pin values.
 def eval_function(expr, assign):
     if not re.fullmatch(r"[\w!&|+*() ]+", expr):
         raise ValueError("unsupported function syntax: %r" % expr)
@@ -76,6 +84,7 @@ def eval_function(expr, assign):
     return bool(eval(py, {"__builtins__": {}}, {k: bool(v) for k, v in assign.items()}))
 
 
+# Side-input values for which toggling `pin` changes the output.
 def sensitizing_states(expr, pin, inputs):
     others = [p for p in inputs if p != pin]
     res = []
@@ -86,5 +95,6 @@ def sensitizing_states(expr, pin, inputs):
     return res
 
 
+# State dict -> Liberty "when" condition, e.g. A&!B.
 def when_expr(state):
     return "&".join(("" if v else "!") + k for k, v in state.items())

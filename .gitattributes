@@ -10,4 +10,10 @@
 *.lef    text eol=lf
 *.lib    text eol=lf
 *.md     text eol=lf
+*.c      text eol=lf
+*.S      text eol=lf
+*.ld     text eol=lf
+*.vh     text eol=lf
+*.patch  text eol=lf
+*.tsv    text eol=lf
 *.gds    binary

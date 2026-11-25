@@ -1,3 +1,5 @@
+// 8-bit counter with synchronous reset and enable; small sequential benchmark design.
+
 module counter8 (
     input            clk,
     input            rst,

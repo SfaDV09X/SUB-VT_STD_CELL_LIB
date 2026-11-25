@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Write cells/<CELL>/characterization/<cell>.grids: for every corner, the FO4 load and slew the
+# tables are centred on and the full load/slew index, read back from the per-cell .lib files.
+# Usage: python3 grids.py <cells dir>
+
 import itertools, os, sys
 from libtools import blocks, cell_blocks, get_index
 

@@ -1,3 +1,6 @@
+// Checks the RTL (gold) and the synthesised netlist (gate) of counter8 against a reference
+// model for 800 cycles with random enable and one reset pulse; prints PASS or FAIL.
+
 `timescale 1ns/1ps
 module tb_counter8;
     reg        clk, rst, en;

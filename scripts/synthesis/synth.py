@@ -1,12 +1,20 @@
 #!/usr/bin/env python3
+# Synthesise the benchmark designs with Yosys/ABC onto one library and check the result:
+# formal equivalence with the RTL, gate-level simulation with the testbench, and switching
+# activity from the VCD for power analysis. Results per design in <out>/<lib>/<design>/
+# (netlist, stat.txt, result.json). Called by run_synth.sh.
+
 import argparse, collections, os, re, subprocess, sys
 import libs, models
 
+# Per design: clock port, time per operation in ns of simulation (one clock period, or one
+# input vector for the combinational rca8), and the VCD window to measure activity in.
 DESIGNS = {
     "rca8": dict(clk=None, op=1.0, win=None),
     "counter8": dict(clk="clk", op=10.0, win=None),
     "demo": dict(clk="clk", op=100.0, win=(400.0, 400.0 + 20000 * 100.0)),
 }
+# Output pin names of both libraries, used to find the driver of each net.
 OUTPINS = ("Y", "X", "Q", "QB", "Q_N")
 
 
@@ -24,12 +32,17 @@ def synth(A, L, design, out):
     libs.techmaps(L, out)
     open(os.path.join(out, "map.script"), "w").write("strash\ndch -f\nmap\n")
     open(os.path.join(out, "map_area.script"), "w").write("strash\ndch -f\nmap -a\n")
+    # demo.v has cov_<function> submodules that must each use one specific cell so every library
+    # cell appears in the benchmark. Each gets a library with only that cell plus inverter and
+    # NAND/NOR helpers made 1000x larger in area, so ABC picks the target cell.
     cov = re.findall(r"module cov_(\w+)", open(rtl).read())
     for c in cov:
         target = L["cells"][c][0]
         helpers = [L["cells"]["inv1"][0], L["cells"]["nor2" if c == "nand2" else "nand2"][0]]
         keep = [target] + [h for h in helpers if h != target]
         libs.subset(lib, os.path.join(out, "lib", "only_%s.lib" % c), keep, {h: 1000.0 for h in helpers if h != target})
+    # Main flow: generic synthesis, flip-flops/latches onto the library, the forced cov_ blocks,
+    # ABC on the rest, then flatten, give nets and cells short names and write the netlist.
     ys = ["read_verilog -sv %s" % rtl,
           "read_liberty -overwrite -setattr liberty_cell -lib %s" % lib,
           "hierarchy -check -top %s" % top,
@@ -59,6 +72,7 @@ def synth(A, L, design, out):
     return os.path.join(out, top + "_gate.v")
 
 
+# Cell usage count; stops if the netlist contains anything that is not a library cell.
 def usage(L, net):
     names = libs.cell_names(L)
     used = collections.Counter(re.findall(r"^\s*(\w+)\s+u\d+\s*\(", open(net).read(), re.M))
@@ -68,6 +82,7 @@ def usage(L, net):
     return {n: used.get(n, 0) for n in names}
 
 
+# Yosys equivalence check of the RTL against the gate netlist (sequential, induction depth 2).
 def equiv(A, design, out):
     top = design
     ys = """read_verilog -sv %(rtl)s
@@ -93,6 +108,8 @@ equiv_status -assert
     return run([A.yosys, "-q", "-s", os.path.join(out, "equiv.ys")], os.path.join(out, "equiv.log")) == 0
 
 
+# Run the testbench against the gate netlist (PASS line expected) and dump the VCD,
+# only inside the measurement window when one is set.
 def simulate(A, design, out):
     D = DESIGNS[design]
     tb = "tb_" + design
@@ -112,6 +129,8 @@ def simulate(A, design, out):
     return bool(re.search(r"(?m)^PASS", log)), log
 
 
+# Toggles per operation and fraction of time at 1 for every bit in the VCD, counted only
+# while dumping is on. These feed set_power_activity in sta.py.
 def vcd_activity(path, op, win):
     ids, vals, tog, high, last = {}, {}, collections.Counter(), collections.Counter(), {}
     t = 0.0
@@ -186,6 +205,7 @@ def vcd_activity(path, op, win):
     return {b: (tog[b] / ops, min(1.0, high[b] / dur)) for b in set(list(tog) + list(high) + list(vals))}, ops
 
 
+# Net -> driving cell pin, so activity can be attached to the right pin in OpenSTA.
 def drivers(L, net):
     txt = open(net).read()
     out = {}

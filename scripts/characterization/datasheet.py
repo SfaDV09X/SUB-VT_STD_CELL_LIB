@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# HTML datasheets from the corner libraries: datasheets/index.html (cell list + frame) and one
+# page per cell with truth table, area, pin caps, leakage, timing and power, and a drop-down to
+# switch between the 15 corners. Usage: python3 datasheet.py --libdir lib --out datasheets
+
 import argparse, glob, html, itertools, os, re, sys
 import numpy as np
 from libtools import blocks, cell_blocks, floats, get_index, get_values, eval_function
@@ -25,6 +29,7 @@ def tables(t, name):
             for s, e, m in blocks(t, r"(?m)^\s*%s \(\w+\) \{" % name)]
 
 
+# First, middle and last entry of a table (min / FO4 / max corner of the grid).
 def fml(tab):
     i1, i2, v = tab
     v = np.array(v)
@@ -35,6 +40,7 @@ def fml(tab):
     return [v[0][0], v[n // 2][n // 2], v[n - 1][n - 1]]
 
 
+# Area, pins, leakage per state and whether the cell is a flip-flop or latch.
 def parse(ct):
     P = pins(ct)
     info = dict(area=float(attr(ct, "area")), pins=P, inputs=[], outputs=[], leak=[], ff=None, latch=None)
@@ -49,6 +55,7 @@ def parse(ct):
     return info
 
 
+# All corner libraries found, as {(process, temp): {cell: cell text}}.
 def load_libs(libdir):
     libs = {}
     for p, t in itertools.product(PROCS, TEMPS):
@@ -102,6 +109,7 @@ def truth_seq(kind):
     return h + "</TABLE>\n"
 
 
+# Arc label like RF (input rise -> output fall) from the timing sense.
 def edge_dir(sense, out_rise):
     o = "R" if out_rise else "F"
     if sense == "positive_unate":
@@ -111,6 +119,7 @@ def edge_dir(sense, out_rise):
     return "X" + o
 
 
+# Datasheet tables for one cell at one corner.
 def corner_body(name, ct, kind):
     info = parse(ct)
     U = name.upper()
@@ -208,6 +217,8 @@ def corner_body(name, ct, kind):
     return h
 
 
+# Full page of one cell; every corner is a hidden DIV and the select box shows one of them.
+# The last chosen corner is remembered in the browser.
 def page(name, libs, prev, nxt, fns):
     U = name.upper()
     corners = [c for c in itertools.product(PROCS, TEMPS) if c in libs and name in libs[c]]
@@ -249,6 +260,7 @@ def main():
     libs = load_libs(A.libdir)
     if not libs:
         sys.exit("no corner libraries in " + A.libdir)
+    # Functions from cells.tsv, used for the truth tables.
     fns = {}
     for l in open(A.tsv):
         if l.strip() and not l.startswith("#"):

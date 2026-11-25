@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+# Characterisation driver, called by run_char.sh. Per corner (process + temperature at 0.40 V):
+#   - combinational cells: a quick lctime probe finds the FO4 load and the self-consistent FO4
+#     slew, then the full lctime run on a 5x5 grid around that point (0.25x to 4x),
+#   - sequential cells: seqchar.py,
+#   - measure.py adds internal power and leakage, apply.py assembles the final Liberty files.
+# Finished cells and corners are skipped on a rerun.
+
 import argparse, math, os, re, shutil, subprocess, sys, time
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -12,6 +19,7 @@ import apply as AP
 SEQ = {"dffx4": "dff", "dlx4": "latch"}
 ORDER = ["inv1x4", "nand2x4", "nor2x4", "and2x4", "or2x4", "xor2x4", "xnor2x4", "aoi3x4", "oai3x4",
          "maoi4x4", "moai4x4", "dlx4", "dffx4"]
+# Load and slew grid as multiples of the FO4 point.
 GRID = np.array([0.25, 0.5, 1, 2, 4])
 ALL_CORNERS = [(p, t) for p in ("tt", "ss", "ff", "sf", "fs") for t in (0, 27, 85)]
 
@@ -20,6 +28,7 @@ def log(s):
     print("[%s] %s" % (time.strftime("%H:%M:%S"), s), flush=True)
 
 
+# cells.tsv: cell -> (inputs, output pin, Liberty function).
 def tsv(path):
     rows = {}
     for line in open(path):
@@ -30,11 +39,13 @@ def tsv(path):
     return rows
 
 
+# Cell area from the LEF SIZE line.
 def area(lef):
     m = re.search(r"SIZE\s+([\d.]+)\s+BY\s+([\d.]+)", open(lef).read())
     return float(m.group(1)) * float(m.group(2))
 
 
+# Minimal Liberty file that tells lctime the pins and function of one cell.
 def template(path, libname, temp, cell, row, ar):
     ins, out, fn = row
     pins = "\n".join("    pin (%s) { direction : input; }" % i for i in ins)
@@ -44,6 +55,7 @@ def template(path, libname, temp, cell, row, ar):
                           "    pin (%s) { direction : output; function : \"%s\"; }\n  }\n}\n" % (cell, ar, pins, out, fn))
 
 
+# Run lctime (through lct.py when the number of points per transient is changed).
 def lctime(A, tmpl, cell, net, tempf, out, loads, ramps, step, wd, nobreak=False):
     if os.path.isdir(wd):
         shutil.rmtree(wd)
@@ -62,6 +74,7 @@ def rows(x):
     return np.array([[float(v) for v in str(r).strip().strip('"').split(",")] for r in x])
 
 
+# Input caps and the delay/transition tables of a characterised cell.
 def tables(libfile, cell):
     lib = parse_liberty(open(libfile).read())
     c = next(c for c in lib.get_groups("cell") if str(c.args[0]) == cell)
@@ -76,6 +89,7 @@ def tables(libfile, cell):
     return caps, tr, dl
 
 
+# Bilinear lookup in a table (linear extrapolation in slew, linear in load).
 def interp(tab, c, r):
     i1, i2, v = tab
     a = np.array([np.interp(r, i2, row) if i2[0] <= r <= i2[-1] else
@@ -84,6 +98,7 @@ def interp(tab, c, r):
     return float(a[0] + (a[-1] - a[0]) * (c - i1[0]) / (i1[-1] - i1[0]))
 
 
+# Time step that gives about npts points over 3x the window, rounded to 1/2/5.
 def step_for(window, npts):
     need = 3 * window * 1e-9 / npts
     e = 10 ** math.floor(math.log10(need))
@@ -108,6 +123,8 @@ def comb_cell(A, cell, row, cw, tempf, libname):
     else:
         sys.exit("probe failed for %s, see %s.log" % (cell, probe))
     caps, tr, dl = tables(probe, cell)
+    # FO4 load = 4x the average input cap. Then iterate for the input ramp that equals the output
+    # transition the cell itself produces at FO4 (lctime transitions are 40 % of the full ramp).
     c4 = 4.0 * float(np.mean(caps))
     r = 100.0
     for _ in range(300):
@@ -117,6 +134,7 @@ def comb_cell(A, cell, row, cw, tempf, libname):
             break
         r = rn
     loads, ramps = c4 * GRID, r * GRID
+    # Simulation window for the slowest grid point sets the time step.
     window = ramps[-1] + max(interp(t, loads[-1], ramps[-1]) for t in dl) + max(interp(t, loads[-1], ramps[-1]) for t in tr) / 0.4
     step = step_for(window, A.npts)
     open(os.path.join(cw, "grids.txt"), "a").write(
@@ -124,6 +142,7 @@ def comb_cell(A, cell, row, cw, tempf, libname):
         (cell, c4, r, 0.4 * r, step, ", ".join("%.6g" % x for x in loads), ", ".join("%.6g" % x for x in ramps)))
     log("  %s: C_FO4 %.4g fF, FO4 slew %.4g ns, step %.0e" % (cell, c4 * 1e3, 0.4 * r, step))
     tmpout = out + ".tmp"
+    # If lctime fails, retry without extra breakpoints and then with coarser steps.
     for k in range(4):
         if lctime(A, tmpl, cell, net, tempf, tmpout, loads, ramps, step, os.path.join(cw, "wd_" + cell), nobreak=k > 0 and A.npts != 1e5):
             break
@@ -136,6 +155,7 @@ def comb_cell(A, cell, row, cw, tempf, libname):
     shutil.rmtree(os.path.join(cw, "wd_" + cell), ignore_errors=True)
 
 
+# Latch/flip-flop: run seqchar.py in its own process.
 def seq_cell(A, cell, cw, libname):
     out = os.path.join(cw, "raw", cell + ".lib")
     if os.path.isfile(out):
@@ -158,6 +178,7 @@ def seq_cell(A, cell, cw, libname):
             open(os.path.join(cw, "grids.txt"), "a").write("%s %s" % (cell, l))
 
 
+# Copy of the model library with only the wanted process section, so ngspice loads less.
 def models(src, proc, dst):
     txt = open(src).read()
     m = re.search(r"(?ms)^\.lib\s+%s\s*$(.*?)^\.endl" % re.escape(proc), txt)
@@ -176,6 +197,7 @@ def models(src, proc, dst):
     open(dst, "w").write(".lib %s\n%s\n.endl %s\n" % (proc, "\n".join(keep), proc))
 
 
+# One corner end to end: models, all cells, merge, power/leakage, final library.
 def corner(A, proc, temp, cells, rowsd):
     tag = "%s_%dc" % (proc, temp)
     libname = "subvt_sky130_%s_0p40v_%dc" % (proc, temp)
@@ -246,6 +268,8 @@ def main():
     A.netfmt = A.netfmt or os.path.join(A.cells_dir, "%(CELL)s", "verification", "pex", "%(cell)s_pex.spice")
     A.leffmt = A.leffmt or os.path.join(A.cells_dir, "%(CELL)s", "layout", "%(cell)s.lef")
     rowsd = tsv(os.path.join(HERE, "cells.tsv"))
+    # If the installed lctime has the expected source layout, run it through lct.py with 2e4
+    # points per transient instead of its default 1e5, which keeps the runs shorter.
     chk = subprocess.run([sys.executable, "-c", "import lctime.characterization.timing_combinatorial as t, lctime.characterization.input_capacitance as i;"
                           "import sys;sys.exit(0 if 'cfg.time_step * 1e5' in open(t.__file__).read() and 'cfg.time_step * 1e6' in open(i.__file__).read() else 1)"])
     A.npts = 2e4 if chk.returncode == 0 else 1e5

@@ -1,3 +1,8 @@
+# The two libraries used in the synthesis benchmarks and how their cells line up:
+# for each logic function the cell name, input pin mapping and output pin, plus the
+# flip-flop and latch. Also helpers to cut a Liberty file down to some cells and to write
+# the Yosys techmap files for inverters and latches.
+
 import os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -6,6 +11,7 @@ from libtools import blocks
 
 CORNERS = [(p, t) for p in ("tt", "ss", "ff", "sf", "fs") for t in (0, 27, 85)]
 
+# Our X4 library: generic pin names a/b/c/d -> cell pins.
 SUBVT = dict(
     name="subvt",
     cells={
@@ -25,6 +31,7 @@ SUBVT = dict(
     latch=("dlx4", "CLK", "D", "Q", "QB"),
 )
 
+# Closest sky130_fd_sc_hd equivalents (drive strength 1), for the 1.8 V reference.
 HD = dict(
     name="hd",
     cells={
@@ -51,10 +58,13 @@ def cell_names(L):
     return [c for c, _, _ in L["cells"].values()] + [L["dff"][0], L["latch"][0]]
 
 
+# {cell name: (start, end)} of every cell block in a Liberty text.
 def cell_map(text):
     return {m.group(1): (s, e) for s, e, m in blocks(text, r'(?m)^\s*cell\s*\(\s*"?(\w+)"?\s*\)\s*\{')}
 
 
+# Copy of a Liberty file with only the cells in `keep`; area_scale makes some cells
+# expensive so ABC avoids them.
 def subset(src, dst, keep, area_scale=None):
     t = open(src).read()
     cb = cell_map(t)
@@ -73,6 +83,8 @@ def subset(src, dst, keep, area_scale=None):
     open(dst, "w").write(t[:first] + "\n".join(body) + t[last:])
 
 
+# inv_map.v maps Yosys $_NOT_ to the library inverter; latch_map.v maps positive latches to
+# the latch cell and negative ones to latch + inverter on the enable.
 def techmaps(L, out):
     inv, ip, io = L["cells"]["inv1"]
     lc, le, ld, lq, lqn = L["latch"]

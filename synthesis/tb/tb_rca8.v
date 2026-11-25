@@ -1,3 +1,6 @@
+// Exhaustive test of rca8: all 2^17 input combinations, RTL (gold) and netlist (gate)
+// both compared with a + b + cin; prints PASS or FAIL.
+
 `timescale 1ns/1ps
 module tb_rca8;
     reg  [7:0] a, b;

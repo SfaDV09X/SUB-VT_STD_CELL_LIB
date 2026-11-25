@@ -14,3 +14,4 @@ Docker image `hpretl/iic-osic-tools:2026.07`.
 | Icarus Verilog | 14.0 |
 
 The committed characterization and synthesis results were produced outside the container with ngspice 42, lctime 0.0.26, Yosys 0.33, Icarus Verilog 12.0 and OpenSTA 3.2.0, on the same sky130A models.
+The RISC-V benchmark results (`benchmarking/results/`) were produced with the same tool set; the workload binaries `benchmarking/prog/*.hex` were compiled with clang 18.1.3.

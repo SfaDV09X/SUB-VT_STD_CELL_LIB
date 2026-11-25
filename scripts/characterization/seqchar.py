@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
+# Timing characterisation of DLX4 and DFFX4 with ngspice (lctime does not handle them):
+# input caps, CLK->Q/QB delay and transition (and D->Q for the latch) on a 5x5 load x slew
+# grid centred on the FO4 point, and setup/hold constraint tables. Writes a raw Liberty cell;
+# power and leakage are added later by measure.py/apply.py. Called by charflow.py.
+
 import argparse, os, re, subprocess, sys, tempfile, math
 import numpy as np
 from concurrent.futures import ProcessPoolExecutor
 
 _trapz = getattr(np, 'trapezoid', None) or np.trapz
 A = None
+# Setup/hold are defined at 10 % CLK->Q push-out over the delay with relaxed timing.
 PUSHOUT = 1.10
 CACHE_DIR = lambda: A.workdir
 KEYX = lambda: getattr(A, "tcap", None)
 
 
+# Disk cache of results keyed on the arguments (and the current max time step).
 def cached(fn):
     import functools, hashlib, json
     @functools.wraps(fn)
@@ -61,6 +68,7 @@ def ports(net, cell):
     sys.exit("no .subckt %s in %s" % (cell, net))
 
 
+# PWL source from (time, level, slew) edges; slew is 30-70 %, so the full ramp is slew/0.4.
 def pwl(init, trans):
     v = lambda x: x * A.vdd
     pts = [(0.0, v(init))]
@@ -75,6 +83,7 @@ def pwl(init, trans):
     return "PWL(" + " ".join("%.6gn %.6g" % (t, x) for t, x in out) + ")"
 
 
+# One transient of the cell with equal loads on Q and QB; returns the waveforms in ns.
 def simulate(clk, d, tstop_ns, load_pf, tag, tmax_ns=None):
     P = ports(A.net, A.cell)
     pin = {"CLK": "clk", "D": "d", "Q": "q", "QB": "qb", "VDD": "vdd", "GND": "0"}
@@ -120,6 +129,7 @@ def cross(t, v, level, rising, t0, t1):
     return None
 
 
+# (delay from t_ref to the 50 % crossing, 30-70 % transition) of one output edge.
 def edge_meas(w, node, rising, t_ref, t0, t1):
     v = w[node]; V = A.vdd
     t50 = cross(w["t"], v, 0.5 * V, rising, t0, t1)
@@ -130,6 +140,8 @@ def edge_meas(w, node, rising, t_ref, t0, t1):
 
 
 @cached
+# Input cap of D or CLK from the charge drawn by one edge (baseline current removed),
+# averaged over a rising and a falling edge.
 def input_cap(pin):
     V = A.vdd; ramp = 10.0
     res = []
@@ -178,6 +190,7 @@ quit
 
 
 @cached
+# Clock a 1 then a 0 through the cell and measure the Q/QB edges after the 3rd and 5th clock edge.
 def clk_to_q(args):
     sc, load, H = args
     clk = pwl(0, [(H, 1, sc), (2 * H, 0, sc), (3 * H, 1, sc), (4 * H, 0, sc), (5 * H, 1, sc), (6 * H, 0, sc)])
@@ -196,6 +209,7 @@ def clk_to_q(args):
 
 
 @cached
+# Latch only: with the latch open, measure Q/QB following D.
 def d_to_q(args):
     sd, load, H = args
     clk = pwl(0, [(H, 1, sd)])
@@ -210,6 +224,8 @@ def d_to_q(args):
     return r
 
 
+# Move the data edge t_su before the capturing clock edge and check Q settles to the new value;
+# also returns the CLK->Q (DFF) or D->Q (latch) delay to judge push-out.
 def setup_trial(sd, sc, rising_d, t_su, H):
     new = 1 if rising_d else 0; old = 1 - new
     tc = 3 * H
@@ -234,6 +250,7 @@ def setup_trial(sd, sc, rising_d, t_su, H):
         return ok and dly is not None, dly
 
 
+# Change D back t_h after the clock edge and check Q still holds the captured value.
 def hold_trial(sd, sc, rising_d, t_h, H):
     V = 1 if rising_d else 0; nV = 1 - V
     tc = 3 * H
@@ -254,6 +271,7 @@ def hold_trial(sd, sc, rising_d, t_h, H):
         return (w["q"][-1] > 0.9 * A.vdd if V else w["q"][-1] < 0.1 * A.vdd), None
 
 
+# Smallest setup/hold time that still passes (with at most 10 % push-out), by bisection.
 def bisect(trial, lo, hi, d_nom, H, iters=9):
     def passes(x):
         ok, dly = trial(x)
@@ -309,9 +327,12 @@ def main():
 
     cD, cC = pool.submit(input_cap, "D"), pool.submit(input_cap, "CLK")
     cD, cC = cD.result(), cC.result()
+    # FO4 load = 4x the mean of the D and CLK input caps.
     C = 4.0 * 0.5 * (cD + cC)
     log("input caps: D=%.4f pF  CLK=%.4f pF  -> C_FO4 = %.4f pF" % (cD, cC, C))
 
+    # Find the self-consistent slew (the CLK->Q transition the cell produces at FO4) and a
+    # half-period H long enough for every edge to settle.
     H = A.H or 200000.0
     s = 200.0
     for it in range(12):
@@ -339,6 +360,7 @@ def main():
     pool = ProcessPoolExecutor(A.jobs, mp_context=mp.get_context('fork'))
     log("grid: slews %s ns, loads %s pF" % (slews.round(1), loads.round(5)))
 
+    # Delay grid; make H longer until it is at least 6x the slowest delay.
     for attempt in range(4):
         jobs = {(i, j): pool.submit(clk_to_q, (slews[i], loads[j], H)) for i in range(5) for j in range(5)}
         cq = {k: f.result() for k, f in jobs.items()}
@@ -357,6 +379,7 @@ def main():
         if any(x is None for r in dq.values() for x in r.values()): sys.exit("missing D->Q transition")
     log("delay tables done")
 
+    # Setup/hold for rising and falling D on the full slew x slew grid, searched around the FO4 delay.
     d_ref = cq[(2, 2)][("q", "rise")][0]
     cj = {}
     for kind in ("setup", "hold"):
@@ -369,6 +392,8 @@ def main():
                                                        [k for k, v in con.items() if v is None])
     log("constraints done")
 
+    # Write the raw Liberty cell: ff/latch group, input pins with setup/hold, Q/QB with
+    # CLK (and for the latch D) timing arcs.
     m = re.search(r"SIZE\s+([\d.]+)\s+BY\s+([\d.]+)", open(A.lef).read())
     area = float(m.group(1)) * float(m.group(2))
     edge = "rising" if A.kind == "dff" else "falling"

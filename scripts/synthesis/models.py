@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
+# Write simple behavioural Verilog models of library cells from their Liberty functions
+# (combinational assigns, ff/latch groups as always blocks). Used for equivalence checking
+# and gate-level simulation. Usage: models.py <lib> <out.v> <cell> [cell ...]
+
 import re, sys
 from libs import cell_map
 from libtools import blocks
 
 
+# Liberty function syntax -> Verilog operators.
 def vexpr(f):
     return f.replace("!", "~").replace("+", "|").replace("*", "&")
 

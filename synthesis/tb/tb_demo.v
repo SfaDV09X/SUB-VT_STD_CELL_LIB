@@ -1,3 +1,7 @@
+// Runs the demo RTL (gold) and netlist (gate) side by side: every input combination of
+// {cin,d,c,b,a} once, then random vectors, with random control inputs. All outputs are
+// compared 40 ns after each clock edge; prints PASS or FAIL.
+
 `timescale 1ns/1ps
 
 module tb_demo;
@@ -18,6 +22,7 @@ module tb_demo;
         .y_aoi(n_y_aoi), .y_oai(n_y_oai), .y_moai(n_y_moai), .y_maoi(n_y_maoi),
         .sum_q(n_sum_q), .eq_q(n_eq_q), .par_q(n_par_q), .sr_q(n_sr_q), .lat_q(n_lat_q));
 
+    // All outputs packed into one vector per model for a single comparison.
     wire [57:0] gv = {g_a_n,g_y_nand,g_y_nor,g_y_and,g_y_or,g_x_ab,g_xn_ab,g_y_aoi,g_y_oai,g_y_moai,g_y_maoi,g_sum_q,g_eq_q,g_par_q,g_sr_q,g_lat_q};
     wire [57:0] nv = {n_a_n,n_y_nand,n_y_nor,n_y_and,n_y_or,n_x_ab,n_xn_ab,n_y_aoi,n_y_oai,n_y_moai,n_y_maoi,n_sum_q,n_eq_q,n_par_q,n_sr_q,n_lat_q};
 

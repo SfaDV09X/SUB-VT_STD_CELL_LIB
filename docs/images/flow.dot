@@ -1,0 +1,13 @@
+// Overall flow chart for README.md and docs/index.md; render with: dot -Tsvg flow.dot | rsvg-convert -z 2 -b white -o flow.png
+digraph flow {
+ graph [rankdir=LR, nodesep=0.25, ranksep=0.3, bgcolor="white", pad=0.2];
+ node [shape=box, width=1.6, height=0.7, fontname="Helvetica", fontsize=12, color="black", fontcolor="black", penwidth=1.2];
+ edge [color="black", arrowsize=0.7, penwidth=1.1];
+ s1 [label="1  Schematic\nngspice, xschem"];
+ s2 [label="2  Layout\ngeneration\nPython"];
+ s3 [label="3  Layout\nverification\nMagic, Netgen"];
+ s4 [label="4  Characterization\nlctime, ngspice"];
+ s5 [label="5  Synthesis\nrca8, counter8, demo\nYosys, OpenSTA"];
+ s6 [label="6  Benchmarking\nRISC-V cores\nYosys, OpenSTA"];
+ s1 -> s2 -> s3 -> s4 -> s5 -> s6;
+}

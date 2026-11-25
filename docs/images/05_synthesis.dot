@@ -1,0 +1,17 @@
+// 05_synthesis stage flow chart; render with: dot -Tsvg 05_synthesis.dot | rsvg-convert -z 2 -b white -o 05_synthesis.png
+digraph g {
+ graph [rankdir=LR, nodesep=0.25, ranksep=0.3, bgcolor="white", pad=0.2];
+ node [fontname="Helvetica", fontsize=12, color="black", fontcolor="black", penwidth=1.2];
+ edge [color="black", arrowsize=0.7, penwidth=1.1];
+ in [shape=box, style="rounded,dashed", label="lib/ + RTL\nrca8, counter8, demo"];
+ out [shape=box, style="rounded,dashed", label="report.html"];
+ n0 [shape=box, width=1.5, height=0.6, label="Synthesis\nYosys + ABC"];
+ in -> n0;
+ n1 [shape=box, width=1.5, height=0.6, label="Equivalence\nYosys"];
+ n0 -> n1;
+ n2 [shape=box, width=1.5, height=0.6, label="Gate-level sim\niverilog"];
+ n1 -> n2;
+ n3 [shape=box, width=1.5, height=0.6, label="Timing + power\nOpenSTA"];
+ n2 -> n3;
+ n3 -> out;
+}

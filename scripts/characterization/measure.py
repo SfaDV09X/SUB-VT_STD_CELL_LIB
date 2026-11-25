@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+# Internal power and leakage for one corner, measured directly with ngspice on the PEX
+# netlists (lctime's own power numbers are not used). Writes into --out:
+#   leakage.csv   : supply leakage for every input state (and stored state for DLX/DFF),
+#   power.csv     : internal energy per input pin, output edge and (load, slew) grid point,
+#   seq_power.csv : energy of every clock/data event in a long stimulus for DLX/DFF,
+#   measure.log   : anything that did not settle or failed; exit code 1 if there is any.
+# Every simulation result is cached in <out>/cache, so a rerun only simulates what is new.
+
 import argparse, csv, itertools, os, re, subprocess, sys, tempfile
 import multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor
@@ -14,6 +22,7 @@ CACHE_DIR = lambda: G.out
 KEYX = lambda: None
 
 
+# Disk cache keyed on the task arguments; JSON with tuples/dicts encoded so keys survive.
 def cached(fn):
     import functools, hashlib, json
     @functools.wraps(fn)
@@ -70,6 +79,7 @@ def node(p):
     return "vdd" if p == "VDD" else "0" if p == "GND" else p.lower()
 
 
+# Model corner, PEX netlist, temperature, tight tolerances (energies are in the fJ range).
 def header(net, cell):
     return ('.lib "%s" %s\n.include "%s"\n.temp %g\n.option abstol=1e-15 reltol=1e-4\nVSUP vdd 0 DC %g\n'
             % (G.models, G.corner, net, G.temp, VDD))
@@ -83,6 +93,7 @@ def pwl(points):
     return "PWL(" + " ".join("%.6gn %.6g" % p for p in points) + ")"
 
 
+# Square-ish PWL from a start level and a list of (time, new level) steps.
 def steps_to_pwl(init, steps, ramp=100.0):
     pts = [(0.0, init * VDD)]
     cur = init
@@ -101,6 +112,7 @@ def run_ng(base):
     return r.stdout + r.stderr
 
 
+# Time average of v between a and b.
 def avg(t, v, a, b):
     m = (t >= a) & (t <= b)
     tt = t[m]
@@ -109,6 +121,7 @@ def avg(t, v, a, b):
     return _trapz(v[m], tt) / (tt[-1] - tt[0])
 
 
+# First crossing of `level` in [a, b] in the given direction.
 def cross(t, v, level, rising, a, b):
     m = (t >= a) & (t <= b)
     tt, vv = t[m], v[m]
@@ -120,6 +133,10 @@ def cross(t, v, level, rising, a, b):
 
 
 @cached
+# One input pin, one side-input state, one grid point: the pin rises and then falls.
+# Internal energy = supply energy above the leakage baseline minus the energy stored in
+# the load cap (only on a rising output). Also returns how well the output settled and
+# whether the supply current was still drifting at the end of the window.
 def power_task(a):
     cell, net, pin, state, i, j, load_pf, ramp, Tp, out = a
     tag = "p_%s_%s_%s_%d_%d" % (cell, pin, "".join(str(v) for v in state.values()) or "x", i, j)
@@ -164,6 +181,7 @@ def power_task(a):
             row["error"] = "output did not cross 50 %"
             rows.append(row)
             continue
+        # Leakage baseline: steady current before the 50 % crossing, the new steady current after it.
         m = (t >= te) & (t <= tend)
         ibase = np.where(t[m] < tx, ib, ia)
         e_sup = VDD * _trapz(isup[m] - ibase, t[m] * 1e-9)
@@ -174,6 +192,8 @@ def power_task(a):
     return rows
 
 
+# Every sensitising state of every input on the full load x slew grid of the raw library.
+# The window Tp is long enough for the slowest delay to settle.
 def power_jobs(lib_text, cells, repo, only_point=None):
     jobs = []
     cb = cell_blocks(lib_text)
@@ -207,6 +227,7 @@ def power_jobs(lib_text, cells, repo, only_point=None):
 
 
 @cached
+# Leakage of one input combination from an operating point (a long transient if .op fails).
 def leak_comb_task(a):
     cell, net, state, out = a
     tag = "l_%s_%s" % (cell, "".join(str(v) for v in state.values()))
@@ -233,6 +254,8 @@ def leak_comb_task(a):
 
 
 @cached
+# Leakage of a latch/flip-flop in one (CLK, D, Q) state: drive it there, wait, read the
+# current. Longer waits if the current has not settled yet.
 def leak_seq_task(a):
     r = None
     for T in (100000.0, 500000.0, 2500000.0):
@@ -246,6 +269,8 @@ def _leak_seq(a, T):
     cell, net, kind, clk, d, q = a
     tag = "l_%s_%d%d%d_%d" % (cell, clk, d, q, int(T))
     base = os.path.join(G.work, tag)
+    # Clock/data sequence that leaves the cell in the wanted state; a transparent latch cannot
+    # hold Q != D, so that state is reported as unreachable (not an error).
     if kind == "dff":
         if clk == 0:
             ck = steps_to_pwl(0, [(T, 1), (2 * T, 0)]); dd = steps_to_pwl(q, [(3 * T, d)]) if d != q else steps_to_pwl(q, [])
@@ -303,6 +328,8 @@ def leak_jobs(lib_text, cells, repo):
     return comb, seq
 
 
+# Stimulus for sequential power: a fixed list of CLK and D toggles that covers every
+# (clock level, data, stored value) combination, including D changes while the clock is idle.
 SEQ_PROG = {
     "dff": [("CLK", 1), ("CLK", 0), ("D", 1), ("CLK", 1), ("CLK", 0), ("CLK", 1), ("D", 0), ("D", 1), ("CLK", 0),
             ("D", 0), ("D", 1), ("D", 0), ("CLK", 1), ("D", 1), ("D", 0), ("CLK", 0), ("D", 1), ("D", 0),
@@ -312,6 +339,7 @@ SEQ_PROG = {
 }
 
 
+# What the cell should do after one event: (CLK, D, Q) -> next (CLK, D, Q).
 def seq_ideal(kind, c, d, q, sig, lvl):
     if sig == "CLK":
         c2 = lvl
@@ -324,6 +352,7 @@ def seq_ideal(kind, c, d, q, sig, lvl):
     return c, d2, q
 
 
+# Turn SEQ_PROG into CLK and D steps spaced H apart, plus the expected state at each event.
 def seq_program(kind, H, ramp):
     clk, dd, ev = [(1 * H, 1), (2 * H, 0)], [], []
     c, d, q = seq_ideal(kind, 0, 0, 0, "CLK", 1)
@@ -337,6 +366,8 @@ def seq_program(kind, H, ramp):
     return clk, dd, ev, (len(ev) + 3) * H
 
 
+# For each event: check Q/QB levels against the expected state, then integrate the supply
+# energy above leakage and subtract the energy that went into the Q/QB load caps.
 def seq_analyse(t, vq, vqb, isup, kind, events, H, ramp, cq, cqb):
     rows = []
     for e in events:
@@ -386,6 +417,7 @@ def seq_analyse(t, vq, vqb, isup, kind, events, H, ramp, cq, cqb):
 
 
 @cached
+# One full stimulus run for a given input slew (jj) and load on Q or QB.
 def seq_power_task(a):
     cell, net, kind, jj, ramp, H, cq, cqb = a
     tag = "sp_%s_%d_%g_%g" % (cell, jj, cq, cqb)
@@ -408,6 +440,8 @@ def seq_power_task(a):
     return [dict(base_row, **r) for r in rows]
 
 
+# Runs per slew: no load, each load on Q alone and each load on QB alone. apply.py
+# subtracts the no-load run to get the output arc energy.
 def seq_power_jobs(lib_text, cells, repo):
     jobs = []
     cb = cell_blocks(lib_text)
@@ -485,6 +519,8 @@ def main():
     cols = ["cell", "pin", "when", "in_edge", "out_edge", "i", "j", "load_pF", "ramp_ns", "Esup_fJ", "Eload_fJ",
             "Eint_fJ", "Vy_err_V", "drift_fJ", "error"]
     with open(os.path.join(G.out, "power.csv"), "w", newline="") as f:
+        # A row is flagged if the output was more than 2 % of VDD off the rail or the supply
+        # current was still drifting by more than 2 % of the measured energy.
         w = csv.DictWriter(f, cols, extrasaction="ignore")
         w.writeheader()
         for r in rows:
@@ -510,6 +546,7 @@ def main():
         with open(os.path.join(G.out, "seq_power.csv"), "w", newline="") as f:
             w = csv.DictWriter(f, scols, extrasaction="ignore")
             w.writeheader()
+            # Largest event energy per run, used to scale the drift tolerance.
             sref = {}
             for r in srows:
                 if not r.get("error"):

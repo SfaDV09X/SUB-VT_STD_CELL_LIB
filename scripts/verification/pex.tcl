@@ -1,3 +1,7 @@
+# Magic: full R+C parasitic extraction of the cell into verification/pex/<cell>_pex.spice
+# and a short count report <cell>_pex.rpt. Expects `cell` to be set (and the LEF written,
+# which is where the cell width comes from unless `w` is given).
+
 set subvt_root /foss/designs/SUB-VT_STD_CELL_LIB
 set cellu [string toupper $cell]
 cd $subvt_root/cells/$cellu/layout
@@ -10,11 +14,13 @@ if {![info exists w]} {
 }
 box 0um 0um ${w}um 4.08um
 
+# Capacitance including coupling between wires.
 extract do local
 extract do capacitance
 extract do coupling
 extract all
 
+# extresist needs the .sim/.nodes files, then adds wire resistance for every net.
 ext2sim labels on
 ext2sim
 
@@ -24,6 +30,7 @@ extresist mindelay 0
 extresist extout on
 extresist all
 
+# Flat ngspice subcircuit with every R and C kept (thresholds 0).
 ext2spice format ngspice
 ext2spice hierarchy off
 ext2spice subcircuit top on
@@ -34,6 +41,7 @@ ext2spice -o $subvt_root/cells/$cellu/verification/pex/${cell}_pex.spice
 
 file delete -force ${cell}.sim ${cell}.nodes ${cell}.res.ext
 
+# Count the R and C elements for the summary.
 catch {clear}
 set f [open $subvt_root/cells/$cellu/verification/pex/${cell}_pex.spice r]
 set d [read $f]

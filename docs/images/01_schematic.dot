@@ -1,0 +1,15 @@
+// 01_schematic stage flow chart; render with: dot -Tsvg 01_schematic.dot | rsvg-convert -z 2 -b white -o 01_schematic.png
+digraph g {
+ graph [rankdir=LR, nodesep=0.25, ranksep=0.3, bgcolor="white", pad=0.2];
+ node [fontname="Helvetica", fontsize=12, color="black", fontcolor="black", penwidth=1.2];
+ edge [color="black", arrowsize=0.7, penwidth=1.1];
+ in [shape=box, style="rounded,dashed", label="PDK models"];
+ out [shape=box, style="rounded,dashed", label="<cell>.spice"];
+ n0 [shape=box, width=1.5, height=0.6, label="Transistor sizing\nngspice, GP + MOBO"];
+ in -> n0;
+ n1 [shape=box, width=1.5, height=0.6, label="Schematic + symbol\nxschem"];
+ n0 -> n1;
+ n2 [shape=box, width=1.5, height=0.6, label="Netlist export\nnetlist.sh"];
+ n1 -> n2;
+ n2 -> out;
+}

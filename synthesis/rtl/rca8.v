@@ -1,3 +1,5 @@
+// 8-bit ripple-carry adder; small combinational benchmark design (longest path = carry chain).
+
 module rca8 (
     input  [7:0] a,
     input  [7:0] b,

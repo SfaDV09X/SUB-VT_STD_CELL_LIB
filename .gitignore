@@ -29,3 +29,6 @@ Thumbs.db
 characterization_work/
 synthesis/out/
 sizing_work/
+
+# RISC-V benchmark output
+benchmarking/out/

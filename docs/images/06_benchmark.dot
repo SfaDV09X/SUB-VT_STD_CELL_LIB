@@ -1,0 +1,19 @@
+// 06_benchmark stage flow chart; render with: dot -Tsvg 06_benchmark.dot | rsvg-convert -z 2 -b white -o 06_benchmark.png
+digraph g {
+ graph [rankdir=LR, nodesep=0.25, ranksep=0.3, bgcolor="white", pad=0.2];
+ node [fontname="Helvetica", fontsize=12, color="black", fontcolor="black", penwidth=1.2];
+ edge [color="black", arrowsize=0.7, penwidth=1.1];
+ in [shape=box, style="rounded,dashed", label="lib/ + RISC-V RTL\n+ workloads"];
+ out [shape=box, style="rounded,dashed", label="riscv_results.md"];
+ n0 [shape=box, width=1.5, height=0.6, label="Synthesis\nYosys + ABC"];
+ in -> n0;
+ n1 [shape=box, width=1.5, height=0.6, label="Fanout-4\nbuffering"];
+ n0 -> n1;
+ n2 [shape=box, width=1.5, height=0.6, label="ISS + RTL\nlockstep"];
+ n1 -> n2;
+ n3 [shape=box, width=1.5, height=0.6, label="Timing + power\nOpenSTA"];
+ n2 -> n3;
+ n4 [shape=box, width=1.5, height=0.6, label="15 PVT\ncorners"];
+ n3 -> n4;
+ n4 -> out;
+}

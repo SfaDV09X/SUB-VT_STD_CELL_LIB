@@ -1,0 +1,21 @@
+--- a/femtorv32_quark.v
++++ b/femtorv32_quark.v
+@@ -176,6 +176,7 @@
+ 	 aluReg <= funct3Is[1] ? aluReg << 1 :              // SLL
+ 		   {instr[30] & aluReg[31], aluReg[31:1]};  // SRA,SRL
+       end
++      if(!reset) aluShamt <= 5'd0;
+    end
+ 
+    /***************************************************************************/
+@@ -344,8 +345,8 @@
+ 
+         state[WAIT_INSTR_bit]: begin
+            if(!mem_rbusy) begin // may be high when executing from SPI flash
+-              rs1 <= registerFile[mem_rdata[19:15]];
+-              rs2 <= registerFile[mem_rdata[24:20]];
++              rs1 <= (mem_rdata[19:15] == 5'd0) ? 32'd0 : registerFile[mem_rdata[19:15]];
++              rs2 <= (mem_rdata[24:20] == 5'd0) ? 32'd0 : registerFile[mem_rdata[24:20]];
+               instr <= mem_rdata[31:2]; // Bits 0 and 1 are ignored (see
+               state <= EXECUTE;         // also the declaration of instr).
+            end

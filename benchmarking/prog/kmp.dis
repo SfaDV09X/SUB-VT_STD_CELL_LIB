@@ -1,0 +1,127 @@
+
+kmp.elf:	file format elf32-littleriscv
+
+Disassembly of section .text:
+
+00000000 <_start>:
+       0: 93 00 00 00  	li	ra, 0x0
+       4: 13 01 00 00  	li	sp, 0x0
+       8: 93 01 00 00  	li	gp, 0x0
+       c: 13 02 00 00  	li	tp, 0x0
+      10: 93 02 00 00  	li	t0, 0x0
+      14: 13 03 00 00  	li	t1, 0x0
+      18: 93 03 00 00  	li	t2, 0x0
+      1c: 13 04 00 00  	li	s0, 0x0
+      20: 93 04 00 00  	li	s1, 0x0
+      24: 13 05 00 00  	li	a0, 0x0
+      28: 93 05 00 00  	li	a1, 0x0
+      2c: 13 06 00 00  	li	a2, 0x0
+      30: 93 06 00 00  	li	a3, 0x0
+      34: 13 07 00 00  	li	a4, 0x0
+      38: 93 07 00 00  	li	a5, 0x0
+      3c: 13 08 00 00  	li	a6, 0x0
+      40: 93 08 00 00  	li	a7, 0x0
+      44: 13 09 00 00  	li	s2, 0x0
+      48: 93 09 00 00  	li	s3, 0x0
+      4c: 13 0a 00 00  	li	s4, 0x0
+      50: 93 0a 00 00  	li	s5, 0x0
+      54: 13 0b 00 00  	li	s6, 0x0
+      58: 93 0b 00 00  	li	s7, 0x0
+      5c: 13 0c 00 00  	li	s8, 0x0
+      60: 93 0c 00 00  	li	s9, 0x0
+      64: 13 0d 00 00  	li	s10, 0x0
+      68: 93 0d 00 00  	li	s11, 0x0
+      6c: 13 0e 00 00  	li	t3, 0x0
+      70: 93 0e 00 00  	li	t4, 0x0
+      74: 13 0f 00 00  	li	t5, 0x0
+      78: 93 0f 00 00  	li	t6, 0x0
+      7c: 37 21 00 00  	lui	sp, 0x2
+      80: 97 00 00 00  	auipc	ra, 0x0
+      84: e7 80 40 01  	jalr	0x14(ra) <main>
+      88: b7 02 80 00  	lui	t0, 0x800
+      8c: 23 a0 a2 00  	sw	a0, 0x0(t0)
+      90: 6f 00 00 00  	j	0x90 <_start+0x90>
+
+00000094 <main>:
+      94: 37 05 00 00  	lui	a0, 0x0
+      98: 13 05 85 1d  	addi	a0, a0, 0x1d8
+      9c: b7 a5 57 13  	lui	a1, 0x1357a
+      a0: 13 86 f5 bd  	addi	a2, a1, -0x421
+      a4: 93 05 05 0f  	addi	a1, a0, 0xf0
+      a8: 93 16 d6 00  	slli	a3, a2, 0xd
+      ac: 33 c6 c6 00  	xor	a2, a3, a2
+      b0: 93 56 16 01  	srli	a3, a2, 0x11
+      b4: b3 c6 c6 00  	xor	a3, a3, a2
+      b8: 13 96 56 00  	slli	a2, a3, 0x5
+      bc: 33 46 d6 00  	xor	a2, a2, a3
+      c0: 93 f6 16 00  	andi	a3, a3, 0x1
+      c4: 13 77 06 28  	andi	a4, a2, 0x280
+      c8: 13 07 07 d8  	addi	a4, a4, -0x280
+      cc: 13 37 17 00  	seqz	a4, a4
+      d0: b3 86 e6 00  	add	a3, a3, a4
+      d4: 93 86 16 06  	addi	a3, a3, 0x61
+      d8: 23 00 d5 00  	sb	a3, 0x0(a0)
+      dc: 13 05 15 00  	addi	a0, a0, 0x1
+      e0: e3 14 b5 fc  	bne	a0, a1, 0xa8 <main+0x14>
+      e4: 13 05 00 00  	li	a0, 0x0
+      e8: 93 08 00 00  	li	a7, 0x0
+      ec: 93 05 00 00  	li	a1, 0x0
+      f0: 13 06 00 00  	li	a2, 0x0
+      f4: b7 06 00 00  	lui	a3, 0x0
+      f8: 23 a4 06 2c  	sw	zero, 0x2c8(a3)
+      fc: 93 86 86 2c  	addi	a3, a3, 0x2c8
+     100: 23 a2 06 00  	sw	zero, 0x4(a3)
+     104: 13 07 10 00  	li	a4, 0x1
+     108: 23 a4 e6 00  	sw	a4, 0x8(a3)
+     10c: 13 07 20 00  	li	a4, 0x2
+     110: 23 a6 e6 00  	sw	a4, 0xc(a3)
+     114: 37 07 00 00  	lui	a4, 0x0
+     118: 13 07 87 1d  	addi	a4, a4, 0x1d8
+     11c: b7 07 00 00  	lui	a5, 0x0
+     120: 93 87 47 1d  	addi	a5, a5, 0x1d4
+     124: 13 08 40 00  	li	a6, 0x4
+     128: 93 02 00 0f  	li	t0, 0xf0
+     12c: 6f 00 80 01  	j	0x144 <main+0xb0>
+     130: 13 03 c3 ff  	addi	t1, t1, -0x4
+     134: 13 33 13 00  	seqz	t1, t1
+     138: 13 05 15 00  	addi	a0, a0, 0x1
+     13c: 33 06 66 00  	add	a2, a2, t1
+     140: 63 00 55 06  	beq	a0, t0, 0x1a0 <main+0x10c>
+     144: 33 03 a7 00  	add	t1, a4, a0
+     148: 03 43 03 00  	lbu	t1, 0x0(t1)
+     14c: 63 50 10 03  	blez	a7, 0x16c <main+0xd8>
+     150: b3 83 17 01  	add	t2, a5, a7
+     154: 83 c3 03 00  	lbu	t2, 0x0(t2)
+     158: 63 8a 63 00  	beq	t2, t1, 0x16c <main+0xd8>
+     15c: 93 98 28 00  	slli	a7, a7, 0x2
+     160: b3 88 d8 00  	add	a7, a7, a3
+     164: 83 a8 c8 ff  	lw	a7, -0x4(a7)
+     168: e3 44 10 ff  	bgtz	a7, 0x150 <main+0xbc>
+     16c: b3 83 17 01  	add	t2, a5, a7
+     170: 83 c3 03 00  	lbu	t2, 0x0(t2)
+     174: 33 c3 63 00  	xor	t1, t2, t1
+     178: 13 33 13 00  	seqz	t1, t1
+     17c: 33 83 68 00  	add	t1, a7, t1
+     180: 63 18 03 01  	bne	t1, a6, 0x190 <main+0xfc>
+     184: 93 98 55 00  	slli	a7, a1, 0x5
+     188: b3 05 b5 40  	sub	a1, a0, a1
+     18c: b3 85 15 01  	add	a1, a1, a7
+     190: 93 08 03 00  	mv	a7, t1
+     194: e3 1e 03 f9  	bne	t1, a6, 0x130 <main+0x9c>
+     198: 93 08 20 00  	li	a7, 0x2
+     19c: 6f f0 5f f9  	j	0x130 <main+0x9c>
+     1a0: 33 c5 c5 00  	xor	a0, a1, a2
+     1a4: 67 80 00 00  	ret
+
+000001a8 <__mulsi3>:
+     1a8: 13 06 00 00  	li	a2, 0x0
+     1ac: 63 80 05 02  	beqz	a1, 0x1cc <__mulsi3+0x24>
+     1b0: 93 96 f5 01  	slli	a3, a1, 0x1f
+     1b4: 93 d6 f6 41  	srai	a3, a3, 0x1f
+     1b8: b3 f6 a6 00  	and	a3, a3, a0
+     1bc: 33 86 c6 00  	add	a2, a3, a2
+     1c0: 93 d5 15 00  	srli	a1, a1, 0x1
+     1c4: 13 15 15 00  	slli	a0, a0, 0x1
+     1c8: e3 94 05 fe  	bnez	a1, 0x1b0 <__mulsi3+0x8>
+     1cc: 13 05 06 00  	mv	a0, a2
+     1d0: 67 80 00 00  	ret

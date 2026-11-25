@@ -1,0 +1,15 @@
+// 02_layout stage flow chart; render with: dot -Tsvg 02_layout.dot | rsvg-convert -z 2 -b white -o 02_layout.png
+digraph g {
+ graph [rankdir=LR, nodesep=0.25, ranksep=0.3, bgcolor="white", pad=0.2];
+ node [fontname="Helvetica", fontsize=12, color="black", fontcolor="black", penwidth=1.2];
+ edge [color="black", arrowsize=0.7, penwidth=1.1];
+ in [shape=box, style="rounded,dashed", label="<cell>.spice"];
+ out [shape=box, style="rounded,dashed", label="<cell>.tcl"];
+ n0 [shape=box, width=1.5, height=0.6, label="Row recipe check\ncells_spec.py"];
+ in -> n0;
+ n1 [shape=box, width=1.5, height=0.6, label="Poly contacts\nand placement"];
+ n0 -> n1;
+ n2 [shape=box, width=1.5, height=0.6, label="Routing\nmetal1 / metal2"];
+ n1 -> n2;
+ n2 -> out;
+}

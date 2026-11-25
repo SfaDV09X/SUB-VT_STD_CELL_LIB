@@ -1,4 +1,8 @@
 #!/bin/bash
+# Netgen LVS of the extracted layout netlist against the schematic netlist.
+# Usage: lvs.sh <cell>   (run lvs.tcl in Magic first to get <cell>_layout.spice)
+# Writes <cell>_comp.out and a short summary in <cell>_lvs.rpt.
+
 cell=${1:?usage: lvs.sh <cell>}
 ROOT=${ROOT:-/foss/designs/SUB-VT_STD_CELL_LIB}
 CELLDIR=$ROOT/cells/${cell^^}

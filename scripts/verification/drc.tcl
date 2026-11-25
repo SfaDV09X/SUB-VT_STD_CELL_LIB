@@ -1,9 +1,14 @@
+# Magic: run DRC on the loaded cell and write verification/drc/<cell>_drc.rpt.
+# Expects the Tcl variable `cell` to be set (verify_layouts.sh does this).
+
 set subvt_root /foss/designs/SUB-VT_STD_CELL_LIB
 set cellu [string toupper $cell]
 cd $subvt_root/cells/$cellu/layout
 load $cell
 drc on
 drc catchup
+# List every rule violation with its error boxes; Magic gives internal units,
+# 0.005 um each, so convert to um for the report.
 set errs [drc listall why]
 set body ""
 set nboxes 0
@@ -21,6 +26,7 @@ set f [open $subvt_root/cells/$cellu/verification/drc/${cell}_drc.rpt w]
 puts -nonewline $f $out
 close $f
 
+# Same list on the console for interactive use.
 catch {clear}
 drc count total
 puts "DRC errors (um: llx lly urx ury):"

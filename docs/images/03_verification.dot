@@ -1,0 +1,19 @@
+// 03_verification stage flow chart; render with: dot -Tsvg 03_verification.dot | rsvg-convert -z 2 -b white -o 03_verification.png
+digraph g {
+ graph [rankdir=LR, nodesep=0.25, ranksep=0.3, bgcolor="white", pad=0.2];
+ node [fontname="Helvetica", fontsize=12, color="black", fontcolor="black", penwidth=1.2];
+ edge [color="black", arrowsize=0.7, penwidth=1.1];
+ in [shape=box, style="rounded,dashed", label="<cell>.tcl"];
+ out [shape=box, style="rounded,dashed", label="<cell>_pex.spice"];
+ n0 [shape=box, width=1.5, height=0.6, label="Layout\nMagic"];
+ in -> n0;
+ n1 [shape=box, width=1.5, height=0.6, label="DRC\nMagic"];
+ n0 -> n1;
+ n2 [shape=box, width=1.5, height=0.6, label="LEF + GDS\nMagic"];
+ n1 -> n2;
+ n3 [shape=box, width=1.5, height=0.6, label="LVS\nNetgen"];
+ n2 -> n3;
+ n4 [shape=box, width=1.5, height=0.6, label="R+C extraction\nMagic"];
+ n3 -> n4;
+ n4 -> out;
+}

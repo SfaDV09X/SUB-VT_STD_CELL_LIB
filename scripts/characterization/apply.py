@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
+# Assemble the final Liberty files of one corner: take the raw lctime/seqchar timing, replace
+# the internal power with the values from measure.py (power.csv, seq_power.csv), add leakage
+# per state and max_capacitance, then write one .lib per cell and the merged corner library.
+# Called by charflow.py.
+
 import argparse, csv, difflib, os, re, sys
 from collections import defaultdict
 import numpy as np
 from libtools import cell_blocks, cell_info, blocks, get_index, floats
 
+# SCALE: lctime's power tables are indexed by the full input ramp; times 0.4 gives the
+# 30-70 % transition used everywhere else. NBASE: events after this index come from the
+# extended stimulus. W_DEQ: weight of D=Q vs D!=Q clock-fall events in the DFF CLK pin energy.
 SCALE = 0.4
 SEQ = {"dffx4", "dlx4"}
 NBASE = 18
@@ -14,6 +22,7 @@ def fmt_list(v, f):
     return ", ".join(f % x for x in v)
 
 
+# Liberty 2-D table text (index_1 = load, index_2 = slew).
 def table_text(name, tmpl, idx1, idx2, vals, ind=8):
     p = lambda n: " " * n
     s = "%s%s (%s) {\n" % (p(ind), name, tmpl)
@@ -42,6 +51,8 @@ def table_text_1d(name, tmpl, idx, vals, ind=8):
     return s + "%s}\n" % p(ind)
 
 
+# internal_power groups for one pin of a latch/flip-flop: CLK and D pin energy (1-D in slew,
+# D split by clock level) or output energy related to CLK/D (load x slew).
 def seq_groups(sp, pin):
     g = []
     ind = "      "
@@ -77,6 +88,9 @@ def seq_patch(ct, sp):
     return ct
 
 
+# Turn the per-event energies of seq_power.csv into tables. Pin energy = events where the
+# output does not switch; output arc energy = events where it does, minus the same event
+# with no load (so the pin part is not counted twice).
 def seq_tables(rows, cell, info, kind):
     loads, slews = None, None
     for tabs in info["tables"].values():
@@ -162,6 +176,7 @@ def seq_tables(rows, cell, info, kind):
     return out
 
 
+# Put the measured internal power, leakage and max_capacitance into one raw cell block.
 def patch_cell(ct, name, power, leak, seqp=None):
     if "leakage_power" in ct or "cell_leakage_power" in ct:
         raise SystemExit("%s already has leakage groups; refusing to double-patch" % name)
@@ -202,6 +217,7 @@ def load_csv(path):
         return list(csv.DictReader(f))
 
 
+# Library header: units, 50 % delay thresholds, 30-70 % slew thresholds, 0.40 V.
 HEAD = """library (%(lib)s) {
   delay_model : table_lookup;
   time_unit : "1ns";
@@ -239,6 +255,7 @@ HEAD = """library (%(lib)s) {
 %(templ)s"""
 
 
+# Table templates; the index values here are placeholders, every table carries its own.
 def templates():
     d = '"1000.000000, 1001.000000, 1002.000000, 1003.000000, 1004.000000"'
     two = lambda kind, name, v1, v2: ("  %s (%s) {\n    variable_1 : %s;\n    variable_2 : %s;\n"
@@ -271,6 +288,7 @@ def main():
     bad = [r for r in srow if r["error"]] + [r for r in prow if r["error"]] + [r for r in lrow if r["error"] and "unreachable" not in r["error"]]
     if bad:
         sys.exit("measurement errors present, not patching:\n" + "\n".join(str(b) for b in bad[:10]))
+    # Average the energy of repeated events per (cell, pin, output edge, load, slew).
     acc = defaultdict(list)
     for r in prow:
         acc[(r["cell"], r["pin"], r["out_edge"], int(r["i"]), int(r["j"]))].append(float(r["Eint_fJ"]) * 1e-3)
