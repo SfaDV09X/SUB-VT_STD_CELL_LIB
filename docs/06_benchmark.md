@@ -49,4 +49,4 @@ X4 across the 15 corners:
 | PicoRV32 | 329 Hz / 120 kHz | 41.0 pJ / 418 pJ | 524 ns |
 | DarkRISCV | 192 Hz / 67.4 kHz | 14.1 pJ / 133 pJ | 72 ns |
 
-Per-workload, CPI and per-corner tables: `benchmarking/results/`.
+Per-workload and CPI tables: `benchmarking/results/riscv_results.md`.
